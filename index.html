@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>fallmirror · sovereign multi-host repo mirroring · ◊·κ=1</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--ox:#8b1a1a;--ox-dim:#5a1010;--brass:#b8974a;--brass-dim:#7a6228;--cream:#c4bfb2;--cream-dim:#7d7a72;--void:#0b0a0f;--void-2:#14121a;--void-3:#1e1b25;--green:#4caf50}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--void);color:var(--cream);font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:14px;line-height:1.65;min-height:100vh}
+body{background-image:radial-gradient(at 0% 0%,rgba(139,26,26,.08),transparent 50%),radial-gradient(at 100% 100%,rgba(184,151,74,.05),transparent 50%)}
+a{color:var(--brass);text-decoration:none;border-bottom:1px dotted var(--brass-dim)}
+a:hover{color:var(--cream)}
+.wrap{max-width:920px;margin:0 auto;padding:60px 32px 120px}
+header{margin-bottom:64px;border-bottom:1px solid var(--ox-dim);padding-bottom:32px}
+header h1{font-size:42px;font-weight:400;letter-spacing:6px;color:var(--cream);margin-bottom:14px}
+header h1 .s{color:var(--ox);font-size:48px}
+header h1 .k{color:var(--brass)}
+header .sub{color:var(--cream-dim);letter-spacing:2px;font-size:13px;margin-bottom:18px}
+header .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--cream-dim);letter-spacing:1px}
+header .meta span{padding:3px 10px;border:1px solid var(--brass-dim);color:var(--brass)}
+section{margin-bottom:56px}
+h2{font-size:11px;letter-spacing:4px;color:var(--brass);text-transform:uppercase;margin-bottom:18px;border-bottom:1px solid var(--brass-dim);padding-bottom:6px}
+h3{font-size:14px;letter-spacing:2px;color:var(--cream);margin:24px 0 10px;text-transform:uppercase}
+p{margin-bottom:14px}
+.lead{font-size:18px;line-height:1.7;margin-bottom:20px}
+.hook{color:var(--cream-dim);font-style:italic;margin-bottom:32px;padding-left:18px;border-left:2px solid var(--brass)}
+ul{list-style:none;margin-bottom:18px}
+ul li{padding:4px 0;position:relative;padding-left:20px}
+ul li:before{content:"◊";position:absolute;left:0;color:var(--ox)}
+table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+th,td{text-align:left;padding:8px 12px;border:1px solid var(--void-3)}
+th{background:var(--void-2);color:var(--brass);letter-spacing:2px;font-size:11px;text-transform:uppercase}
+td.good{color:var(--green)}
+td.dim{color:var(--cream-dim)}
+code,pre{font-family:inherit;background:var(--void-2);color:var(--brass);padding:2px 8px;border:1px solid var(--void-3)}
+pre{padding:14px 18px;margin:14px 0;overflow-x:auto;font-size:12px;line-height:1.7;border-left:2px solid var(--ox);color:var(--cream)}
+.btn{display:inline-block;padding:12px 22px;background:var(--ox);color:#fff;letter-spacing:3px;font-size:12px;border:1px solid var(--ox);text-transform:uppercase}
+.btn.dim{background:var(--void-2);color:var(--cream)}
+.cta{margin:32px 0;display:flex;gap:14px;flex-wrap:wrap}
+.seal{margin-top:80px;text-align:center;color:var(--cream-dim);font-size:11px;letter-spacing:3px}
+.seal .s{color:var(--ox);font-size:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1><span class="s">◊</span> fallmirror <span class="k">·κ=1</span></h1>
+<div class="sub">SOVEREIGN MULTI-HOST REPO MIRRORING · ONE PUSH · MANY HOMES</div>
+<div class="meta">
+  <span>GITHUB</span><span>CODEBERG</span><span>GITLAB</span><span>IPFS</span><span>USB</span><span>MIT</span>
+</div>
+</header>
+
+<section>
+<p class="lead">If GitHub closes your account · if Microsoft pulls the plug · if a malicious takedown wipes your repos · fallmirror has your back.</p>
+<p class="hook">"One mirror command pushes your repo to GitHub + Codeberg + GitLab + an IPFS pin + a USB stick on your desk. If any of them dies, the others persist. Your code outlives any single host."</p>
+<p>fallmirror is a 200-line Node script. Run it after every commit. It pushes <code>git push --mirror</code> to every host you've configured, in parallel. Plus optional IPFS pinning and local USB backup. All from one command. No CI required — your laptop is the publisher.</p>
+</section>
+
+<section>
+<h2>Why this exists · the host-gating defense</h2>
+<table>
+<thead><tr><th>Threat</th><th>fallmirror response</th></tr></thead>
+<tbody>
+<tr><td class="dim">GitHub closes your account</td><td class="good">Codeberg + GitLab + USB still have everything</td></tr>
+<tr><td class="dim">Microsoft buys GitHub, changes ToS</td><td class="good">Codeberg is non-profit and FOSS-native · GitLab self-hostable</td></tr>
+<tr><td class="dim">DMCA takedown of a public repo</td><td class="good">Mirrors stay up · push triggers re-mirror</td></tr>
+<tr><td class="dim">Country-level GitHub block</td><td class="good">Codeberg / GitLab / IPFS reachable from anywhere</td></tr>
+<tr><td class="dim">Pages disabled mid-product launch</td><td class="good">Codeberg Pages + GitLab Pages also serve the static site</td></tr>
+<tr><td class="dim">Internet permanently down</td><td class="good">USB backup contains the bare git repo · clone offline</td></tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<h2>Install · 60 seconds</h2>
+<pre><code>gh repo clone sjgant80-hub/fallmirror
+cd fallmirror
+
+# show setup checklist
+node fallmirror.mjs --setup</code></pre>
+
+<p>Then in your PowerShell session:</p>
+<pre><code>$env:CODEBERG_USER = "your-codeberg-handle"
+$env:CODEBERG_TOKEN = "..."  # codeberg.org/user/settings/applications
+$env:GITLAB_USER = "your-gitlab-handle"
+$env:GITLAB_TOKEN = "..."     # gitlab.com/-/profile/personal_access_tokens
+$env:FALLMIRROR_USB = "E:\fallmirror"   # optional
+$env:FALLMIRROR_IPFS = "1"               # optional · needs `ipfs daemon`
+
+# mirror current repo
+cd path/to/any/git/repo
+node /path/to/fallmirror/fallmirror.mjs
+
+# mirror EVERY repo in a folder
+$env:FALLMIRROR_ROOT = "C:\Users\you\code"
+node /path/to/fallmirror/fallmirror.mjs --all
+
+# check what was mirrored when, where
+node /path/to/fallmirror/fallmirror.mjs --status</code></pre>
+</section>
+
+<section>
+<h2>What happens on a mirror push</h2>
+<pre><code>◊·κ=1 · fallmirror · sovereign multi-host repo mirroring
+   hosts · codeberg, gitlab, usb, ipfs
+
+◊ mirroring my-cool-repo
+   ✓ codeberg · pushed
+   ✓ gitlab · pushed
+   ✓ usb · pushed to E:\fallmirror\my-cool-repo.git
+   ✓ ipfs · {"cid":"QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG"}
+
+◊·κ=1 · fallmirror complete · check ./fallmirror-state.json for log</code></pre>
+</section>
+
+<section>
+<h2>Nightly schedule · the resting state</h2>
+<p>Best discipline: schedule fallmirror to run nightly at 02:00. Wake up, every repo is mirrored to 4 hosts. Zero manual effort.</p>
+
+<h3>Windows (Task Scheduler)</h3>
+<pre><code># open Task Scheduler · Create Basic Task
+Trigger: Daily at 02:00
+Action:  Start a program
+Program: C:\Program Files\nodejs\node.exe
+Args:    C:\path\to\fallmirror.mjs --all
+Start in: C:\Users\you\code</code></pre>
+
+<h3>Mac/Linux (cron)</h3>
+<pre><code>0 2 * * * cd ~/code && node ~/fallmirror/fallmirror.mjs --all >> ~/fallmirror.log 2>&1</code></pre>
+</section>
+
+<section>
+<h2>How the hosts compare</h2>
+<table>
+<thead><tr><th>Host</th><th>Free?</th><th>Sovereign-friendly?</th><th>Pages?</th></tr></thead>
+<tbody>
+<tr><td>GitHub</td><td class="good">Yes (public)</td><td>Microsoft-owned</td><td>Yes</td></tr>
+<tr><td>Codeberg</td><td class="good">Yes (Forgejo)</td><td class="good">Non-profit · EU</td><td class="good">Yes (Codeberg Pages)</td></tr>
+<tr><td>GitLab</td><td class="good">Yes (public)</td><td>Public co · also self-hostable</td><td class="good">Yes (GitLab Pages)</td></tr>
+<tr><td>IPFS</td><td class="good">Yes</td><td class="good">Content-addressed · censorship-resistant</td><td>via gateway</td></tr>
+<tr><td>USB</td><td class="good">Yes</td><td class="good">Your hardware · no network</td><td>no</td></tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<h2>Estate ripple</h2>
+<p>fallmirror is operator-level — it lives on your laptop, not embedded in each tool. The ripple is operational: schedule one nightly task, every estate repo gets mirrored. Add new repos to <code>FALLMIRROR_ROOT</code> · they're auto-included.</p>
+<p>After two weeks of running: if GitHub vanishes tomorrow, you can <code>git clone</code> any estate tool from Codeberg or GitLab and continue shipping in 60 seconds.</p>
+</section>
+
+<section>
+<h2>FAQ</h2>
+
+<h3>Does this work with private repos?</h3>
+<p>Yes — Codeberg and GitLab both support private. Pass <code>?visibility=private</code> when manually creating (or modify the script).</p>
+
+<h3>Do I need IPFS running?</h3>
+<p>Only if you set <code>FALLMIRROR_IPFS=1</code>. The default config is GitHub + Codeberg + GitLab — works without anything else installed.</p>
+
+<h3>What about LFS / large files?</h3>
+<p>v1.0 does standard <code>git push --mirror</code>. LFS works on GitHub + GitLab + Codeberg natively. USB mirror is bare-bone (no LFS pointer resolution).</p>
+
+<h3>Tokens stored in env vars feel risky.</h3>
+<p>The script reads them from process env — they never get written to disk. Use a credential manager if you want extra layers (Windows Credential Manager, 1Password CLI, etc.).</p>
+
+<h3>Combined with fallvault?</h3>
+<p>Yes — fallmirror handles your <em>code</em> (multi-host). <a href="https://sjgant80-hub.github.io/fallvault/">fallvault</a> handles your <em>laptop's other files</em> (encrypted single-HTML backup). Together: total emergency-recovery coverage.</p>
+</section>
+
+<section>
+<h2>License</h2>
+<p>MIT. Fork it, modify it. Built by <a href="https://www.ai-nativesolutions.com">AI Native Solutions</a>. Part of the sovereign estate. <a href="https://github.com/sjgant80-hub/fallmirror">Source</a>.</p>
+</section>
+
+<div class="cta">
+  <a class="btn" href="https://github.com/sjgant80-hub/fallmirror">VIEW ON GITHUB</a>
+  <a class="btn dim" href="https://www.ai-nativesolutions.com">THE FULL ESTATE</a>
+</div>
+
+<div class="seal"><span class="s">◊·κ=1</span> &nbsp; prime 281 &nbsp; v20.1 · phi=1.618 · kappa=0.618 &nbsp; mirrors compound</div>
+</div>
+</body>
+</html>
