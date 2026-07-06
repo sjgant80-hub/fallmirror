@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FallMirror · sovereign reflection</title>
-<meta name="description" content="A sovereign self-reflection tool. Runs on your device. Nothing leaves it. The mirror doesn't judge — it reflects. You do the seeing.">
+<title>FallMirror · private reflection tool</title>
+<meta name="description" content="A private reflection tool. Runs on your device. Nothing leaves it. The mirror doesn't judge — it reflects. You do the seeing.">
 <meta name="author" content="AI-Native Solutions">
 <meta name="theme-color" content="#1a1a1e">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1a1e'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
@@ -118,7 +118,7 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <section class="view on" id="view-talk">
 <div id="setup-panel" class="setup-card">
 <h1>Welcome. <em>The mirror doesn't judge.</em></h1>
-<p>A sovereign self-reflection space. Runs on your device. Nothing leaves this browser. No account, no server, no harvest. Just you, the mirror, and your own map building over time.</p>
+<p>A private reflection tool space. Runs on your device. Nothing leaves this browser. No account, no server, no harvest. Just you, the mirror, and your own map building over time.</p>
 <p style="color:var(--muted)">First time? A short calibration finds your starting shape. About five minutes. After that, drop in for as long or as short as you like.</p>
 <div style="margin-top:18px">
 <button class="big-btn" id="btn-calibrate">▸ Start calibration</button>
@@ -142,44 +142,44 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 </section>
 <section class="view" id="view-journal">
 <h2><em>Journal</em></h2>
-<p style="color:var(--muted);margin-bottom:20px">Every session leaves a chord. This is the sound they made together.</p>
+<p style="color:var(--muted);margin-bottom:20px">Every session leaves a takeaway. This is the story they add up to.</p>
 <div id="journal-list"></div>
 </section>
 <section class="view" id="view-dashboard">
 <h2><em>Your shape</em></h2>
-<p style="color:var(--muted);margin-bottom:20px">The pattern IS the therapy. Movement is what you're watching for — not perfection.</p>
+<p style="color:var(--muted);margin-bottom:20px">Noticing your patterns IS the point. Movement matters more than getting it perfect.</p>
 <div class="dash-grid">
 <div class="card">
-<h3>Bloom · your 7-axis shape</h3>
+<h3>Your profile</h3>
 <div class="radial" id="bloom-radial"></div>
 <div class="hint" id="bloom-hint"></div>
 </div>
 <div class="card">
-<h3>ΔH · how you're running</h3>
+<h3>How you.re running</h3>
 <div class="gauge">
 <div class="gauge-fill" id="gauge-fill"></div>
 <div class="gauge-center"></div>
 <div class="gauge-value" id="gauge-value">—</div>
 </div>
 <div class="gauge-labels"><span>Overwhelmed</span><span style="color:var(--sage)">balance</span><span>Withdrawn</span></div>
-<div class="hint">Optimal is not a place. It's the direction between the two edges.</div>
+<div class="hint">Balance isn't a place — it's staying between the two edges.</div>
 </div>
 </div>
 <div class="dash-grid">
 <div class="card">
-<h3>Silent witness · which stage</h3>
+<h3>Self-awareness</h3>
 <div class="witness-ladder" id="witness-ladder">
-<div class="witness-stage" data-s="0"><span class="num">0</span><span class="name">Unconscious · caught in thought</span></div>
-<div class="witness-stage" data-s="1"><span class="num">1</span><span class="name">First separation · "I noticed"</span></div>
-<div class="witness-stage" data-s="2"><span class="num">2</span><span class="name">Stable witness · on demand</span></div>
-<div class="witness-stage" data-s="3"><span class="num">3</span><span class="name">Watcher of the watcher</span></div>
-<div class="witness-stage" data-s="4"><span class="num">4</span><span class="name">The emptiness of something</span></div>
+<div class="witness-stage" data-s="0"><span class="num">0</span><span class="name">Caught in thought</span></div>
+<div class="witness-stage" data-s="1"><span class="num">1</span><span class="name">Starting to notice</span></div>
+<div class="witness-stage" data-s="2"><span class="num">2</span><span class="name">Stable observer</span></div>
+<div class="witness-stage" data-s="3"><span class="num">3</span><span class="name">Observer of the observer</span></div>
+<div class="witness-stage" data-s="4"><span class="num">4</span><span class="name">Beyond words</span></div>
 </div>
 </div>
 <div class="card">
-<h3>Sessions · trajectory on the torus</h3>
+<h3>Sessions over time</h3>
 <div class="torus-wrap" id="torus-wrap"></div>
-<div class="hint">Each dot is one session. Position shows phase and how you were running. Cycles become visible over time.</div>
+<div class="hint">Each dot is one session. Patterns become visible over time.</div>
 </div>
 </div>
 </section>
@@ -188,8 +188,8 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <div class="card">
 <div class="setting-row">
 <div>
-<div class="label">Local AI upgrade <span class="status-pill" id="llm-status">rule-based</span></div>
-<div class="desc">Optional in-browser Llama 3.1 8B for richer probes. First load ~4GB · then works forever. Nothing leaves your device.</div>
+<div class="label">Better AI upgrade <span class="status-pill" id="llm-status">rule-based</span></div>
+<div class="desc">Optional in-browser AI for richer prompts. First load ~4GB · then works forever. Nothing leaves your device.</div>
 </div>
 <button id="btn-llm-toggle">Enable</button>
 </div>
@@ -198,7 +198,7 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <button id="btn-recalibrate">Recalibrate</button>
 </div>
 <div class="setting-row">
-<div><div class="label">Export your data</div><div class="desc">All sessions + bloom + trajectory as JSON. Yours.</div></div>
+<div><div class="label">Export your data</div><div class="desc">All your sessions + profile as JSON. Yours.</div></div>
 <button id="btn-export">Export</button>
 </div>
 <div class="setting-row">
@@ -211,12 +211,12 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <button onclick="showCrisis()">Show</button>
 </div>
 <div class="setting-row">
-<div><div class="label">Clear everything</div><div class="desc">Wipes bloom, all sessions, all trajectories. Irreversible.</div></div>
+<div><div class="label">Clear everything</div><div class="desc">Wipes profile and all sessions. Irreversible.</div></div>
 <button class="danger" id="btn-wipe">Clear all</button>
 </div>
 </div>
 <div class="notice" style="margin-top:22px">
-<strong>Sovereignty check.</strong> Open your browser's Network tab. Talk to the mirror. You'll see zero network activity for the core function. That's not marketing — that's how it's built.
+<strong>How to check it privacy.</strong> Open your browser's Network tab and talk to the mirror. Zero network activity for the core function. That's how it's built.
 </div>
 </section>
 </main>
@@ -256,8 +256,8 @@ function nextProbeAxis(st){const asked=st.probes.map(p=>p.axis);const notAsked=A
 
 const DEFAULT_BLOOM=[5,5,5,5,5,5,5];
 function updateBloomEMA(cur,sc,alpha=0.15){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];return order.map((k,i)=>{const raw=Math.min(15,Math.max(1,sc[k]*3));return Math.round((cur[i]*(1-alpha)+raw*alpha)*10)/10})}
-function bloomShape(v){const sum=v.reduce((a,b)=>a+b,0);const mean=sum/v.length;const variance=v.reduce((a,b)=>a+(b-mean)**2,0)/v.length;const sd=Math.sqrt(variance);const peaks=v.filter(x=>x>mean+sd).length;if(peaks>=2&&v[2]>mean&&v[3]>mean)return'mountain';if(peaks===1&&Math.max(...v)>mean*1.6)return'spiky';if(sd<1)return'flat';if(v[0]+v[1]+v[2]>v[4]+v[5]+v[6])return'left-heavy';if(v[4]+v[5]+v[6]>v[0]+v[1]+v[2])return'right-heavy';return'balanced'}
-function shapeHint(s){return({mountain:'Strong in the middle (structure, depth). Growth edge: resolver work. You build brilliantly — sitting with completion is the stretch.',spiky:'One dominant axis. Growth edge: grounding into what you avoid.',flat:'Balanced across all axes. Growth edge: notice which axis has life today.','left-heavy':'Body/spatial dominant. Growth edge: relational and resolver.','right-heavy':'Relational/resolver dominant. Growth edge: body and structure.',balanced:'Your shape is finding itself. Keep going.'})[s]||'Movement is the therapy.'}
+function profileShape(v){const sum=v.reduce((a,b)=>a+b,0);const mean=sum/v.length;const variance=v.reduce((a,b)=>a+(b-mean)**2,0)/v.length;const sd=Math.sqrt(variance);const peaks=v.filter(x=>x>mean+sd).length;if(peaks>=2&&v[2]>mean&&v[3]>mean)return'mountain';if(peaks===1&&Math.max(...v)>mean*1.6)return'spiky';if(sd<1)return'flat';if(v[0]+v[1]+v[2]>v[4]+v[5]+v[6])return'left-heavy';if(v[4]+v[5]+v[6]>v[0]+v[1]+v[2])return'right-heavy';return'balanced'}
+function profileHint(s){return({mountain:'Strong in the middle (structure, depth). Growth edge: resolver work. You build brilliantly — sitting with completion is the stretch.',spiky:'One dominant axis. Growth edge: grounding into what you avoid.',flat:'Balanced across all axes. Growth edge: notice which axis has life today.','left-heavy':'Body/spatial dominant. Growth edge: relational and resolver.','right-heavy':'Relational/resolver dominant. Growth edge: body and structure.',balanced:'Your shape is finding itself. Keep going.'})[s]||'Movement is the therapy.'}
 
 const WITNESS_MARKERS={0:["i can't stop","i'm just","it's taking over","i'm stuck in","caught in","swept away"],1:['i noticed','i realised','i caught myself','stepped back','some part of me','i saw that'],2:['i can watch','i observe','i see the pattern','i step back','i witness','i sit with'],3:['watching myself watch','who is watching','the observer','behind the observing','watcher of'],4:['nothingness','emptiness','presence','beyond words','it just is','space between']};
 function detectWitnessStage(text,cur=0){const t=text.toLowerCase();let ms=0;for(let s=4;s>=0;s--)for(const m of WITNESS_MARKERS[s])if(t.includes(m))ms=Math.max(ms,s);return Math.round((cur*0.7+ms*0.3)*10)/10}
@@ -284,19 +284,19 @@ function startFreeSession(){newSession('free');document.getElementById('setup-pa
 function askCalibrationProbe(){const i=state.currentSession.calibrationIndex;if(i>=CALIBRATION_ORDER.length){endSession();return}const axis=CALIBRATION_ORDER[i];postProbe(pickProbe(axis,state.currentSession.probes.map(p=>p.text)),axis)}
 function postProbe(text,axis){state.currentSession.probes.push({text,axis,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn mirror';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
 function postUser(text){state.currentSession.responses.push({text,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn user';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
-function postChord(chord){const el=document.createElement('div');el.className='turn chord';el.innerHTML=`<div class="label">Session chord</div><em>${escapeHtml(chord.text)}</em>${chord.resolved?'<div style="margin-top:10px;color:var(--sage);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Resolved · carry it with you</div>':'<div style="margin-top:10px;color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Open · that\'s ok</div>'}`;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
+function postChord(chord){const el=document.createElement('div');el.className='turn chord';el.innerHTML=`<div class="label">Session takeaway</div><em>${escapeHtml(chord.text)}</em>${chord.resolved?'<div style="margin-top:10px;color:var(--sage);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Resolved · keep it</div>':'<div style="margin-top:10px;color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Open · that\'s ok</div>'}`;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
 
 async function handleUserInput(text){const safety=safetyCheck(text);if(safety.level==='crisis'){showCrisis();return}postUser(text);const scored=scoreResponse(text);const order=['polarity','structure','depth','time','expansion','relationship','resolution'];for(const k of order)state.currentSession.sessionScores[k]=(state.currentSession.sessionScores[k]||0)+(scored.scores[k]||0);state.currentSession.lastDominant=dominantAxis(scored.scores);state.currentSession.currentDH=scored.entropy-0.618;state.currentSession.lastEntropy=scored.entropy;state.witnessStage=detectWitnessStage(text,state.witnessStage);document.getElementById('session-stage').textContent='Stage '+Math.round(state.witnessStage);if(safety.level==='referral'){const notice=document.createElement('div');notice.className='notice';notice.style.margin='12px 0';notice.innerHTML=safety.kind==='psychosis'?`<strong>Pause.</strong> What you're describing sounds intense — that's beyond what this tool is for. Is there someone you trust — GP, a friend — you could talk to about this today?`:`<strong>Pause.</strong> That sounds hard and it may need more than a reflection tool. There are people who can help — the crisis resources button has numbers.`;document.getElementById('session-stream').appendChild(notice);notice.scrollIntoView({behavior:'smooth',block:'end'});return}await new Promise(r=>setTimeout(r,800));if(state.currentSession.mode==='calibration'){state.currentSession.calibrationIndex++;if(state.currentSession.calibrationIndex>=CALIBRATION_ORDER.length){await new Promise(r=>setTimeout(r,400));endSession()}else askCalibrationProbe();return}if(state.currentSession.probes.length>=5){endSession();return}const nextAxis=nextProbeAxis(state.currentSession);postProbe(pickProbe(nextAxis,state.currentSession.probes.map(p=>p.text)),nextAxis)}
 
-async function endSession(){if(!state.currentSession)return;const chord=generateChord(state.currentSession);postChord(chord);state.bloom=updateBloomEMA(state.bloom,state.currentSession.sessionScores);await saveState('bloom',state.bloom);await saveState('witness_stage',state.witnessStage);await saveState('setup_complete',true);const torus=sessionToTorus(state.currentSession.sessionScores,state.currentSession.currentDH);const rec={started_at:state.currentSession.started_at,ended_at:new Date().toISOString(),mode:state.currentSession.mode,probes:state.currentSession.probes,responses:state.currentSession.responses,scores:state.currentSession.sessionScores,dh:state.currentSession.currentDH,entropy:state.currentSession.lastEntropy,witness_stage:state.witnessStage,torus,chord:chord.text,resolved:chord.resolved,bloom_snapshot:state.bloom.slice()};await addSession(rec);state.sessions.push(rec);state.sessionCount++;state.currentSession=null;renderDashboard();renderJournal();setTimeout(()=>{const bar=document.createElement('div');bar.style.textAlign='center';bar.style.margin='20px 0';bar.innerHTML=`<button class="big-btn" onclick="location.reload()">Start a new session</button> <button class="big-btn ghost" onclick="document.querySelector('.tab[data-view=dashboard]').click()">See your shape</button>`;document.getElementById('session-stream').appendChild(bar)},1500);document.getElementById('input-bar').style.display='none'}
+async function endSession(){if(!state.currentSession)return;const chord=generateChord(state.currentSession);postChord(chord);state.bloom=updateBloomEMA(state.bloom,state.currentSession.sessionScores);await saveState('bloom',state.bloom);await saveState('witness_stage',state.witnessStage);await saveState('setup_complete',true);const torus=sessionToTorus(state.currentSession.sessionScores,state.currentSession.currentDH);const rec={started_at:state.currentSession.started_at,ended_at:new Date().toISOString(),mode:state.currentSession.mode,probes:state.currentSession.probes,responses:state.currentSession.responses,scores:state.currentSession.sessionScores,dh:state.currentSession.currentDH,entropy:state.currentSession.lastEntropy,witness_stage:state.witnessStage,torus,chord:chord.text,resolved:chord.resolved,bloom_snapshot:state.bloom.slice()};await addSession(rec);state.sessions.push(rec);state.sessionCount++;state.currentSession=null;renderDashboard();renderJournal();setTimeout(()=>{const bar=document.createElement('div');bar.style.textAlign='center';bar.style.margin='20px 0';bar.innerHTML=`<button class="big-btn" onclick="location.reload()">Start a new session</button> <button class="big-btn ghost" onclick="document.querySelector('.tab[data-view=dashboard]').click()">See your profile</button>`;document.getElementById('session-stream').appendChild(bar)},1500);document.getElementById('input-bar').style.display='none'}
 
-function renderDashboard(){renderBloomRadial();renderGauge();renderWitnessLadder();renderTorus();document.getElementById('bloom-hint').textContent=shapeHint(bloomShape(state.bloom))}
+function renderDashboard(){renderBloomRadial();renderGauge();renderWitnessLadder();renderTorus();document.getElementById('bloom-hint').textContent=profileHint(profileShape(state.bloom))}
 function renderBloomRadial(){const el=document.getElementById('bloom-radial');const cx=140,cy=140,radius=100,axesCount=7,bloom=state.bloom,maxVal=15;const points=bloom.map((v,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const r=(v/maxVal)*radius;return{x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,angle,v}});const grid=[1,0.5,0.25].map(f=>{const pts=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `${cx+Math.cos(angle)*radius*f},${cy+Math.sin(angle)*radius*f}`});return `<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const spokes=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(angle)*radius}" y2="${cy+Math.sin(angle)*radius}" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const shape=`<polygon points="${points.map(p=>`${p.x},${p.y}`).join(' ')}" fill="rgba(122,156,126,0.25)" stroke="#7a9c7e" stroke-width="2"/>`;const labels=AXES.map((a,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const lx=cx+Math.cos(angle)*(radius+22);const ly=cy+Math.sin(angle)*(radius+22);return `<text x="${lx}" y="${ly}" text-anchor="middle" alignment-baseline="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#928d80" letter-spacing="1.2">${a.name}</text>`}).join('');const dots=points.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#7a9c7e"/>`).join('');el.innerHTML=`<svg viewBox="0 0 280 280">${grid}${spokes}${shape}${dots}${labels}</svg>`}
 function renderGauge(){const dh=state.sessions.length?(state.sessions[state.sessions.length-1].dh||0):0;const pct=Math.max(5,Math.min(95,50+dh*100));document.getElementById('gauge-fill').style.left=pct+'%';document.getElementById('gauge-value').textContent=dh===0?'—':(dh>0?'+':'')+dh.toFixed(2)}
 function renderWitnessLadder(){const stage=Math.round(state.witnessStage);document.querySelectorAll('.witness-stage').forEach(el=>{const s=parseInt(el.dataset.s);el.classList.remove('on','past');if(s===stage)el.classList.add('on');else if(s<stage)el.classList.add('past')})}
 function renderTorus(){const el=document.getElementById('torus-wrap');const cx=140,cy=120,ringR=90,tubeR=30;const sessions=state.sessions.filter(s=>s.torus);const ring1=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR}" ry="${ringR*0.4}" fill="none" stroke="rgba(232,228,219,0.14)" stroke-width="1"/>`;const ring2=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR+tubeR}" ry="${(ringR+tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const ring3=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR-tubeR}" ry="${(ringR-tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const dots=sessions.map((s,i)=>{const{theta,psi}=s.torus;const bigR=ringR+Math.cos(psi)*tubeR;const x=cx+Math.cos(theta)*bigR;const y=cy+Math.sin(theta)*bigR*0.4;const opacity=0.3+0.7*(i/Math.max(sessions.length-1,1));const color=s.resolved?'#7a9c7e':'#d4a052';return `<circle cx="${x}" cy="${y}" r="4" fill="${color}" opacity="${opacity}"/>`}).join('');el.innerHTML=`<svg viewBox="0 0 280 240">${ring2}${ring1}${ring3}${dots}</svg>`}
 
-function renderJournal(){const el=document.getElementById('journal-list');if(!state.sessions.length){el.innerHTML='<div class="card"><p style="color:var(--muted);font-style:italic">No sessions yet. Talk to the mirror once and the first chord will land here.</p></div>';return}el.innerHTML=state.sessions.slice().reverse().map(s=>{const date=new Date(s.started_at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});const axesFired=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]).slice(0,3);const stage='Stage '+Math.round(s.witness_stage||0);return `<div class="journal-item"><div class="date">${escapeHtml(date)} · ${escapeHtml(s.mode)}</div><div class="chord-preview">${escapeHtml(s.chord||'')}</div><span class="stage-tag">${stage}</span>${axesFired.map(([a])=>`<span class="axis-tag">${a}</span>`).join('')}<span class="axis-tag" style="color:${s.resolved?'var(--sage)':'var(--amber)'}">${s.resolved?'resolved':'open'}</span></div>`}).join('')}
+function renderJournal(){const el=document.getElementById('journal-list');if(!state.sessions.length){el.innerHTML='<div class="card"><p style="color:var(--muted);font-style:italic">No sessions yet. Talk to the mirror once and the first takeaway will land here.</p></div>';return}el.innerHTML=state.sessions.slice().reverse().map(s=>{const date=new Date(s.started_at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});const axesFired=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]).slice(0,3);const stage='Stage '+Math.round(s.witness_stage||0);return `<div class="journal-item"><div class="date">${escapeHtml(date)} · ${escapeHtml(s.mode)}</div><div class="chord-preview">${escapeHtml(s.chord||'')}</div><span class="stage-tag">${stage}</span>${axesFired.map(([a])=>`<span class="axis-tag">${a}</span>`).join('')}<span class="axis-tag" style="color:${s.resolved?'var(--sage)':'var(--amber)'}">${s.resolved?'resolved':'open'}</span></div>`}).join('')}
 
 document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('view-'+t.dataset.view).classList.add('on');if(t.dataset.view==='dashboard')renderDashboard();if(t.dataset.view==='journal')renderJournal()}});
 document.getElementById('btn-calibrate').onclick=startCalibration;
