@@ -119,7 +119,7 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <div id="setup-panel" class="setup-card">
 <h1>Welcome. <em>The mirror doesn't judge.</em></h1>
 <p>A private reflection tool space. Runs on your device. Nothing leaves this browser. No account, no server, no harvest. Just you, the mirror, and your own map building over time.</p>
-<p style="color:var(--muted)">First time? A short calibration finds your starting shape. About five minutes. After that, drop in for as long or as short as you like.</p>
+<p style="color:var(--muted)">First time? A short guided assessment finds your starting profile. About five minutes. After that, drop in for as long or as short as you like.</p>
 <div style="margin-top:18px">
 <button class="big-btn" id="btn-calibrate">▸ Start calibration</button>
 <button class="big-btn ghost" id="btn-quick-session">Or just talk</button>
@@ -146,7 +146,7 @@ main{padding:24px;max-width:900px;margin:0 auto;width:100%}
 <div id="journal-list"></div>
 </section>
 <section class="view" id="view-dashboard">
-<h2><em>Your shape</em></h2>
+<h2><em>Your profile</em></h2>
 <p style="color:var(--muted);margin-bottom:20px">Noticing your patterns IS the point. Movement matters more than getting it perfect.</p>
 <div class="dash-grid">
 <div class="card">
@@ -257,7 +257,7 @@ function nextProbeAxis(st){const asked=st.probes.map(p=>p.axis);const notAsked=A
 const DEFAULT_BLOOM=[5,5,5,5,5,5,5];
 function updateBloomEMA(cur,sc,alpha=0.15){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];return order.map((k,i)=>{const raw=Math.min(15,Math.max(1,sc[k]*3));return Math.round((cur[i]*(1-alpha)+raw*alpha)*10)/10})}
 function profileShape(v){const sum=v.reduce((a,b)=>a+b,0);const mean=sum/v.length;const variance=v.reduce((a,b)=>a+(b-mean)**2,0)/v.length;const sd=Math.sqrt(variance);const peaks=v.filter(x=>x>mean+sd).length;if(peaks>=2&&v[2]>mean&&v[3]>mean)return'mountain';if(peaks===1&&Math.max(...v)>mean*1.6)return'spiky';if(sd<1)return'flat';if(v[0]+v[1]+v[2]>v[4]+v[5]+v[6])return'left-heavy';if(v[4]+v[5]+v[6]>v[0]+v[1]+v[2])return'right-heavy';return'balanced'}
-function profileHint(s){return({mountain:'Strong in the middle (structure, depth). Growth edge: resolver work. You build brilliantly — sitting with completion is the stretch.',spiky:'One dominant axis. Growth edge: grounding into what you avoid.',flat:'Balanced across all axes. Growth edge: notice which axis has life today.','left-heavy':'Body/spatial dominant. Growth edge: relational and resolver.','right-heavy':'Relational/resolver dominant. Growth edge: body and structure.',balanced:'Your shape is finding itself. Keep going.'})[s]||'Movement is the therapy.'}
+function profileHint(s){return({mountain:'Strong in the middle. You build brilliantly · settling into finished things is the stretch.',spiky:'One axis dominates. Try grounding into what you tend to avoid.',flat:'Balanced across everything. Notice which area feels alive today.','left-heavy':'Structural side dominant. Try relational and settling work.','right-heavy':'Relational side dominant. Try structural and body work.',balanced:'Your profile is finding itself. Keep going.'})[s]||'Movement is the point.'}
 
 const WITNESS_MARKERS={0:["i can't stop","i'm just","it's taking over","i'm stuck in","caught in","swept away"],1:['i noticed','i realised','i caught myself','stepped back','some part of me','i saw that'],2:['i can watch','i observe','i see the pattern','i step back','i witness','i sit with'],3:['watching myself watch','who is watching','the observer','behind the observing','watcher of'],4:['nothingness','emptiness','presence','beyond words','it just is','space between']};
 function detectWitnessStage(text,cur=0){const t=text.toLowerCase();let ms=0;for(let s=4;s>=0;s--)for(const m of WITNESS_MARKERS[s])if(t.includes(m))ms=Math.max(ms,s);return Math.round((cur*0.7+ms*0.3)*10)/10}
