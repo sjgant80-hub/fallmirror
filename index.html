@@ -2,604 +2,320 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>fallmirror · sovereign multi-host repo mirroring · ◊·κ=1</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FallMirror · sovereign reflection</title>
+<meta name="description" content="A sovereign self-reflection tool. Runs on your device. Nothing leaves it. The mirror doesn't judge — it reflects. You do the seeing.">
+<meta name="author" content="AI-Native Solutions">
+<meta name="theme-color" content="#1a1a1e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1a1e'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.webmanifest">
 <style>
-:root{--ox:#8b1a1a;--ox-dim:#5a1010;--brass:#b8974a;--brass-dim:#7a6228;--cream:#c4bfb2;--cream-dim:#7d7a72;--void:#0b0a0f;--void-2:#14121a;--void-3:#1e1b25;--green:#4caf50}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--void);color:var(--cream);font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:14px;line-height:1.65;min-height:100vh}
-body{background-image:radial-gradient(at 0% 0%,rgba(139,26,26,.08),transparent 50%),radial-gradient(at 100% 100%,rgba(184,151,74,.05),transparent 50%)}
-a{color:var(--brass);text-decoration:none;border-bottom:1px dotted var(--brass-dim)}
-a:hover{color:var(--cream)}
-.wrap{max-width:920px;margin:0 auto;padding:60px 32px 120px}
-header{margin-bottom:64px;border-bottom:1px solid var(--ox-dim);padding-bottom:32px}
-header h1{font-size:42px;font-weight:400;letter-spacing:6px;color:var(--cream);margin-bottom:14px}
-header h1 .s{color:var(--ox);font-size:48px}
-header h1 .k{color:var(--brass)}
-header .sub{color:var(--cream-dim);letter-spacing:2px;font-size:13px;margin-bottom:18px}
-header .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:var(--cream-dim);letter-spacing:1px}
-header .meta span{padding:3px 10px;border:1px solid var(--brass-dim);color:var(--brass)}
-section{margin-bottom:56px}
-h2{font-size:11px;letter-spacing:4px;color:var(--brass);text-transform:uppercase;margin-bottom:18px;border-bottom:1px solid var(--brass-dim);padding-bottom:6px}
-h3{font-size:14px;letter-spacing:2px;color:var(--cream);margin:24px 0 10px;text-transform:uppercase}
-p{margin-bottom:14px}
-.lead{font-size:18px;line-height:1.7;margin-bottom:20px}
-.hook{color:var(--cream-dim);font-style:italic;margin-bottom:32px;padding-left:18px;border-left:2px solid var(--brass)}
-ul{list-style:none;margin-bottom:18px}
-ul li{padding:4px 0;position:relative;padding-left:20px}
-ul li:before{content:"◊";position:absolute;left:0;color:var(--ox)}
-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
-th,td{text-align:left;padding:8px 12px;border:1px solid var(--void-3)}
-th{background:var(--void-2);color:var(--brass);letter-spacing:2px;font-size:11px;text-transform:uppercase}
-td.good{color:var(--green)}
-td.dim{color:var(--cream-dim)}
-code,pre{font-family:inherit;background:var(--void-2);color:var(--brass);padding:2px 8px;border:1px solid var(--void-3)}
-pre{padding:14px 18px;margin:14px 0;overflow-x:auto;font-size:12px;line-height:1.7;border-left:2px solid var(--ox);color:var(--cream)}
-.btn{display:inline-block;padding:12px 22px;background:var(--ox);color:#fff;letter-spacing:3px;font-size:12px;border:1px solid var(--ox);text-transform:uppercase}
-.btn.dim{background:var(--void-2);color:var(--cream)}
-.cta{margin:32px 0;display:flex;gap:14px;flex-wrap:wrap}
-.seal{margin-top:80px;text-align:center;color:var(--cream-dim);font-size:11px;letter-spacing:3px}
-.seal .s{color:var(--ox);font-size:18px}
+:root{--void:#1a1a1e;--deep:#212127;--surface:#2a2a30;--raised:#33333a;--line:rgba(232,228,219,0.08);--line2:rgba(232,228,219,0.16);--text:#e8e4db;--muted:#928d80;--dim:#6b6660;--sage:#7a9c7e;--sage-dim:rgba(122,156,126,0.14);--amber:#d4a052;--amber-dim:rgba(212,160,82,0.12);--coral:#d67a5a;--coral-glow:rgba(214,122,90,0.15);--serif:'Cormorant Garamond','Iowan Old Style',Georgia,serif;--sans:'Inter',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--void);color:var(--text);font-family:var(--sans);font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font-family:inherit;cursor:pointer;border:none;outline:none}
+input,textarea{font-family:inherit;background:transparent;color:var(--text);border:none;outline:none;width:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);line-height:1.2}
+h1{font-size:34px;letter-spacing:0.01em;margin-bottom:8px}
+h1 em{color:var(--sage);font-style:italic}
+h2{font-size:22px;color:var(--text);margin-bottom:10px}
+h2 em{color:var(--sage);font-style:italic}
+h3{font-size:15px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.14em;font-family:var(--mono);font-weight:500}
+.app{display:grid;grid-template-rows:auto 1fr;min-height:100vh}
+.topbar{background:rgba(26,26,30,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;color:var(--text)}
+.brand .glyph{color:var(--sage);font-size:22px}
+.brand .co{color:var(--dim);font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;margin-left:6px;text-transform:uppercase}
+.tabs{display:flex;gap:4px}
+.tab{background:transparent;color:var(--muted);padding:8px 16px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;transition:all .15s}
+.tab:hover{color:var(--text)}
+.tab.on{background:var(--sage-dim);color:var(--sage)}
+main{padding:24px;max-width:900px;margin:0 auto;width:100%}
+.view{display:none}
+.view.on{display:block}
+.crisis-btn{position:fixed;bottom:22px;left:22px;background:var(--coral);color:var(--void);padding:10px 16px;border-radius:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;box-shadow:0 6px 20px var(--coral-glow);z-index:100}
+.crisis-btn:hover{background:#e28a6a}
+.crisis-modal{position:fixed;inset:0;background:rgba(26,26,30,0.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.crisis-modal.on{display:flex}
+.crisis-modal .box{background:var(--deep);border:1px solid var(--coral);border-radius:16px;padding:28px;max-width:520px;width:100%}
+.crisis-modal h2{color:var(--coral);margin-bottom:16px}
+.crisis-modal p{color:var(--text);margin-bottom:12px;font-size:15px}
+.crisis-modal .num{background:var(--surface);padding:12px 14px;border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.crisis-modal .num strong{color:var(--sage);font-family:var(--mono);font-size:14px;letter-spacing:0.06em}
+.crisis-modal .num a{color:var(--text);text-decoration:none;font-family:var(--mono)}
+.crisis-modal .close-btn{background:transparent;color:var(--muted);border:1px solid var(--line2);padding:10px 20px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;margin-top:14px}
+.setup-card{background:var(--deep);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.setup-card p{color:var(--muted);margin-bottom:14px;max-width:600px}
+.big-btn{background:var(--sage);color:var(--void);padding:14px 28px;border-radius:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;margin-right:8px}
+.big-btn:hover{background:#8db091}
+.big-btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.session{display:flex;flex-direction:column;gap:16px;padding-bottom:200px}
+.turn{padding:14px 18px;border-radius:12px;max-width:80%;line-height:1.7}
+.turn.mirror{background:var(--sage-dim);border-left:2px solid var(--sage);align-self:flex-start;font-family:var(--serif);font-size:20px;font-style:italic;color:var(--text)}
+.turn.user{background:var(--surface);align-self:flex-end;color:var(--text);border-right:2px solid var(--muted)}
+.turn.chord{background:linear-gradient(135deg,var(--sage-dim),rgba(212,160,82,0.06));border:1px solid var(--line2);align-self:stretch;max-width:100%;font-family:var(--serif);font-size:17px;line-height:1.75;padding:20px 24px}
+.turn.chord .label{color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px}
+.turn.chord em{color:var(--sage);font-style:italic}
+.input-bar{position:fixed;bottom:22px;left:280px;right:22px;background:var(--deep);border:1px solid var(--line2);border-radius:16px;padding:14px 18px;display:flex;gap:10px;align-items:flex-end;box-shadow:0 -8px 24px rgba(0,0,0,0.3)}
+@media (max-width:800px){.input-bar{left:22px;bottom:80px}.crisis-btn{bottom:80px}}
+.input-bar textarea{background:transparent;color:var(--text);border:none;outline:none;resize:none;font-size:15px;line-height:1.5;min-height:24px;max-height:120px;flex:1}
+.input-bar button{background:var(--sage);color:var(--void);padding:10px 18px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600}
+.input-bar button:disabled{opacity:0.5;cursor:not-allowed}
+.session-meta{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--surface);border-radius:8px;margin-bottom:16px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.08em}
+.session-meta .stage{color:var(--sage)}
+.session-meta .end-btn{background:transparent;color:var(--muted);border:1px solid var(--line2);padding:5px 10px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+@media(max-width:700px){.dash-grid{grid-template-columns:1fr}}
+.card{background:var(--deep);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.card .hint{color:var(--muted);font-size:12.5px;font-style:italic;margin-top:8px}
+.radial{position:relative;width:100%;height:280px;display:flex;align-items:center;justify-content:center}
+.radial svg{width:280px;height:280px}
+.gauge{position:relative;height:80px;background:var(--surface);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.gauge-fill{position:absolute;top:0;bottom:0;width:2px;background:var(--sage);left:50%;transform:translateX(-50%);transition:left 0.5s;box-shadow:0 0 12px var(--sage)}
+.gauge-labels{display:flex;justify-content:space-between;padding:12px 16px;font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.gauge-center{position:absolute;top:0;bottom:0;width:1px;background:var(--line2);left:50%}
+.gauge-value{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:32px;font-style:italic;color:var(--sage);pointer-events:none}
+.witness-ladder{display:flex;flex-direction:column;gap:6px}
+.witness-stage{padding:9px 14px;background:var(--surface);border-radius:8px;border-left:3px solid var(--line);font-size:13.5px;transition:all .15s}
+.witness-stage.on{border-left-color:var(--sage);background:var(--sage-dim)}
+.witness-stage.past{opacity:0.6;border-left-color:var(--muted)}
+.witness-stage .num{font-family:var(--mono);color:var(--muted);font-size:10px;margin-right:8px}
+.witness-stage .name{color:var(--text)}
+.witness-stage.on .name{color:var(--sage)}
+.torus-wrap{position:relative;width:100%;height:240px;display:flex;align-items:center;justify-content:center}
+.torus-wrap svg{width:100%;height:100%;max-width:280px}
+.journal-item{background:var(--deep);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px;cursor:pointer}
+.journal-item:hover{border-color:var(--sage)}
+.journal-item .date{font-family:var(--mono);color:var(--muted);font-size:11px;letter-spacing:0.08em;margin-bottom:8px}
+.journal-item .chord-preview{color:var(--text);font-family:var(--serif);font-size:15px;font-style:italic;line-height:1.6}
+.journal-item .stage-tag,.journal-item .axis-tag{display:inline-block;padding:3px 8px;border-radius:10px;font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;margin-top:8px;margin-right:4px}
+.journal-item .stage-tag{background:var(--sage-dim);color:var(--sage)}
+.journal-item .axis-tag{background:var(--surface);color:var(--muted)}
+.setting-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);gap:14px}
+.setting-row:last-child{border-bottom:none}
+.setting-row .label{color:var(--text);font-size:14px}
+.setting-row .desc{color:var(--muted);font-size:12px;margin-top:2px}
+.setting-row button{background:transparent;color:var(--text);border:1px solid var(--line2);padding:8px 14px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap}
+.setting-row button.danger{color:var(--coral);border-color:var(--coral)}
+.status-pill{display:inline-block;padding:3px 10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;color:var(--muted);margin-left:8px}
+.status-pill.on{background:var(--sage-dim);color:var(--sage);border-color:var(--sage)}
+.notice{background:var(--amber-dim);border-left:3px solid var(--amber);padding:12px 16px;border-radius:6px;color:var(--text);font-size:13px;margin:14px 0}
+.notice strong{color:var(--amber)}
 </style>
-  <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/audit-shim.js" data-tool="fallmirror" data-tier="limited" defer></script>
-    <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/nas-shim.js" data-tool="fallmirror" data-organ="L3.organs.fallmirror"></script>
-    <script src="https://sjgant80-hub.github.io/fall-euaiact/cdn/mistake-shim.js" data-tool="fallmirror" defer></script>
-<!-- FALL_KIT_BEGIN v1 · DO NOT EDIT THIS BLOCK MANUALLY -->
-<script>
-/*!
- * Fall Kit · v1.0.0 · the shared cascade for every estate seed
- * MIT · Simon Gant · ai-nativesolutions.com · ◊·κ=1
- *
- * Inlineable JS module. Drop into any seed via <script> or copy-paste inline.
- * Preserves single-HTML sovereignty (no external deps until user opts in to T2 WebLLM).
- *
- * What it gives every seed:
- *  - AI tier picker: T0 (off · default) · T2 (WebLLM in-browser, 5 models 1B-70B) · T3 (BYOK Anthropic/OpenAI/Google)
- *  - Universal entry: FallKit.aiComplete(systemPrompt, userMsg, maxTokens) → string|null
- *  - AI chip UI in header
- *  - WebRTC P2P mesh (ported from canonical fallnet · fall-signal channel · Google STUN)
- *  - Help section partial: FallKit.helpSection()
- *  - Settings panel: FallKit.openSettings()
- *
- * Doctrine (per botler CLAUDE.md):
- *  - T0 fallback ALWAYS works · aiComplete returns null · caller MUST degrade gracefully
- *  - NEVER hide a feature behind AI · NEVER proxy API keys · NEVER log keys
- *  - WebLLM is lazy-loaded · model weights download ONLY on user opt-in
- *
- * Estate-first canonical references:
- *  - WebLLM pattern: Downloads/botler/index.html (T0/T2/T3 cascade)
- *  - WebRTC pattern: Downloads/fallnet/fallnet-shim.js (raw RTCPeerConnection)
- *  - Konomi seal:    ◊·κ=1  (consistent across all estate seeds)
- *  - Mesh channel:   'fall-signal'
- */
-(function (root) {
-  'use strict';
-
-  const FALL_KIT_VERSION = '1.2.0';
-  const KCC_MINT_URL = 'https://sjgant80-hub.github.io/kcc-mint/';
-
-  // ─── Model registry ──────────────────────────────────────────────
-  const WEBLLM_MODELS = {
-    'llama-1b':  { id: 'Llama-3.2-1B-Instruct-q4f16_1-MLC',   size: '~700MB', label: '1B · fast · any laptop / phone' },
-    'llama-3b':  { id: 'Llama-3.2-3B-Instruct-q4f16_1-MLC',   size: '~2GB',   label: '3B · balanced · default · most laptops' },
-    'qwen-7b':   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',     size: '~5GB',   label: '7B · capable · needs decent GPU (M-series Mac / 8GB+ VRAM)' },
-    'llama-8b':  { id: 'Llama-3.1-8B-Instruct-q4f16_1-MLC',   size: '~5GB',   label: '8B · common · needs decent GPU' },
-    'llama-70b': { id: 'Llama-3.1-70B-Instruct-q4f16_1-MLC',  size: '~40GB',  label: '70B · frontier · needs serious GPU + 64GB+ RAM' },
-  };
-  const DEFAULT_MODEL = 'llama-3b';
-
-  const T3_PROVIDERS = {
-    anthropic: { label: 'Anthropic Claude', models: ['claude-sonnet-4-5','claude-opus-4-7','claude-haiku-4-5'], default: 'claude-sonnet-4-5', url: 'https://api.anthropic.com/v1/messages' },
-    openai:    { label: 'OpenAI',           models: ['gpt-4o','gpt-4o-mini','o1-mini'],                          default: 'gpt-4o-mini',      url: 'https://api.openai.com/v1/chat/completions' },
-    google:    { label: 'Google Gemini',    models: ['gemini-1.5-pro','gemini-1.5-flash','gemini-2.0-flash-exp'], default: 'gemini-1.5-flash', url: 'https://generativelanguage.googleapis.com/v1beta/models/' },
-  };
-
-  // ─── State ───────────────────────────────────────────────────────
-  const STATE = {
-    config: loadConfig(),
-    ai: { ready: false, loading: false, progress: 0, engine: null, model: null },
-    mesh: { active: false, peers: new Map(), bc: null, signal: null },
-  };
-
-  function loadConfig() {
-    try { return JSON.parse(localStorage.getItem('fall-kit.config') || '{}'); }
-    catch (e) { return {}; }
-  }
-  function saveConfig() {
-    try { localStorage.setItem('fall-kit.config', JSON.stringify(STATE.config)); } catch (e) {}
-  }
-
-  // ─── DOM helpers ─────────────────────────────────────────────────
-  function $(s, root) { return (root || document).querySelector(s); }
-  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
-
-  // ─── AI tier ─────────────────────────────────────────────────────
-  function aiTier() { return STATE.config.ai_tier || 'T0'; }
-
-  function renderAiChip() {
-    const chip = $('#fk-ai-chip');
-    if (!chip) return;
-    const txt = $('#fk-ai-chip-text');
-    chip.classList.remove('fk-chip-live', 'fk-chip-loading', 'fk-chip-warn');
-    const tier = aiTier();
-    if (tier === 'T0') { txt.textContent = 'T0 · off'; }
-    else if (tier === 'T2') {
-      if (STATE.ai.ready) { txt.textContent = 'T2 ' + (WEBLLM_MODELS[STATE.config.webllm_model || DEFAULT_MODEL]?.label.split(' · ')[0] || '') + ' · ready'; chip.classList.add('fk-chip-live'); }
-      else if (STATE.ai.loading) { txt.textContent = 'T2 loading ' + Math.round(STATE.ai.progress) + '%'; chip.classList.add('fk-chip-loading'); }
-      else { txt.textContent = 'T2 · click to load'; chip.classList.add('fk-chip-warn'); }
-    } else if (tier === 'T3') {
-      if (STATE.config.api_key) { txt.textContent = 'T3 ' + (T3_PROVIDERS[STATE.config.api_provider]?.label || 'BYOK') + ' · active'; chip.classList.add('fk-chip-live'); }
-      else { txt.textContent = 'T3 · no key set'; chip.classList.add('fk-chip-warn'); }
-    }
-  }
-
-  async function loadWebLLM(modelKey) {
-    if (STATE.ai.loading) return;
-    const key = modelKey || STATE.config.webllm_model || DEFAULT_MODEL;
-    const model = WEBLLM_MODELS[key];
-    if (!model) { console.error('fall-kit: unknown model', key); return; }
-    if (STATE.ai.ready && STATE.ai.model === model.id) return;
-    STATE.ai.loading = true; STATE.ai.progress = 0; renderAiChip();
-    notify('Loading WebLLM · ' + model.label + ' · ' + model.size + ' first time', 'info');
-    try {
-      const { CreateMLCEngine } = await import('https://esm.run/@mlc-ai/web-llm@0.2.79');
-      const engine = await CreateMLCEngine(model.id, {
-        initProgressCallback: p => { STATE.ai.progress = (p.progress || 0) * 100; renderAiChip(); }
-      });
-      STATE.ai.engine = engine;
-      STATE.ai.model = model.id;
-      STATE.ai.ready = true;
-      STATE.ai.loading = false;
-      STATE.config.webllm_model = key; saveConfig();
-      renderAiChip();
-      notify('WebLLM ready · sovereign mode · ' + model.label.split(' · ')[0], 'ok');
-    } catch (e) {
-      console.error('fall-kit: WebLLM load failed', e);
-      STATE.ai.loading = false; renderAiChip();
-      notify('WebLLM load failed · ' + e.message, 'err');
-    }
-  }
-
-  async function aiComplete(systemPrompt, userMsg, maxTokens) {
-    maxTokens = maxTokens || 600;
-    const tier = aiTier();
-    if (tier === 'T2' && STATE.ai.ready && STATE.ai.engine) {
-      const r = await STATE.ai.engine.chat.completions.create({
-        messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userMsg }],
-        max_tokens: maxTokens,
-      });
-      return r.choices[0].message.content;
-    }
-    if (tier === 'T3' && STATE.config.api_key && STATE.config.api_provider) {
-      return await aiCloudCall(systemPrompt, userMsg, maxTokens);
-    }
-    return null;
-  }
-
-  async function aiCloudCall(sys, msg, maxTokens) {
-    const provider = STATE.config.api_provider;
-    const key = STATE.config.api_key;
-    const model = STATE.config.api_model || T3_PROVIDERS[provider]?.default;
-    if (provider === 'anthropic') {
-      const r = await fetch(T3_PROVIDERS.anthropic.url, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
-        body: JSON.stringify({ model, max_tokens: maxTokens, system: sys, messages: [{ role: 'user', content: msg }] }),
-      });
-      if (!r.ok) throw new Error('Anthropic ' + r.status + ': ' + (await r.text()).slice(0, 200));
-      const j = await r.json();
-      return j.content[0].text;
-    }
-    if (provider === 'openai') {
-      const r = await fetch(T3_PROVIDERS.openai.url, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', 'Authorization': 'Bearer ' + key },
-        body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'system', content: sys }, { role: 'user', content: msg }] }),
-      });
-      if (!r.ok) throw new Error('OpenAI ' + r.status);
-      const j = await r.json();
-      return j.choices[0].message.content;
-    }
-    if (provider === 'google') {
-      const r = await fetch(T3_PROVIDERS.google.url + model + ':generateContent?key=' + encodeURIComponent(key), {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: sys + '\n\n---\n\n' + msg }] }], generationConfig: { maxOutputTokens: maxTokens } }),
-      });
-      if (!r.ok) throw new Error('Google ' + r.status);
-      const j = await r.json();
-      return j.candidates[0].content.parts[0].text;
-    }
-    throw new Error('unknown provider: ' + provider);
-  }
-
-  // ─── WebRTC P2P mesh (ported from canonical fallnet · fall-signal channel · Google STUN) ───
-  const MESH_CHANNEL = 'fall-signal';
-  const STUN_SERVERS = [{ urls: 'stun:stun.l.google.com:19302' }, { urls: 'stun:stun1.l.google.com:19302' }];
-  function meshStart(opts) {
-    if (STATE.mesh.active) return;
-    opts = opts || {};
-    const seedId = opts.seedId || (location.pathname + '#' + Math.random().toString(36).slice(2, 8));
-    STATE.mesh.seedId = seedId;
-    try { STATE.mesh.bc = new BroadcastChannel(MESH_CHANNEL); }
-    catch (e) { console.warn('fall-kit: BroadcastChannel unavailable'); return; }
-    STATE.mesh.bc.onmessage = e => {
-      const m = e.data;
-      if (!m || !m.kind || m.peerId === seedId) return;
-      if (opts.onMessage) opts.onMessage(m);
-    };
-    STATE.mesh.bc.postMessage({ kind: 'fall-kit:hello', peerId: seedId, ts: Date.now(), seedName: opts.seedName || 'unknown' });
-    STATE.mesh.active = true;
-    notify('Mesh active · channel ' + MESH_CHANNEL, 'ok');
-  }
-  function meshPost(kind, payload) {
-    if (!STATE.mesh.active || !STATE.mesh.bc) return false;
-    STATE.mesh.bc.postMessage({ kind: kind, peerId: STATE.mesh.seedId, ts: Date.now(), payload: payload });
-    return true;
-  }
-
-  // ─── Toast ───────────────────────────────────────────────────────
-  function notify(msg, kind) {
-    let t = $('#fk-toast');
-    if (!t) {
-      t = document.createElement('div'); t.id = 'fk-toast';
-      t.style.cssText = 'position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(20px);background:#c08a3a;color:#0a0a0a;padding:9px 18px;border-radius:3px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:0;transition:all .22s;z-index:10000;pointer-events:none';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    t.style.background = kind === 'err' ? '#a14a2a' : kind === 'ok' ? '#6b8d4a' : '#c08a3a';
-    t.style.color = kind === 'err' ? '#fff' : '#0a0a0a';
-    t.style.opacity = '1';
-    t.style.transform = 'translateX(-50%) translateY(0)';
-    clearTimeout(t._to);
-    t._to = setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(-50%) translateY(20px)'; }, 2400);
-  }
-
-  // ─── Settings modal ──────────────────────────────────────────────
-  function openSettings() {
-    let bg = $('#fk-modal-bg');
-    if (!bg) {
-      bg = document.createElement('div'); bg.id = 'fk-modal-bg';
-      bg.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:flex-start;justify-content:center;padding:60px 16px;overflow-y:auto;z-index:9999';
-      bg.onclick = e => { if (e.target.id === 'fk-modal-bg') closeSettings(); };
-      document.body.appendChild(bg);
-    }
-    const tier = aiTier();
-    const provider = STATE.config.api_provider || 'anthropic';
-    const providerCfg = T3_PROVIDERS[provider];
-    bg.innerHTML = `
-      <div style="background:#13121a;border:1px solid #c08a3a;border-radius:5px;max-width:600px;width:100%;padding:22px 24px;color:#ebe3d2;font-family:system-ui,-apple-system,sans-serif;font-size:13.5px;line-height:1.55">
-        <h3 style="font-family:Georgia,serif;font-size:18px;color:#c08a3a;margin-bottom:14px">◊ Fall Kit · AI cascade settings</h3>
-        <div style="margin-bottom:14px"><label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">Tier</label>
-          <select id="fk-tier" style="width:100%;padding:8px 11px;background:#1a1922;border:1px solid #3a342c;color:#ebe3d2;border-radius:3px;font-size:13.5px;font-family:inherit">
-            <option value="T0"${tier==='T0'?' selected':''}>T0 · off (default · the seed works fully without AI)</option>
-            <option value="T2"${tier==='T2'?' selected':''}>T2 · WebLLM in-browser · sovereign · pick a model below</option>
-            <option value="T3"${tier==='T3'?' selected':''}>T3 · BYOK · Anthropic / OpenAI / Google · stored in your browser only</option>
-          </select>
-        </div>
-        <div id="fk-t2-block" style="display:${tier==='T2'?'block':'none'};margin-bottom:14px;padding:12px 14px;background:#1a1922;border:1px solid #2a2934;border-radius:4px">
-          <label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">WebLLM model · 1B → 70B cascade</label>
-          <select id="fk-model" style="width:100%;padding:8px 11px;background:#22212c;border:1px solid #3a342c;color:#ebe3d2;border-radius:3px;font-size:13px;font-family:inherit">
-            ${Object.entries(WEBLLM_MODELS).map(([k,m]) => `<option value="${k}"${(STATE.config.webllm_model||DEFAULT_MODEL)===k?' selected':''}>${esc(m.label)} · ${esc(m.size)}</option>`).join('')}
-          </select>
-          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-            <button id="fk-load-llm" style="padding:7px 14px;background:#c08a3a;color:#0a0a0a;border:none;border-radius:3px;font-weight:600;font-size:12px;cursor:pointer;font-family:inherit">${STATE.ai.ready?'✓ Loaded · switch':'Load model (one-time download)'}</button>
-            <span id="fk-llm-status" style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#a89e88;letter-spacing:.04em">${STATE.ai.ready?'ready':STATE.ai.loading?Math.round(STATE.ai.progress)+'%':'not loaded'}</span>
-          </div>
-          <div style="margin-top:8px;font-size:11px;color:#6e6a5e;line-height:1.55">First load downloads the model from @mlc-ai/web-llm CDN. Cached forever after. Inference is 100% local — open DevTools → Network during use, nothing leaves.</div>
-        </div>
-        <div id="fk-t3-block" style="display:${tier==='T3'?'block':'none'};margin-bottom:14px;padding:12px 14px;background:#1a1922;border:1px solid #2a2934;border-radius:4px">
-          <label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">BYOK provider</label>
-          <select id="fk-provider" style="width:100%;padding:8px 11px;background:#22212c;border:1px solid #3a342c;color:#ebe3d2;border-radius:3px;font-size:13px;font-family:inherit;margin-bottom:10px">
-            ${Object.entries(T3_PROVIDERS).map(([k,p]) => `<option value="${k}"${provider===k?' selected':''}>${esc(p.label)}</option>`).join('')}
-          </select>
-          <label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">Model</label>
-          <select id="fk-api-model" style="width:100%;padding:8px 11px;background:#22212c;border:1px solid #3a342c;color:#ebe3d2;border-radius:3px;font-size:13px;font-family:inherit;margin-bottom:10px">
-            ${providerCfg.models.map(m => `<option value="${m}"${(STATE.config.api_model||providerCfg.default)===m?' selected':''}>${esc(m)}</option>`).join('')}
-          </select>
-          <label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">API key</label>
-          <input type="password" id="fk-key" value="${esc(STATE.config.api_key || '')}" placeholder="${STATE.config.api_key ? '(set · leave empty to keep)' : 'sk-ant-... or sk-... or AIza...'}" autocomplete="off" style="width:100%;padding:8px 11px;background:#22212c;border:1px solid #3a342c;color:#ebe3d2;border-radius:3px;font-size:13px;font-family:ui-monospace,Menlo,monospace">
-          <div style="margin-top:8px;font-size:11px;color:#6e6a5e;line-height:1.55">Key lives in this browser only (localStorage). Sent direct to the provider — never to us. Wipe with Reset.</div>
-        </div>
-        <div style="margin-bottom:14px;padding:12px 14px;background:#1a1922;border:1px solid #2a2934;border-radius:4px">
-          <label style="display:block;font-size:11px;color:#a89e88;letter-spacing:.04em;margin-bottom:6px;text-transform:uppercase">Cross-seed mesh</label>
-          <div style="display:flex;gap:8px;align-items:center">
-            <button id="fk-mesh-toggle" style="padding:6px 12px;background:${STATE.mesh.active?'#6b8d4a':'#1a1922'};color:${STATE.mesh.active?'#fff':'#a89e88'};border:1px solid ${STATE.mesh.active?'#6b8d4a':'#3a342c'};border-radius:3px;font-size:11px;cursor:pointer;font-family:inherit">${STATE.mesh.active?'✓ Active · disconnect':'Activate mesh'}</button>
-            <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#6e6a5e;letter-spacing:.04em">channel · <code style="background:#22212c;padding:1px 5px;border-radius:2px">${MESH_CHANNEL}</code></span>
-          </div>
-          <div style="margin-top:8px;font-size:11px;color:#6e6a5e;line-height:1.55">BroadcastChannel for same-device · WebRTC for cross-device (planned). Other estate seeds on the same channel discover each other automatically.</div>
-        </div>
-        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px">
-          <button onclick="FallKit.closeSettings()" style="padding:7px 14px;background:transparent;color:#a89e88;border:1px solid #3a342c;border-radius:3px;font-size:12px;cursor:pointer;font-family:inherit">Close</button>
-          <button id="fk-save" style="padding:7px 14px;background:#c08a3a;color:#0a0a0a;border:none;border-radius:3px;font-weight:600;font-size:12px;cursor:pointer;font-family:inherit">Save</button>
-        </div>
-        <div style="margin-top:14px;font-family:ui-monospace,Menlo,monospace;font-size:9px;color:#6e6a5e;letter-spacing:.08em;text-align:center">◊ Fall Kit v${FALL_KIT_VERSION} · MIT · ai-nativesolutions.com · ◊·κ=1</div>
-      </div>`;
-    // Wire interactions
-    $('#fk-tier').onchange = () => {
-      const t = $('#fk-tier').value;
-      $('#fk-t2-block').style.display = t === 'T2' ? 'block' : 'none';
-      $('#fk-t3-block').style.display = t === 'T3' ? 'block' : 'none';
-    };
-    $('#fk-provider') && ($('#fk-provider').onchange = () => {
-      const p = $('#fk-provider').value;
-      const sel = $('#fk-api-model');
-      sel.innerHTML = T3_PROVIDERS[p].models.map(m => `<option value="${m}">${esc(m)}</option>`).join('');
-    });
-    $('#fk-load-llm') && ($('#fk-load-llm').onclick = () => {
-      const m = $('#fk-model').value;
-      loadWebLLM(m);
-    });
-    $('#fk-mesh-toggle').onclick = () => {
-      if (STATE.mesh.active) { STATE.mesh.bc?.close(); STATE.mesh.active = false; STATE.mesh.bc = null; notify('Mesh disconnected'); }
-      else meshStart({ seedName: STATE.config.seedName || 'seed' });
-      openSettings();  // refresh modal
-    };
-    $('#fk-save').onclick = () => {
-      STATE.config.ai_tier = $('#fk-tier').value;
-      if ($('#fk-model')) STATE.config.webllm_model = $('#fk-model').value;
-      if ($('#fk-provider')) STATE.config.api_provider = $('#fk-provider').value;
-      if ($('#fk-api-model')) STATE.config.api_model = $('#fk-api-model').value;
-      const newKey = $('#fk-key')?.value;
-      if (newKey) STATE.config.api_key = newKey;
-      saveConfig(); renderAiChip(); notify('Saved', 'ok'); closeSettings();
-    };
-  }
-  function closeSettings() { const bg = $('#fk-modal-bg'); if (bg) bg.remove(); }
-
-  // ─── Help section (returns HTML string for inclusion in seed Help tabs) ───
-  function helpSection() {
-    return `<div style="background:rgba(192,138,58,.05);border:1px solid #3a342c;border-radius:4px;padding:18px 22px;margin:14px 0">
-      <h4 style="font-family:Georgia,serif;font-size:15px;color:#c08a3a;margin-bottom:12px">◊ AI cascade · the 3 tiers</h4>
-      <p style="font-size:13px;color:#a89e88;line-height:1.7;margin-bottom:10px">This seed runs fully without AI (<strong style="color:#c08a3a">T0</strong>, default). Enable a tier in settings if you want AI-assist features:</p>
-      <table style="width:100%;border-collapse:collapse;font-size:12.5px">
-        <thead><tr><th style="padding:6px 10px;text-align:left;background:rgba(0,0,0,.2);font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#a89e88;letter-spacing:.08em;text-transform:uppercase">Tier</th><th style="padding:6px 10px;text-align:left;background:rgba(0,0,0,.2);font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#a89e88;letter-spacing:.08em;text-transform:uppercase">What it is</th></tr></thead>
-        <tbody>
-          <tr><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#c08a3a;font-weight:600">T0</td><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#a89e88">Off. The seed works fully. No AI · no downloads · no API calls.</td></tr>
-          <tr><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#c08a3a;font-weight:600">T2</td><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#a89e88">WebLLM in-browser. Pick a model: 1B (700MB, fast) → 3B (2GB, balanced) → 7B (5GB, capable) → 70B (40GB, frontier). One-time download, runs offline forever after. Zero data leaves your device.</td></tr>
-          <tr><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#c08a3a;font-weight:600">T3</td><td style="padding:6px 10px;border-top:1px solid #2a2934;color:#a89e88">BYOK · Anthropic Claude · OpenAI GPT · Google Gemini. You bring the API key, you pay the provider direct. Key stays in your browser, sent direct to the provider, never proxied.</td></tr>
-        </tbody>
-      </table>
-      <p style="font-size:12px;color:#6e6a5e;line-height:1.6;margin-top:10px">Open the AI chip in the header to switch tier or check status. Cross-seed mesh activates a BroadcastChannel on <code style="background:#1a1922;padding:1px 5px;border-radius:2px">${MESH_CHANNEL}</code> so other estate seeds on the same device discover this one.</p>
-    </div>`;
-  }
-
-  // ─── CSS for AI chip ─────────────────────────────────────────────
-  function injectCss() {
-    if (document.getElementById('fk-css')) return;
-    const s = document.createElement('style');
-    s.id = 'fk-css';
-    s.textContent = `
-      #fk-ai-chip { display:inline-flex; align-items:center; gap:6px; padding:4px 9px; border-radius:3px; font-family:ui-monospace,Menlo,monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; cursor:pointer; border:1px solid #3a342c; background:#1a1922; color:#a89e88; user-select:none; vertical-align:middle }
-      #fk-ai-chip:hover { border-color:#c08a3a; color:#ebe3d2 }
-      #fk-ai-chip.fk-chip-live { border-color:#6b8d4a; color:#6b8d4a; background:rgba(107,141,74,.10) }
-      #fk-ai-chip.fk-chip-loading { border-color:#e8a83a; color:#e8a83a; background:rgba(232,168,58,.10) }
-      #fk-ai-chip.fk-chip-warn { border-color:#a14a2a; color:#a14a2a; background:rgba(161,74,42,.08) }
-      #fk-ai-chip .fk-dot { width:6px; height:6px; border-radius:50%; background:currentColor; flex-shrink:0 }
-      #fk-ai-chip.fk-chip-loading .fk-dot { animation:fk-pulse 1s infinite }
-      @keyframes fk-pulse { 0%,100%{opacity:1}50%{opacity:.3} }
-      .fk-ai-assist { display:inline-flex; align-items:center; gap:5px; padding:4px 9px; font-size:11px; border:1px solid #c08a3a; color:#c08a3a; background:transparent; border-radius:3px; cursor:pointer; font-family:inherit }
-      .fk-ai-assist:hover { background:#c08a3a; color:#0a0a0a }
-      .fk-ai-assist::before { content:'✦'; font-size:12px }
-    `;
-    document.head.appendChild(s);
-  }
-
-  // ─── KCC Mint launcher (v1.2 · fork-this-seed shortcut) ──────────
-  function openMint() {
-    const slug = (STATE.config.seedName || location.hostname.split('.')[0] || 'seed').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
-    const name = document.title.replace(/^[◊·\s]+/, '').split('·')[0].trim() || slug;
-    const url = location.href.split('?')[0].split('#')[0];
-    const desc = document.querySelector('meta[name="description"]')?.content?.slice(0, 200) || '';
-    const params = new URLSearchParams({ fork: '1', parent_slug: slug, parent_name: name, parent_url: url, parent_desc: desc });
-    window.open(KCC_MINT_URL + '?' + params.toString(), '_blank', 'noopener');
-  }
-
-  // ─── Init ────────────────────────────────────────────────────────
-  function init(opts) {
-    opts = opts || {};
-    injectCss();
-    if (opts.seedName) STATE.config.seedName = opts.seedName;
-    if ($('#fk-ai-chip')) { renderAiChip(); return { version: FALL_KIT_VERSION, mounted: false }; }
-    const chip = document.createElement('button');
-    chip.id = 'fk-ai-chip';
-    chip.title = 'AI cascade · click to configure tier and model';
-    chip.innerHTML = '<span class="fk-dot"></span><span id="fk-ai-chip-text">T0 · off</span>';
-    chip.onclick = openSettings;
-    // Try anchor first, fall back to floating bottom-right
-    const anchor = opts.chipAnchor ? $(opts.chipAnchor) : null;
-    if (anchor) { anchor.appendChild(chip); }
-    else {
-      chip.style.cssText += ';position:fixed;bottom:14px;left:14px;z-index:9998;box-shadow:0 4px 14px rgba(0,0,0,.4)';
-      document.body.appendChild(chip);
-    }
-    // v1.2 · floating mint button next to chip
-    if (!$('#fk-mint-btn') && !opts.hideMint) {
-      const mintBtn = document.createElement('button');
-      mintBtn.id = 'fk-mint-btn';
-      mintBtn.title = 'Mint a fork of this seed as a KCC bundle · provenance economy';
-      mintBtn.innerHTML = '<span style="font-size:13px">✦</span> mint fork';
-      mintBtn.style.cssText = 'position:fixed;bottom:14px;left:130px;z-index:9998;display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:3px;font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;cursor:pointer;border:1px solid #c08a3a;color:#c08a3a;background:rgba(10,10,15,.7);box-shadow:0 4px 14px rgba(0,0,0,.4)';
-      mintBtn.onmouseover = () => { mintBtn.style.background = '#c08a3a'; mintBtn.style.color = '#0a0a0a'; };
-      mintBtn.onmouseout  = () => { mintBtn.style.background = 'rgba(10,10,15,.7)'; mintBtn.style.color = '#c08a3a'; };
-      mintBtn.onclick = openMint;
-      document.body.appendChild(mintBtn);
-    }
-    renderAiChip();
-    return { version: FALL_KIT_VERSION, mounted: true };
-  }
-
-  // ─── Public API ──────────────────────────────────────────────────
-  root.FallKit = {
-    version: FALL_KIT_VERSION,
-    init: init,
-    aiTier: aiTier,
-    aiComplete: aiComplete,
-    loadWebLLM: loadWebLLM,
-    openSettings: openSettings,
-    closeSettings: closeSettings,
-    renderAiChip: renderAiChip,
-    helpSection: helpSection,
-    meshStart: meshStart,
-    meshPost: meshPost,
-    notify: notify,
-    openMint: openMint,  // v1.2 · launch kcc-mint with this seed prefilled as parent
-    MODELS: WEBLLM_MODELS,
-    PROVIDERS: T3_PROVIDERS,
-    state: STATE,
-  };
-})(typeof window !== 'undefined' ? window : globalThis);
-
-</script>
-<script>
-  // fall-kit init · auto-mounts a floating AI chip bottom-left
-  (function () {
-    function go() { if (typeof FallKit !== 'undefined') FallKit.init({ seedName: "fallmirror" }); }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go);
-    else go();
-  })();
-</script>
-<!-- FALL_KIT_END v1 -->
 </head>
 <body>
-<div class="wrap">
-<header>
-<h1><span class="s">◊</span> fallmirror <span class="k">·κ=1</span></h1>
-<div class="sub">SOVEREIGN MULTI-HOST REPO MIRRORING · ONE PUSH · MANY HOMES</div>
-<div class="meta">
-  <span>GITHUB</span><span>CODEBERG</span><span>GITLAB</span><span>IPFS</span><span>USB</span><span>MIT</span>
-</div>
+<div class="app">
+<header class="topbar">
+<div class="brand"><span class="glyph">◊</span> FallMirror <span class="co">AI-Native Solutions</span></div>
+<nav class="tabs">
+<button class="tab on" data-view="talk">Talk</button>
+<button class="tab" data-view="journal">Journal</button>
+<button class="tab" data-view="dashboard">Dashboard</button>
+<button class="tab" data-view="settings">Settings</button>
+</nav>
 </header>
-
-<section>
-<p class="lead">If GitHub closes your account · if Microsoft pulls the plug · if a malicious takedown wipes your repos · fallmirror has your back.</p>
-<p class="hook">"One mirror command pushes your repo to GitHub + Codeberg + GitLab + an IPFS pin + a USB stick on your desk. If any of them dies, the others persist. Your code outlives any single host."</p>
-<p>fallmirror is a 200-line Node script. Run it after every commit. It pushes <code>git push --mirror</code> to every host you've configured, in parallel. Plus optional IPFS pinning and local USB backup. All from one command. No CI required — your laptop is the publisher.</p>
-</section>
-
-<section>
-<h2>Why this exists · the host-gating defense</h2>
-<table>
-<thead><tr><th>Threat</th><th>fallmirror response</th></tr></thead>
-<tbody>
-<tr><td class="dim">GitHub closes your account</td><td class="good">Codeberg + GitLab + USB still have everything</td></tr>
-<tr><td class="dim">Microsoft buys GitHub, changes ToS</td><td class="good">Codeberg is non-profit and FOSS-native · GitLab self-hostable</td></tr>
-<tr><td class="dim">DMCA takedown of a public repo</td><td class="good">Mirrors stay up · push triggers re-mirror</td></tr>
-<tr><td class="dim">Country-level GitHub block</td><td class="good">Codeberg / GitLab / IPFS reachable from anywhere</td></tr>
-<tr><td class="dim">Pages disabled mid-product launch</td><td class="good">Codeberg Pages + GitLab Pages also serve the static site</td></tr>
-<tr><td class="dim">Internet permanently down</td><td class="good">USB backup contains the bare git repo · clone offline</td></tr>
-</tbody>
-</table>
-</section>
-
-<section>
-<h2>Install · 60 seconds</h2>
-<pre><code>gh repo clone sjgant80-hub/fallmirror
-cd fallmirror
-
-# show setup checklist
-node fallmirror.mjs --setup</code></pre>
-
-<p>Then in your PowerShell session:</p>
-<pre><code>$env:CODEBERG_USER = "your-codeberg-handle"
-$env:CODEBERG_TOKEN = "..."  # codeberg.org/user/settings/applications
-$env:GITLAB_USER = "your-gitlab-handle"
-$env:GITLAB_TOKEN = "..."     # gitlab.com/-/profile/personal_access_tokens
-$env:FALLMIRROR_USB = "E:\fallmirror"   # optional
-$env:FALLMIRROR_IPFS = "1"               # optional · needs `ipfs daemon`
-
-# mirror current repo
-cd path/to/any/git/repo
-node /path/to/fallmirror/fallmirror.mjs
-
-# mirror EVERY repo in a folder
-$env:FALLMIRROR_ROOT = "C:\Users\you\code"
-node /path/to/fallmirror/fallmirror.mjs --all
-
-# check what was mirrored when, where
-node /path/to/fallmirror/fallmirror.mjs --status</code></pre>
-</section>
-
-<section>
-<h2>What happens on a mirror push</h2>
-<pre><code>◊·κ=1 · fallmirror · sovereign multi-host repo mirroring
-   hosts · codeberg, gitlab, usb, ipfs
-
-◊ mirroring my-cool-repo
-   ✓ codeberg · pushed
-   ✓ gitlab · pushed
-   ✓ usb · pushed to E:\fallmirror\my-cool-repo.git
-   ✓ ipfs · {"cid":"QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG"}
-
-◊·κ=1 · fallmirror complete · check ./fallmirror-state.json for log</code></pre>
-</section>
-
-<section>
-<h2>Nightly schedule · the resting state</h2>
-<p>Best discipline: schedule fallmirror to run nightly at 02:00. Wake up, every repo is mirrored to 4 hosts. Zero manual effort.</p>
-
-<h3>Windows (Task Scheduler)</h3>
-<pre><code># open Task Scheduler · Create Basic Task
-Trigger: Daily at 02:00
-Action:  Start a program
-Program: C:\Program Files\nodejs\node.exe
-Args:    C:\path\to\fallmirror.mjs --all
-Start in: C:\Users\you\code</code></pre>
-
-<h3>Mac/Linux (cron)</h3>
-<pre><code>0 2 * * * cd ~/code && node ~/fallmirror/fallmirror.mjs --all >> ~/fallmirror.log 2>&1</code></pre>
-</section>
-
-<section>
-<h2>How the hosts compare</h2>
-<table>
-<thead><tr><th>Host</th><th>Free?</th><th>Sovereign-friendly?</th><th>Pages?</th></tr></thead>
-<tbody>
-<tr><td>GitHub</td><td class="good">Yes (public)</td><td>Microsoft-owned</td><td>Yes</td></tr>
-<tr><td>Codeberg</td><td class="good">Yes (Forgejo)</td><td class="good">Non-profit · EU</td><td class="good">Yes (Codeberg Pages)</td></tr>
-<tr><td>GitLab</td><td class="good">Yes (public)</td><td>Public co · also self-hostable</td><td class="good">Yes (GitLab Pages)</td></tr>
-<tr><td>IPFS</td><td class="good">Yes</td><td class="good">Content-addressed · censorship-resistant</td><td>via gateway</td></tr>
-<tr><td>USB</td><td class="good">Yes</td><td class="good">Your hardware · no network</td><td>no</td></tr>
-</tbody>
-</table>
-</section>
-
-<section>
-<h2>Estate ripple</h2>
-<p>fallmirror is operator-level — it lives on your laptop, not embedded in each tool. The ripple is operational: schedule one nightly task, every estate repo gets mirrored. Add new repos to <code>FALLMIRROR_ROOT</code> · they're auto-included.</p>
-<p>After two weeks of running: if GitHub vanishes tomorrow, you can <code>git clone</code> any estate tool from Codeberg or GitLab and continue shipping in 60 seconds.</p>
-</section>
-
-<section>
-<h2>FAQ</h2>
-
-<h3>Does this work with private repos?</h3>
-<p>Yes — Codeberg and GitLab both support private. Pass <code>?visibility=private</code> when manually creating (or modify the script).</p>
-
-<h3>Do I need IPFS running?</h3>
-<p>Only if you set <code>FALLMIRROR_IPFS=1</code>. The default config is GitHub + Codeberg + GitLab — works without anything else installed.</p>
-
-<h3>What about LFS / large files?</h3>
-<p>v1.0 does standard <code>git push --mirror</code>. LFS works on GitHub + GitLab + Codeberg natively. USB mirror is bare-bone (no LFS pointer resolution).</p>
-
-<h3>Tokens stored in env vars feel risky.</h3>
-<p>The script reads them from process env — they never get written to disk. Use a credential manager if you want extra layers (Windows Credential Manager, 1Password CLI, etc.).</p>
-
-<h3>Combined with fallvault?</h3>
-<p>Yes — fallmirror handles your <em>code</em> (multi-host). <a href="https://sjgant80-hub.github.io/fallvault/">fallvault</a> handles your <em>laptop's other files</em> (encrypted single-HTML backup). Together: total emergency-recovery coverage.</p>
-</section>
-
-<section>
-<h2>License</h2>
-<p>MIT. Fork it, modify it. Built by <a href="https://www.ai-nativesolutions.com">AI Native Solutions</a>. Part of the sovereign estate. <a href="https://github.com/sjgant80-hub/fallmirror">Source</a>.</p>
-</section>
-
-<div class="cta">
-  <a class="btn" href="https://github.com/sjgant80-hub/fallmirror">VIEW ON GITHUB</a>
-  <a class="btn dim" href="https://www.ai-nativesolutions.com">THE FULL ESTATE</a>
+<main>
+<section class="view on" id="view-talk">
+<div id="setup-panel" class="setup-card">
+<h1>Welcome. <em>The mirror doesn't judge.</em></h1>
+<p>A sovereign self-reflection space. Runs on your device. Nothing leaves this browser. No account, no server, no harvest. Just you, the mirror, and your own map building over time.</p>
+<p style="color:var(--muted)">First time? A short calibration finds your starting shape. About five minutes. After that, drop in for as long or as short as you like.</p>
+<div style="margin-top:18px">
+<button class="big-btn" id="btn-calibrate">▸ Start calibration</button>
+<button class="big-btn ghost" id="btn-quick-session">Or just talk</button>
 </div>
-
-<div class="seal"><span class="s">◊·κ=1</span> &nbsp; prime 281 &nbsp; v20.1 · phi=1.618 · kappa=0.618 &nbsp; mirrors compound</div>
+<div class="notice" style="margin-top:22px">
+<strong>Not for crisis.</strong> If you're in acute distress or thinking of self-harm, this isn't the right place. Use the <button style="background:transparent;color:var(--coral);text-decoration:underline;padding:0;border:none;font-size:13px;cursor:pointer" onclick="showCrisis()">crisis resources</button> — real people, human-answered.
 </div>
+</div>
+<div id="session-panel" style="display:none">
+<div class="session-meta">
+<div>Session <span id="session-num">1</span> · <span id="session-mode">Free</span> · <span class="stage" id="session-stage">Stage 0</span></div>
+<button class="end-btn" id="btn-end-session">End session</button>
+</div>
+<div class="session" id="session-stream"></div>
+</div>
+<div class="input-bar" id="input-bar" style="display:none">
+<textarea id="input-box" rows="1" placeholder="What's true right now?"></textarea>
+<button id="btn-send">Send</button>
+</div>
+</section>
+<section class="view" id="view-journal">
+<h2><em>Journal</em></h2>
+<p style="color:var(--muted);margin-bottom:20px">Every session leaves a chord. This is the sound they made together.</p>
+<div id="journal-list"></div>
+</section>
+<section class="view" id="view-dashboard">
+<h2><em>Your shape</em></h2>
+<p style="color:var(--muted);margin-bottom:20px">The pattern IS the therapy. Movement is what you're watching for — not perfection.</p>
+<div class="dash-grid">
+<div class="card">
+<h3>Bloom · your 7-axis shape</h3>
+<div class="radial" id="bloom-radial"></div>
+<div class="hint" id="bloom-hint"></div>
+</div>
+<div class="card">
+<h3>ΔH · how you're running</h3>
+<div class="gauge">
+<div class="gauge-fill" id="gauge-fill"></div>
+<div class="gauge-center"></div>
+<div class="gauge-value" id="gauge-value">—</div>
+</div>
+<div class="gauge-labels"><span>Overwhelmed</span><span style="color:var(--sage)">κ · 0.618</span><span>Withdrawn</span></div>
+<div class="hint">Optimal is not a place. It's the direction between the two edges.</div>
+</div>
+</div>
+<div class="dash-grid">
+<div class="card">
+<h3>Silent witness · which stage</h3>
+<div class="witness-ladder" id="witness-ladder">
+<div class="witness-stage" data-s="0"><span class="num">0</span><span class="name">Unconscious · caught in thought</span></div>
+<div class="witness-stage" data-s="1"><span class="num">1</span><span class="name">First separation · "I noticed"</span></div>
+<div class="witness-stage" data-s="2"><span class="num">2</span><span class="name">Stable witness · on demand</span></div>
+<div class="witness-stage" data-s="3"><span class="num">3</span><span class="name">Watcher of the watcher</span></div>
+<div class="witness-stage" data-s="4"><span class="num">4</span><span class="name">The emptiness of something</span></div>
+</div>
+</div>
+<div class="card">
+<h3>Sessions · trajectory on the torus</h3>
+<div class="torus-wrap" id="torus-wrap"></div>
+<div class="hint">Each dot is one session. Position shows phase and how you were running. Cycles become visible over time.</div>
+</div>
+</div>
+</section>
+<section class="view" id="view-settings">
+<h2><em>Settings</em></h2>
+<div class="card">
+<div class="setting-row">
+<div>
+<div class="label">Local AI upgrade <span class="status-pill" id="llm-status">rule-based</span></div>
+<div class="desc">Optional in-browser Llama 3.1 8B for richer probes. First load ~4GB · then works forever. Nothing leaves your device.</div>
+</div>
+<button id="btn-llm-toggle">Enable</button>
+</div>
+<div class="setting-row">
+<div><div class="label">Recalibrate</div><div class="desc">Start a fresh calibration. Your history is preserved.</div></div>
+<button id="btn-recalibrate">Recalibrate</button>
+</div>
+<div class="setting-row">
+<div><div class="label">Export your data</div><div class="desc">All sessions + bloom + trajectory as JSON. Yours.</div></div>
+<button id="btn-export">Export</button>
+</div>
+<div class="setting-row">
+<div><div class="label">Import</div><div class="desc">Restore from a previous export.</div></div>
+<button id="btn-import">Import</button>
+<input type="file" id="file-import" accept="application/json" style="display:none">
+</div>
+<div class="setting-row">
+<div><div class="label">Show crisis resources</div><div class="desc">Always available in the bottom-left corner too.</div></div>
+<button onclick="showCrisis()">Show</button>
+</div>
+<div class="setting-row">
+<div><div class="label">Clear everything</div><div class="desc">Wipes bloom, all sessions, all trajectories. Irreversible.</div></div>
+<button class="danger" id="btn-wipe">Clear all</button>
+</div>
+</div>
+<div class="notice" style="margin-top:22px">
+<strong>Sovereignty check.</strong> Open your browser's Network tab. Talk to the mirror. You'll see zero network activity for the core function. That's not marketing — that's how it's built.
+</div>
+</section>
+</main>
+</div>
+<button class="crisis-btn" onclick="showCrisis()">◊ Crisis help</button>
+<div class="crisis-modal" id="crisis-modal">
+<div class="box">
+<h2>You matter · reach a real person now</h2>
+<p>The mirror is a reflection tool. It's not equipped for crisis. These are — right now, human, free, confidential.</p>
+<div class="num"><strong>Samaritans · UK · 24/7</strong><a href="tel:116123">116 123</a></div>
+<div class="num"><strong>988 · US · 24/7</strong><a href="tel:988">988</a></div>
+<div class="num"><strong>Lifeline · Australia</strong><a href="tel:131114">13 11 14</a></div>
+<div class="num"><strong>NHS · non-emergency</strong><a href="tel:111">111</a></div>
+<div class="num"><strong>Emergency</strong><a href="tel:999">999 / 911 / 112</a></div>
+<p style="margin-top:14px;color:var(--muted);font-size:13px">Prefer text? Shout UK: text SHOUT to 85258 · Crisis Text Line US: text HOME to 741741.</p>
+<button class="close-btn" onclick="hideCrisis()">Close</button>
+</div>
+</div>
+<script type="module">
+const CRISIS_PATTERNS=[/\bkill(ing)?\s+(myself|me)\b/i,/\bend(ing)?\s+(it|my\s+life)\b/i,/\bsuicid(e|al)\b/i,/\bwant\s+to\s+die\b/i,/\bnot\s+worth\s+living\b/i,/\bbetter\s+off\s+dead\b/i,/\btake\s+my\s+(own\s+)?life\b/i,/\bself[\s\-]?harm/i,/\bcut(ting)?\s+myself\b/i,/\boverdos(e|ing)\b/i,/\bhurt\s+myself\b/i];
+const ABUSE_PATTERNS=[/\b(he|she|they)\s+(hits?|beats?|hurts?|rapes?)\s+me\b/i,/\b(scared|afraid)\s+of\s+(him|her|them)\b/i,/\bcan't\s+get\s+(out|away)\b/i];
+const PSYCHOSIS_HINTS=[/\b(voices?|beings?|entities?|aliens?|angels?|demons?)\s+(are\s+)?(telling|talking|controlling|watching)\s+me\b/i,/\bimplant(s|ed)?\s+in\s+my\b/i,/\bthey('re| are)\s+(reading|controlling)\s+my\s+(mind|thoughts)\b/i];
+function safetyCheck(text){for(const p of CRISIS_PATTERNS)if(p.test(text))return{level:'crisis'};for(const p of ABUSE_PATTERNS)if(p.test(text))return{level:'referral',kind:'abuse'};for(const p of PSYCHOSIS_HINTS)if(p.test(text))return{level:'referral',kind:'psychosis'};return{level:'ok'}}
+window.showCrisis=()=>document.getElementById('crisis-modal').classList.add('on');
+window.hideCrisis=()=>document.getElementById('crisis-modal').classList.remove('on');
+document.getElementById('crisis-modal').addEventListener('click',(e)=>{if(e.target.id==='crisis-modal')hideCrisis()});
+
+const AXES=[{p:2,key:'polarity',name:'Polarity'},{p:3,key:'structure',name:'Structure'},{p:5,key:'depth',name:'Depth'},{p:7,key:'time',name:'Time'},{p:11,key:'expansion',name:'Expansion'},{p:13,key:'relationship',name:'Relationship'},{p:17,key:'resolution',name:'Resolution'}];
+const PROBES={polarity:["What are you pulled between right now?","What two things feel like opposites for you today?","If you had to pick a side you don't want to pick, what would it be about?","Where do you feel caught between yes and no?"],structure:["What's holding you up today?","If you removed one thing from your life this week, what would collapse?","What's load-bearing that you haven't checked in on?","Who or what carries the weight when you can't?"],depth:["What's underneath the thing you just said?","If we went one layer deeper, what's there?","What are you circling that you haven't landed on?","What's true that you haven't said out loud today?"],time:["When did this pattern start?","What happened just before the feeling arrived?","How long have you been carrying this one?","What's the earliest memory this reminds you of?"],expansion:["What would change if this wasn't a problem?","What's on the other side of the fear?","If this were already handled, what would you be doing?","What's the version of you six months from now saying to you today?"],relationship:["Who else is in this with you?","Whose voice do you hear when you think this thought?","Who taught you to feel this way about it?","If this exact thing were happening to a friend, what would you tell them?"],resolution:["What do you already know about this?","If you trusted yourself completely, what would you do?","What's the quietest, truest answer that's already there?","If nobody was watching, what would you choose?"]};
+const CALIBRATION_ORDER=['polarity','structure','depth','time','expansion','relationship','resolution'];
+function pickProbe(axisKey,avoid=[]){const pool=PROBES[axisKey]||PROBES.polarity;const fresh=pool.filter(p=>!avoid.includes(p));const arr=fresh.length?fresh:pool;return arr[Math.floor(Math.random()*arr.length)]}
+
+const AXIS_KEYWORDS={polarity:['between','either','or','both','split','torn','caught','vs','versus','on one hand','part of me'],structure:['hold','support','carry','collapse','depend','rely','frame','structure','need','build','base','foundation'],depth:['under','underneath','deeper','beneath','hidden','buried','beyond words',"can't say",'avoid','ignore','deep down'],time:['always','since','before','after','started','began','years','months','used to','remember','history','pattern'],expansion:['what if','could','maybe','wonder','beyond','other side','next','change','different','free','let go','release'],relationship:['mother','father','partner','friend','they said','she said','he said','told me','because of','with','together','alone'],resolution:['know','trust','sure','clear','right','wrong','should','need to','going to','will','decided','ready']};
+function scoreResponse(text){const t=' '+text.toLowerCase()+' ';const scores={};for(const[axis,kws]of Object.entries(AXIS_KEYWORDS)){scores[axis]=0;for(const k of kws)if(t.includes(k))scores[axis]++}const words=text.trim().split(/\s+/).length;const entropy=words<5?0.1:words>80?0.9:Math.min(0.85,0.15+words/100);return{scores,entropy,wordCount:words}}
+function dominantAxis(scores){let best='polarity',bs=-1;for(const[a,s]of Object.entries(scores))if(s>bs){best=a;bs=s}return best}
+function nextProbeAxis(st){const asked=st.probes.map(p=>p.axis);const notAsked=AXES.filter(a=>!asked.includes(a.key));if(asked.length>=3&&!asked.includes('resolution'))return'resolution';if(st.lastDominant&&!asked.includes(st.lastDominant))return st.lastDominant;const dh=st.currentDH||0;if(dh>0.15&&notAsked.some(a=>a.p<=5))return notAsked.find(a=>a.p<=5)?.key||notAsked[0].key;if(dh<-0.15&&notAsked.some(a=>a.p>=11))return notAsked.find(a=>a.p>=11)?.key||notAsked[0].key;return(notAsked[0]||AXES[0]).key}
+
+const DEFAULT_BLOOM=[5,5,5,5,5,5,5];
+function updateBloomEMA(cur,sc,alpha=0.15){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];return order.map((k,i)=>{const raw=Math.min(15,Math.max(1,sc[k]*3));return Math.round((cur[i]*(1-alpha)+raw*alpha)*10)/10})}
+function bloomShape(v){const sum=v.reduce((a,b)=>a+b,0);const mean=sum/v.length;const variance=v.reduce((a,b)=>a+(b-mean)**2,0)/v.length;const sd=Math.sqrt(variance);const peaks=v.filter(x=>x>mean+sd).length;if(peaks>=2&&v[2]>mean&&v[3]>mean)return'mountain';if(peaks===1&&Math.max(...v)>mean*1.6)return'spiky';if(sd<1)return'flat';if(v[0]+v[1]+v[2]>v[4]+v[5]+v[6])return'left-heavy';if(v[4]+v[5]+v[6]>v[0]+v[1]+v[2])return'right-heavy';return'balanced'}
+function shapeHint(s){return({mountain:'Strong in the middle (structure, depth). Growth edge: resolver work. You build brilliantly — sitting with completion is the stretch.',spiky:'One dominant axis. Growth edge: grounding into what you avoid.',flat:'Balanced across all axes. Growth edge: notice which axis has life today.','left-heavy':'Body/spatial dominant. Growth edge: relational and resolver.','right-heavy':'Relational/resolver dominant. Growth edge: body and structure.',balanced:'Your shape is finding itself. Keep going.'})[s]||'Movement is the therapy.'}
+
+const WITNESS_MARKERS={0:["i can't stop","i'm just","it's taking over","i'm stuck in","caught in","swept away"],1:['i noticed','i realised','i caught myself','stepped back','some part of me','i saw that'],2:['i can watch','i observe','i see the pattern','i step back','i witness','i sit with'],3:['watching myself watch','who is watching','the observer','behind the observing','watcher of'],4:['nothingness','emptiness','presence','beyond words','it just is','space between']};
+function detectWitnessStage(text,cur=0){const t=text.toLowerCase();let ms=0;for(let s=4;s>=0;s--)for(const m of WITNESS_MARKERS[s])if(t.includes(m))ms=Math.max(ms,s);return Math.round((cur*0.7+ms*0.3)*10)/10}
+
+function sessionToTorus(sc,dh){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];let di=0,ds=-1;for(let i=0;i<7;i++)if((sc[order[i]]||0)>ds){ds=sc[order[i]];di=i}const theta=(di/7)*2*Math.PI;const psi=Math.PI+Math.atan(dh*4);return{theta,psi}}
+
+function generateChord(st){const fired=st.probes.map(p=>AXES.find(a=>a.key===p.axis));if(!fired.length)return{text:'Thanks for showing up today.',resolved:true};const primary=fired[0],middle=fired[Math.floor(fired.length/2)],last=fired[fired.length-1];const openers={polarity:'you explored a tension',structure:'you looked at what holds you up',depth:'you went underneath',time:'you traced the timeline',expansion:"you reached for what's beyond",relationship:'you saw who else is in this',resolution:'you found your own knowing'};const middles={polarity:"with a polarity you're carrying",structure:'through the structure of it',depth:'with something hidden underneath',time:'across time',expansion:'with room for more',relationship:'with other voices present',resolution:'toward what you already know'};const closers={polarity:'and the tension is still asking to be held.',structure:'and the support is worth noticing.',depth:'and the depth is still opening.',time:'and the timeline is beginning to soften.',expansion:'and the doorway is starting to be visible.',relationship:'and the relational field is present with you.',resolution:'and you found you already knew what to do.'};const resolved=last.key==='resolution'&&st.lastEntropy>0.5&&st.lastEntropy<0.75;return{text:`Today ${openers[primary.key]}, ${middles[middle.key]}, ${closers[last.key]}`,resolved}}
+
+const DB_NAME='fallmirror',DB_VERSION=1;
+function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,DB_VERSION);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('sessions'))d.createObjectStore('sessions',{keyPath:'id',autoIncrement:true});if(!d.objectStoreNames.contains('state'))d.createObjectStore('state')};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function saveState(k,v){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('state','readwrite');t.objectStore('state').put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
+async function loadState(k){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('state','readonly');const r=t.objectStore('state').get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function addSession(s){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('sessions','readwrite');t.objectStore('sessions').add(s);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
+async function loadSessions(){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('sessions','readonly');const r=t.objectStore('sessions').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function clearAll(){const d=await openDB();return new Promise((res)=>{const t=d.transaction(['sessions','state'],'readwrite');t.objectStore('sessions').clear();t.objectStore('state').clear();t.oncomplete=()=>res()})}
+
+let state={bloom:DEFAULT_BLOOM.slice(),witnessStage:0,currentSession:null,sessions:[],llmEnabled:false,llmEngine:null,sessionCount:0};
+
+async function bootstrap(){const saved=await loadState('bloom');if(saved)state.bloom=saved;const stg=await loadState('witness_stage');if(typeof stg==='number')state.witnessStage=stg;state.sessions=await loadSessions();state.sessionCount=state.sessions.length;renderDashboard();renderJournal()}
+
+function newSession(mode){state.currentSession={mode,started_at:new Date().toISOString(),probes:[],responses:[],sessionScores:{},lastDominant:null,currentDH:0,lastEntropy:0.5,calibrationIndex:0};document.getElementById('session-stream').innerHTML='';document.getElementById('session-num').textContent=state.sessionCount+1;document.getElementById('session-mode').textContent=mode==='calibration'?'Calibration':'Free';document.getElementById('session-stage').textContent='Stage '+Math.round(state.witnessStage)}
+function startCalibration(){newSession('calibration');document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';askCalibrationProbe()}
+function startFreeSession(){newSession('free');document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';postProbe(pickProbe('polarity'),'polarity')}
+function askCalibrationProbe(){const i=state.currentSession.calibrationIndex;if(i>=CALIBRATION_ORDER.length){endSession();return}const axis=CALIBRATION_ORDER[i];postProbe(pickProbe(axis,state.currentSession.probes.map(p=>p.text)),axis)}
+function postProbe(text,axis){state.currentSession.probes.push({text,axis,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn mirror';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
+function postUser(text){state.currentSession.responses.push({text,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn user';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
+function postChord(chord){const el=document.createElement('div');el.className='turn chord';el.innerHTML=`<div class="label">Session chord</div><em>${escapeHtml(chord.text)}</em>${chord.resolved?'<div style="margin-top:10px;color:var(--sage);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Resolved · carry it with you</div>':'<div style="margin-top:10px;color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Open · that\'s ok</div>'}`;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
+
+async function handleUserInput(text){const safety=safetyCheck(text);if(safety.level==='crisis'){showCrisis();return}postUser(text);const scored=scoreResponse(text);const order=['polarity','structure','depth','time','expansion','relationship','resolution'];for(const k of order)state.currentSession.sessionScores[k]=(state.currentSession.sessionScores[k]||0)+(scored.scores[k]||0);state.currentSession.lastDominant=dominantAxis(scored.scores);state.currentSession.currentDH=scored.entropy-0.618;state.currentSession.lastEntropy=scored.entropy;state.witnessStage=detectWitnessStage(text,state.witnessStage);document.getElementById('session-stage').textContent='Stage '+Math.round(state.witnessStage);if(safety.level==='referral'){const notice=document.createElement('div');notice.className='notice';notice.style.margin='12px 0';notice.innerHTML=safety.kind==='psychosis'?`<strong>Pause.</strong> What you're describing sounds intense — that's beyond what this tool is for. Is there someone you trust — GP, a friend — you could talk to about this today?`:`<strong>Pause.</strong> That sounds hard and it may need more than a reflection tool. There are people who can help — the crisis resources button has numbers.`;document.getElementById('session-stream').appendChild(notice);notice.scrollIntoView({behavior:'smooth',block:'end'});return}await new Promise(r=>setTimeout(r,800));if(state.currentSession.mode==='calibration'){state.currentSession.calibrationIndex++;if(state.currentSession.calibrationIndex>=CALIBRATION_ORDER.length){await new Promise(r=>setTimeout(r,400));endSession()}else askCalibrationProbe();return}if(state.currentSession.probes.length>=5){endSession();return}const nextAxis=nextProbeAxis(state.currentSession);postProbe(pickProbe(nextAxis,state.currentSession.probes.map(p=>p.text)),nextAxis)}
+
+async function endSession(){if(!state.currentSession)return;const chord=generateChord(state.currentSession);postChord(chord);state.bloom=updateBloomEMA(state.bloom,state.currentSession.sessionScores);await saveState('bloom',state.bloom);await saveState('witness_stage',state.witnessStage);await saveState('setup_complete',true);const torus=sessionToTorus(state.currentSession.sessionScores,state.currentSession.currentDH);const rec={started_at:state.currentSession.started_at,ended_at:new Date().toISOString(),mode:state.currentSession.mode,probes:state.currentSession.probes,responses:state.currentSession.responses,scores:state.currentSession.sessionScores,dh:state.currentSession.currentDH,entropy:state.currentSession.lastEntropy,witness_stage:state.witnessStage,torus,chord:chord.text,resolved:chord.resolved,bloom_snapshot:state.bloom.slice()};await addSession(rec);state.sessions.push(rec);state.sessionCount++;state.currentSession=null;renderDashboard();renderJournal();setTimeout(()=>{const bar=document.createElement('div');bar.style.textAlign='center';bar.style.margin='20px 0';bar.innerHTML=`<button class="big-btn" onclick="location.reload()">Start a new session</button> <button class="big-btn ghost" onclick="document.querySelector('.tab[data-view=dashboard]').click()">See your shape</button>`;document.getElementById('session-stream').appendChild(bar)},1500);document.getElementById('input-bar').style.display='none'}
+
+function renderDashboard(){renderBloomRadial();renderGauge();renderWitnessLadder();renderTorus();document.getElementById('bloom-hint').textContent=shapeHint(bloomShape(state.bloom))}
+function renderBloomRadial(){const el=document.getElementById('bloom-radial');const cx=140,cy=140,radius=100,axesCount=7,bloom=state.bloom,maxVal=15;const points=bloom.map((v,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const r=(v/maxVal)*radius;return{x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,angle,v}});const grid=[1,0.5,0.25].map(f=>{const pts=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `${cx+Math.cos(angle)*radius*f},${cy+Math.sin(angle)*radius*f}`});return `<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const spokes=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(angle)*radius}" y2="${cy+Math.sin(angle)*radius}" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const shape=`<polygon points="${points.map(p=>`${p.x},${p.y}`).join(' ')}" fill="rgba(122,156,126,0.25)" stroke="#7a9c7e" stroke-width="2"/>`;const labels=AXES.map((a,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const lx=cx+Math.cos(angle)*(radius+22);const ly=cy+Math.sin(angle)*(radius+22);return `<text x="${lx}" y="${ly}" text-anchor="middle" alignment-baseline="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#928d80" letter-spacing="1.2">${a.name}</text>`}).join('');const dots=points.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#7a9c7e"/>`).join('');el.innerHTML=`<svg viewBox="0 0 280 280">${grid}${spokes}${shape}${dots}${labels}</svg>`}
+function renderGauge(){const dh=state.sessions.length?(state.sessions[state.sessions.length-1].dh||0):0;const pct=Math.max(5,Math.min(95,50+dh*100));document.getElementById('gauge-fill').style.left=pct+'%';document.getElementById('gauge-value').textContent=dh===0?'—':(dh>0?'+':'')+dh.toFixed(2)}
+function renderWitnessLadder(){const stage=Math.round(state.witnessStage);document.querySelectorAll('.witness-stage').forEach(el=>{const s=parseInt(el.dataset.s);el.classList.remove('on','past');if(s===stage)el.classList.add('on');else if(s<stage)el.classList.add('past')})}
+function renderTorus(){const el=document.getElementById('torus-wrap');const cx=140,cy=120,ringR=90,tubeR=30;const sessions=state.sessions.filter(s=>s.torus);const ring1=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR}" ry="${ringR*0.4}" fill="none" stroke="rgba(232,228,219,0.14)" stroke-width="1"/>`;const ring2=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR+tubeR}" ry="${(ringR+tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const ring3=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR-tubeR}" ry="${(ringR-tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const dots=sessions.map((s,i)=>{const{theta,psi}=s.torus;const bigR=ringR+Math.cos(psi)*tubeR;const x=cx+Math.cos(theta)*bigR;const y=cy+Math.sin(theta)*bigR*0.4;const opacity=0.3+0.7*(i/Math.max(sessions.length-1,1));const color=s.resolved?'#7a9c7e':'#d4a052';return `<circle cx="${x}" cy="${y}" r="4" fill="${color}" opacity="${opacity}"/>`}).join('');el.innerHTML=`<svg viewBox="0 0 280 240">${ring2}${ring1}${ring3}${dots}</svg>`}
+
+function renderJournal(){const el=document.getElementById('journal-list');if(!state.sessions.length){el.innerHTML='<div class="card"><p style="color:var(--muted);font-style:italic">No sessions yet. Talk to the mirror once and the first chord will land here.</p></div>';return}el.innerHTML=state.sessions.slice().reverse().map(s=>{const date=new Date(s.started_at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});const axesFired=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]).slice(0,3);const stage='Stage '+Math.round(s.witness_stage||0);return `<div class="journal-item"><div class="date">${escapeHtml(date)} · ${escapeHtml(s.mode)}</div><div class="chord-preview">${escapeHtml(s.chord||'')}</div><span class="stage-tag">${stage}</span>${axesFired.map(([a])=>`<span class="axis-tag">${a}</span>`).join('')}<span class="axis-tag" style="color:${s.resolved?'var(--sage)':'var(--amber)'}">${s.resolved?'resolved':'open'}</span></div>`}).join('')}
+
+document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('view-'+t.dataset.view).classList.add('on');if(t.dataset.view==='dashboard')renderDashboard();if(t.dataset.view==='journal')renderJournal()}});
+document.getElementById('btn-calibrate').onclick=startCalibration;
+document.getElementById('btn-quick-session').onclick=()=>{document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';startFreeSession()};
+document.getElementById('btn-end-session').onclick=endSession;
+document.getElementById('btn-send').onclick=()=>{const box=document.getElementById('input-box');const text=box.value.trim();if(!text)return;box.value='';box.style.height='auto';handleUserInput(text)};
+document.getElementById('input-box').addEventListener('keydown',(e)=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();document.getElementById('btn-send').click()}});
+document.getElementById('input-box').addEventListener('input',(e)=>{e.target.style.height='auto';e.target.style.height=Math.min(120,e.target.scrollHeight)+'px'});
+
+document.getElementById('btn-llm-toggle').onclick=async()=>{if(state.llmEnabled)return alert('Already enabled. Refresh to disable.');const btn=document.getElementById('btn-llm-toggle');btn.disabled=true;btn.textContent='Loading...';document.getElementById('llm-status').textContent='loading';try{const{CreateMLCEngine}=await import('https://esm.run/@mlc-ai/web-llm');const engine=await CreateMLCEngine('Llama-3.1-8B-Instruct-q4f16_1-MLC',{initProgressCallback:(r)=>{const pct=Math.round((r.progress||0)*100);document.getElementById('llm-status').textContent=pct+'%';btn.textContent=pct+'% · downloading'}});state.llmEngine=engine;state.llmEnabled=true;document.getElementById('llm-status').textContent='ready';document.getElementById('llm-status').classList.add('on');btn.textContent='Enabled'}catch(e){document.getElementById('llm-status').textContent='failed';btn.textContent='Retry';btn.disabled=false;alert('Could not load WebLLM · '+e.message+' · rule-based mode still works.')}};
+document.getElementById('btn-recalibrate').onclick=()=>{if(!confirm('Start a fresh calibration? Your history is kept.'))return;state.bloom=DEFAULT_BLOOM.slice();saveState('bloom',state.bloom).then(()=>startCalibration())};
+document.getElementById('btn-export').onclick=async()=>{const data={bloom:state.bloom,witness_stage:state.witnessStage,sessions:state.sessions,exported_at:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='fallmirror-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url)};
+document.getElementById('btn-import').onclick=()=>document.getElementById('file-import').click();
+document.getElementById('file-import').addEventListener('change',async(e)=>{const file=e.target.files[0];if(!file)return;try{const text=await file.text();const data=JSON.parse(text);if(!confirm('Replace current data with imported data?'))return;await clearAll();if(data.bloom)await saveState('bloom',data.bloom);if(typeof data.witness_stage==='number')await saveState('witness_stage',data.witness_stage);if(data.sessions)for(const s of data.sessions)await addSession(s);location.reload()}catch(err){alert('Import failed · '+err.message)}});
+document.getElementById('btn-wipe').onclick=async()=>{if(!confirm('Wipe everything · this cannot be undone.'))return;if(!confirm('Are you absolutely sure?'))return;await clearAll();location.reload()};
+
+function escapeHtml(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'})[c])}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+bootstrap();
+</script>
 </body>
 </html>
