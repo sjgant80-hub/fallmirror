@@ -1,16 +1,25 @@
 {
-  "name": "FallMirror",
+  "name": "FallMirror · sovereign stress sonar",
   "short_name": "FallMirror",
-  "description": "Sovereign self-reflection tool — runs on your device, nothing leaves it",
+  "description": "Seven-shape stress sonar. Two minutes. Runs in your browser. Nothing leaves your device.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#1a1a1e",
-  "theme_color": "#1a1a1e",
+  "theme_color": "#7a9c7e",
+  "orientation": "portrait-primary",
+  "categories": ["health", "lifestyle", "productivity"],
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231a1a1e'/%3E%3Ctext x='96' y='132' font-family='serif' font-size='108' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231a1a1e'/%3E%3Ctext x='96' y='128' font-family='serif' font-size='108' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
       "type": "image/svg+xml",
-      "sizes": "192x192"
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%231a1a1e'/%3E%3Ctext x='256' y='340' font-family='serif' font-size='288' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }

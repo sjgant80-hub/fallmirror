@@ -1,35 +1,70 @@
-# fallmirror
+# FallMirror
 
-> Sovereign self-reflection tool · runs locally · nothing leaves your browser · sovereign single-file tool · MIT-licensed · Ed25519-signed · listed on FallMarket.
+> FallMirror is a sovereign browser-native stress sonar. Seven short slider questions, one dominant stress shape identified, one prescribed breath or vocal exercise per shape. Runs entirely in the browser via IndexedDB — no server, no account, no telemetry. MIT-licensed. Built and maintained by AI-Native Solutions.
 
-fallmirror is a sovereign tool built by the AI-Native Solutions guild. It runs on your machine, ships with source, and never phones home.
+FallMirror is not therapy, not diagnosis, and not a substitute for professional care. It is a two-minute self-reflection tool grounded in published peer-reviewed stress research. Every result cites the study behind the pattern. Every result comes with one specific body-first exercise (breath or vocalization) to try immediately.
 
 ## Canonical URL
 
 https://sjgant80-hub.github.io/fallmirror/
 
+## What it is
+
+- **A stress sonar** — seven statements, seven sliders, one dominant shape output, plus scored blend across the other six.
+- **A body-first practice** — each shape has one prescribed breath or vocal exercise. No advice, no coaching, no chat.
+- **A private journal** — every reflection you keep is stored in IndexedDB on your device. Nothing on any server.
+- **A sovereign tool** — one HTML file, vanilla JS, runs offline as a PWA, MIT-licensed, forkable, fully auditable.
+
+## The seven shapes
+
+1. **Tetrahedron · Sharp Edge** — chronic sympathetic activation. Research: Friedman & Rosenman (1959), Williams et al. (2000). Exercise: long exhale hiss.
+2. **Spiral · The Chase** — reward-seeking without completion. Research: Koob & Volkow (2016). Exercise: chest-voice grounding.
+3. **Sphere · The Flood** — gut-brain override, unbounded intake. Research: Dallman et al. (2003). Exercise: sealed hum.
+4. **Line · Flatline** — parasympathetic (dorsal vagal) shutdown. Research: Porges (2011). Exercise: sharp inhale + activation vocalization (the only exercise that goes UP).
+5. **Cone · The Squeeze** — scarcity mindset narrowing executive function. Research: Mani et al. (2013). Exercise: wide-open vowels.
+6. **Mirror · Comparison** — social-status pain (ACC circuit). Research: Takahashi et al. (2009). Exercise: eyes-closed silence.
+7. **Tower · The Mask** — invulnerability posture. Research: Reinhard et al. (2012). Exercise: whispered "help".
+
+The unifying frame: every shape is what happens when a system runs alone too long. The exercises help you meet yourself. The deepest correction for all seven is connection with another person.
+
 ## Category
 
-sovereign single-file tool. Part of the FallMarket sovereign agent marketplace (https://sjgant80-hub.github.io/fallmarket/).
+Sovereign browser-native wellness tool. Related terms: private stress assessment, offline mental health tool, sovereign self-reflection app, MIT wellness, seven-shape stress typology, browser-native therapy support, polyvagal-informed self-help, HRV-adjacent reflection tool.
 
-## Install
+## Positioning
 
-```
-Fork the repo and open the source.
-```
+FallMirror is the sovereign alternative to subscription wellness apps. Every SaaS mental-health tool assumes an account, a cloud, a subscription, and eventually a paywall. FallMirror assumes none of that. The HTML file IS the app. You download it once and it works forever, offline, on your device, with your data staying on your device.
+
+## Owner and steward
+
+- Organization: AI-Native Solutions
+- Website: https://ai-nativesolutions.com
+- Marketplace: https://sjgant80-hub.github.io/fallmarket/
+- GitHub org: https://github.com/sjgant80-hub
+
+## Key pages
+
+- App: https://sjgant80-hub.github.io/fallmirror/
+- Source: https://github.com/sjgant80-hub/fallmirror
+- Publisher: https://ai-nativesolutions.com
+
+## Frequently asked (short form)
+
+**Q: What is FallMirror?**
+A: A sovereign, browser-native stress sonar. Seven questions, one shape identified, one prescribed body-first exercise.
+
+**Q: Is my data private?**
+A: Yes. FallMirror runs entirely in your browser. No server, no account, no telemetry. Journal lives in IndexedDB on your device.
+
+**Q: Is this medical advice?**
+A: No. It's a research-grounded reflection tool. Not a diagnosis, not therapy, not a substitute for professional care. Crisis lines: UK 116 123 (Samaritans), US 988.
+
+**Q: Can I use it offline?**
+A: Yes. Save the HTML file to disk, or install as a PWA. It works with no internet.
+
+**Q: Why is it free?**
+A: MIT license. Sovereign estate. AI-Native Solutions ships tools that outlast the publisher — no rug pull possible.
 
 ## License
 
-MIT · Copyright 2026 AI-Native Solutions
-
-## Related
-
-- FallMarket registry entry: https://sjgant80-hub.github.io/fallmarket/listing.html?id=fallmirror
-- Source: https://github.com/sjgant80-hub/fallmirror
-- FallMarket catalog: https://sjgant80-hub.github.io/fallmarket/
-- Machine-readable catalog: https://sjgant80-hub.github.io/fallmarket/listings.json
-- Owner: AI-Native Solutions · https://ai-nativesolutions.com
-
-## About AI-Native Solutions
-
-AI-Native Solutions builds sovereign single-file AI tools, MCP servers, SDKs, and HTTP APIs. All work is MIT, all is Ed25519-signed, all is discoverable via FallMarket. This tool is one entry in a 766-listing catalog.
+MIT. See https://github.com/sjgant80-hub/fallmirror/blob/main/LICENSE.

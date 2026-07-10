@@ -3,319 +3,881 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FallMirror · private reflection tool</title>
-<meta name="description" content="A private reflection tool. Runs on your device. Nothing leaves it. The mirror doesn't judge — it reflects. You do the seeing.">
+<title>FallMirror · the sovereign stress sonar · seven shapes · runs in your browser</title>
+<meta name="description" content="FallMirror is a sovereign stress sonar. Seven shape questions, one shape result, one prescribed breathing or vocal exercise. Runs in your browser. Nothing leaves your device. MIT-licensed. Free forever.">
+<meta name="keywords" content="stress sonar, self-reflection tool, sovereign wellness app, private mental health tool, browser-native therapy tool, offline stress test, MIT wellness, seven shapes, AI-Native Solutions, FallMirror">
 <meta name="author" content="AI-Native Solutions">
 <meta name="theme-color" content="#1a1a1e">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sjgant80-hub.github.io/fallmirror/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FallMirror">
+<meta property="og:title" content="FallMirror · the sovereign stress sonar">
+<meta property="og:description" content="Seven shapes. One reflection. Runs in your browser. Nothing leaves your device.">
+<meta property="og:url" content="https://sjgant80-hub.github.io/fallmirror/">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FallMirror · seven-shape stress sonar">
+<meta name="twitter:description" content="A private reflection tool. Runs offline. Your data never leaves.">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1a1e'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%237a9c7e' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.webmanifest">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FallMirror",
+  "description": "A sovereign stress sonar. Seven shape questions, one shape result, one prescribed breathing or vocal exercise. Runs in your browser. Nothing leaves your device.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any modern browser",
+  "url": "https://sjgant80-hub.github.io/fallmirror/",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "AI-Native Solutions",
+    "url": "https://ai-nativesolutions.com"
+  },
+  "featureList": [
+    "Runs entirely in-browser · no server",
+    "No account, no login, no telemetry",
+    "IndexedDB local journal · your data never leaves",
+    "Seven-shape stress classification with published research citations",
+    "Prescribed breathing and vocal exercises per shape",
+    "MIT licensed · fork it, host it, run it from disk"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is FallMirror?", "acceptedAnswer": { "@type": "Answer", "text": "A private stress sonar. You answer seven short questions, it identifies which of seven stress shapes fits you right now, and prescribes one breathing or vocal exercise for that shape." } },
+    { "@type": "Question", "name": "Does my data leave my device?", "acceptedAnswer": { "@type": "Answer", "text": "No. The app runs entirely in your browser. There is no server, no account, no telemetry. Your journal lives in IndexedDB on your device. You can export it or wipe it any time." } },
+    { "@type": "Question", "name": "Is this medical advice?", "acceptedAnswer": { "@type": "Answer", "text": "No. FallMirror is a reflection tool grounded in published stress research. It is not a diagnosis, not therapy, and not a substitute for professional care. If you're in crisis, contact a qualified professional or emergency services." } },
+    { "@type": "Question", "name": "What are the seven shapes?", "acceptedAnswer": { "@type": "Answer", "text": "Tetrahedron (sharp edge), Spiral (chase), Sphere (flood), Line (flatline), Cone (squeeze), Mirror (comparison), Tower (mask). Each corresponds to a distinct stress pattern documented in the published research linked in the app." } },
+    { "@type": "Question", "name": "Why shapes instead of labels?", "acceptedAnswer": { "@type": "Answer", "text": "Because the same energy takes different geometric forms depending on where it's stuck. A shape is easier to notice, name, and change than a label. Shapes rotate; identities don't." } }
+  ]
+}
+</script>
+
 <style>
-:root{--void:#1a1a1e;--deep:#212127;--surface:#2a2a30;--raised:#33333a;--line:rgba(232,228,219,0.08);--line2:rgba(232,228,219,0.16);--text:#e8e4db;--muted:#928d80;--dim:#6b6660;--sage:#7a9c7e;--sage-dim:rgba(122,156,126,0.14);--amber:#d4a052;--amber-dim:rgba(212,160,82,0.12);--coral:#d67a5a;--coral-glow:rgba(214,122,90,0.15);--serif:'Cormorant Garamond','Iowan Old Style',Georgia,serif;--sans:'Inter',-apple-system,system-ui,sans-serif;--mono:'JetBrains Mono','IBM Plex Mono',monospace}
+:root{
+  --void:#1a1a1e;--deep:#212127;--surface:#2a2a30;--raised:#33333a;
+  --line:rgba(232,228,219,0.08);--line2:rgba(232,228,219,0.16);
+  --text:#e8e4db;--muted:#928d80;--dim:#6b6660;
+  --sage:#7a9c7e;--sage-dim:rgba(122,156,126,0.14);
+  --amber:#d4a052;--amber-dim:rgba(212,160,82,0.12);
+  --coral:#d67a5a;--coral-glow:rgba(214,122,90,0.15);
+  --serif:'Cormorant Garamond','Iowan Old Style',Georgia,serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --mono:'JetBrains Mono','IBM Plex Mono',monospace;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--void);color:var(--text);font-family:var(--sans);font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh}
-button{font-family:inherit;cursor:pointer;border:none;outline:none}
+button{font-family:inherit;cursor:pointer;border:none;outline:none;color:inherit;background:transparent}
 input,textarea{font-family:inherit;background:transparent;color:var(--text);border:none;outline:none;width:100%}
+a{color:var(--sage);text-decoration:none}
+a:hover{color:var(--text)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);line-height:1.2}
-h1{font-size:34px;letter-spacing:0.01em;margin-bottom:8px}
+h1{font-size:clamp(30px,5vw,48px);letter-spacing:0.005em;margin-bottom:10px}
 h1 em{color:var(--sage);font-style:italic}
-h2{font-size:22px;color:var(--text);margin-bottom:10px}
+h2{font-size:clamp(22px,3vw,30px);color:var(--text);margin-bottom:14px}
 h2 em{color:var(--sage);font-style:italic}
-h3{font-size:15px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.14em;font-family:var(--mono);font-weight:500}
-.app{display:grid;grid-template-rows:auto 1fr;min-height:100vh}
-.topbar{background:rgba(26,26,30,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
+h3{font-size:12px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.14em;font-family:var(--mono);font-weight:500}
+
+.app{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh}
+.topbar{background:rgba(26,26,30,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;color:var(--text)}
 .brand .glyph{color:var(--sage);font-size:22px}
 .brand .co{color:var(--dim);font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;margin-left:6px;text-transform:uppercase}
-.tabs{display:flex;gap:4px}
-.tab{background:transparent;color:var(--muted);padding:8px 16px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;transition:all .15s}
-.tab:hover{color:var(--text)}
-.tab.on{background:var(--sage-dim);color:var(--sage)}
-main{padding:24px;max-width:900px;margin:0 auto;width:100%}
+.tabs{display:flex;gap:2px}
+.tab{color:var(--muted);padding:8px 14px;border-radius:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;transition:all .15s}
+.tab:hover{color:var(--text);background:var(--sage-dim)}
+.tab.on{color:var(--sage);background:var(--sage-dim)}
+@media(max-width:640px){.tab{padding:6px 10px;font-size:9.5px}.brand .co{display:none}}
+
+main{padding:48px 24px 80px;max-width:920px;margin:0 auto;width:100%}
 .view{display:none}
-.view.on{display:block}
-.crisis-btn{position:fixed;bottom:22px;left:22px;background:var(--coral);color:var(--void);padding:10px 16px;border-radius:24px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;box-shadow:0 6px 20px var(--coral-glow);z-index:100}
-.crisis-btn:hover{background:#e28a6a}
-.crisis-modal{position:fixed;inset:0;background:rgba(26,26,30,0.85);backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.crisis-modal.on{display:flex}
-.crisis-modal .box{background:var(--deep);border:1px solid var(--coral);border-radius:16px;padding:28px;max-width:520px;width:100%}
-.crisis-modal h2{color:var(--coral);margin-bottom:16px}
-.crisis-modal p{color:var(--text);margin-bottom:12px;font-size:15px}
-.crisis-modal .num{background:var(--surface);padding:12px 14px;border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
-.crisis-modal .num strong{color:var(--sage);font-family:var(--mono);font-size:14px;letter-spacing:0.06em}
-.crisis-modal .num a{color:var(--text);text-decoration:none;font-family:var(--mono)}
-.crisis-modal .close-btn{background:transparent;color:var(--muted);border:1px solid var(--line2);padding:10px 20px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;margin-top:14px}
-.setup-card{background:var(--deep);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
-.setup-card p{color:var(--muted);margin-bottom:14px;max-width:600px}
-.big-btn{background:var(--sage);color:var(--void);padding:14px 28px;border-radius:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;margin-right:8px}
-.big-btn:hover{background:#8db091}
-.big-btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
-.session{display:flex;flex-direction:column;gap:16px;padding-bottom:200px}
-.turn{padding:14px 18px;border-radius:12px;max-width:80%;line-height:1.7}
-.turn.mirror{background:var(--sage-dim);border-left:2px solid var(--sage);align-self:flex-start;font-family:var(--serif);font-size:20px;font-style:italic;color:var(--text)}
-.turn.user{background:var(--surface);align-self:flex-end;color:var(--text);border-right:2px solid var(--muted)}
-.turn.chord{background:linear-gradient(135deg,var(--sage-dim),rgba(212,160,82,0.06));border:1px solid var(--line2);align-self:stretch;max-width:100%;font-family:var(--serif);font-size:17px;line-height:1.75;padding:20px 24px}
-.turn.chord .label{color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px}
-.turn.chord em{color:var(--sage);font-style:italic}
-.input-bar{position:fixed;bottom:22px;left:280px;right:22px;background:var(--deep);border:1px solid var(--line2);border-radius:16px;padding:14px 18px;display:flex;gap:10px;align-items:flex-end;box-shadow:0 -8px 24px rgba(0,0,0,0.3)}
-@media (max-width:800px){.input-bar{left:22px;bottom:80px}.crisis-btn{bottom:80px}}
-.input-bar textarea{background:transparent;color:var(--text);border:none;outline:none;resize:none;font-size:15px;line-height:1.5;min-height:24px;max-height:120px;flex:1}
-.input-bar button{background:var(--sage);color:var(--void);padding:10px 18px;border-radius:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600}
-.input-bar button:disabled{opacity:0.5;cursor:not-allowed}
-.session-meta{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--surface);border-radius:8px;margin-bottom:16px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.08em}
-.session-meta .stage{color:var(--sage)}
-.session-meta .end-btn{background:transparent;color:var(--muted);border:1px solid var(--line2);padding:5px 10px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase}
-.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
-@media(max-width:700px){.dash-grid{grid-template-columns:1fr}}
-.card{background:var(--deep);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
-.card .hint{color:var(--muted);font-size:12.5px;font-style:italic;margin-top:8px}
-.radial{position:relative;width:100%;height:280px;display:flex;align-items:center;justify-content:center}
-.radial svg{width:280px;height:280px}
-.gauge{position:relative;height:80px;background:var(--surface);border-radius:12px;overflow:hidden;margin-bottom:14px}
-.gauge-fill{position:absolute;top:0;bottom:0;width:2px;background:var(--sage);left:50%;transform:translateX(-50%);transition:left 0.5s;box-shadow:0 0 12px var(--sage)}
-.gauge-labels{display:flex;justify-content:space-between;padding:12px 16px;font-family:var(--mono);font-size:9.5px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
-.gauge-center{position:absolute;top:0;bottom:0;width:1px;background:var(--line2);left:50%}
-.gauge-value{position:absolute;top:38px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:32px;font-style:italic;color:var(--sage);pointer-events:none}
-.witness-ladder{display:flex;flex-direction:column;gap:6px}
-.witness-stage{padding:9px 14px;background:var(--surface);border-radius:8px;border-left:3px solid var(--line);font-size:13.5px;transition:all .15s}
-.witness-stage.on{border-left-color:var(--sage);background:var(--sage-dim)}
-.witness-stage.past{opacity:0.6;border-left-color:var(--muted)}
-.witness-stage .num{font-family:var(--mono);color:var(--muted);font-size:10px;margin-right:8px}
-.witness-stage .name{color:var(--text)}
-.witness-stage.on .name{color:var(--sage)}
-.torus-wrap{position:relative;width:100%;height:240px;display:flex;align-items:center;justify-content:center}
-.torus-wrap svg{width:100%;height:100%;max-width:280px}
-.journal-item{background:var(--deep);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px;cursor:pointer}
-.journal-item:hover{border-color:var(--sage)}
-.journal-item .date{font-family:var(--mono);color:var(--muted);font-size:11px;letter-spacing:0.08em;margin-bottom:8px}
-.journal-item .chord-preview{color:var(--text);font-family:var(--serif);font-size:15px;font-style:italic;line-height:1.6}
-.journal-item .stage-tag,.journal-item .axis-tag{display:inline-block;padding:3px 8px;border-radius:10px;font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;margin-top:8px;margin-right:4px}
-.journal-item .stage-tag{background:var(--sage-dim);color:var(--sage)}
-.journal-item .axis-tag{background:var(--surface);color:var(--muted)}
-.setting-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);gap:14px}
-.setting-row:last-child{border-bottom:none}
-.setting-row .label{color:var(--text);font-size:14px}
-.setting-row .desc{color:var(--muted);font-size:12px;margin-top:2px}
-.setting-row button{background:transparent;color:var(--text);border:1px solid var(--line2);padding:8px 14px;border-radius:6px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap}
-.setting-row button.danger{color:var(--coral);border-color:var(--coral)}
-.status-pill{display:inline-block;padding:3px 10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;color:var(--muted);margin-left:8px}
-.status-pill.on{background:var(--sage-dim);color:var(--sage);border-color:var(--sage)}
-.notice{background:var(--amber-dim);border-left:3px solid var(--amber);padding:12px 16px;border-radius:6px;color:var(--text);font-size:13px;margin:14px 0}
-.notice strong{color:var(--amber)}
+.view.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.hero{text-align:center;padding:60px 0 40px}
+.hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;color:var(--sage);text-transform:uppercase;margin-bottom:24px}
+.hero p.lede{font-family:var(--serif);font-size:clamp(19px,2.3vw,24px);color:var(--muted);font-style:italic;max-width:640px;margin:18px auto 32px;line-height:1.5}
+.hero .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.btn{padding:14px 28px;border-radius:6px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--line2);color:var(--text);transition:all .2s;font-weight:500;background:transparent}
+.btn.primary{background:var(--sage);color:var(--void);border-color:var(--sage);font-weight:600}
+.btn.primary:hover{background:var(--text);border-color:var(--text)}
+.btn:hover{border-color:var(--sage);color:var(--sage)}
+
+.hero-shapes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:44px auto 0;max-width:640px}
+.hero-shape{font-size:30px;color:var(--sage);opacity:0.5;transition:opacity .3s,transform .3s;cursor:default}
+.hero-shape:hover{opacity:1;transform:translateY(-3px)}
+
+.promise{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.promise-item{background:var(--deep);padding:24px 22px}
+.promise-item .icon{font-family:var(--mono);font-size:14px;color:var(--sage);margin-bottom:10px;letter-spacing:0.1em}
+.promise-item h3{color:var(--text);text-transform:none;letter-spacing:0;font-family:var(--serif);font-size:18px;margin-bottom:8px}
+.promise-item p{font-size:14px;color:var(--muted);line-height:1.6}
+
+.sonar-intro{text-align:center;margin-bottom:40px}
+.probe{background:var(--deep);border:1px solid var(--line);padding:32px 28px;margin-bottom:18px;border-radius:10px;transition:border-color .2s}
+.probe.active{border-color:var(--sage)}
+.probe-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.probe-num{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:0.14em;text-transform:uppercase}
+.probe-shape{font-size:26px;color:var(--sage)}
+.probe q{font-family:var(--serif);font-size:22px;line-height:1.4;color:var(--text);font-style:normal;display:block;margin-bottom:20px}
+.probe q::before,.probe q::after{content:''}
+.probe .helper{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.55}
+.slider-wrap{padding:12px 0}
+.slider-row{display:flex;align-items:center;gap:14px}
+.slider-row input[type=range]{flex:1;height:6px;background:var(--surface);border-radius:3px;-webkit-appearance:none;appearance:none;outline:none}
+.slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:var(--sage);border-radius:50%;cursor:pointer;transition:transform .1s}
+.slider-row input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.slider-row input[type=range]::-moz-range-thumb{width:24px;height:24px;background:var(--sage);border-radius:50%;cursor:pointer;border:none}
+.slider-val{font-family:var(--mono);font-size:14px;color:var(--sage);min-width:32px;text-align:center;font-weight:600}
+.slider-labels{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:0.1em}
+.sonar-actions{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+.result-hero{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.result-shape-big{font-size:96px;color:var(--sage);line-height:1;margin-bottom:20px;text-shadow:0 0 40px var(--sage-dim)}
+.result-name{font-family:var(--serif);font-size:44px;color:var(--text);margin-bottom:6px}
+.result-latin{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px}
+.result-tag{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:18px}
+.result-score{display:inline-block;background:var(--sage-dim);color:var(--sage);padding:6px 14px;border-radius:20px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-top:16px}
+
+.result-section{margin-bottom:36px;background:var(--deep);border:1px solid var(--line);padding:28px 26px;border-radius:8px}
+.result-section h3{color:var(--sage);margin-bottom:14px}
+.result-section p{color:var(--text);margin-bottom:12px}
+.result-section p:last-child{margin-bottom:0}
+.result-section .cite{font-family:var(--mono);font-size:12px;color:var(--muted);border-left:2px solid var(--sage);padding:8px 14px;margin:14px 0;background:rgba(122,156,126,0.05);line-height:1.55}
+
+.exercise-box{background:var(--surface);border:1px solid var(--sage);padding:26px;border-radius:8px;margin-top:20px}
+.exercise-name{font-family:var(--serif);font-size:26px;color:var(--sage);margin-bottom:12px;font-style:italic;text-align:center}
+.exercise-steps{text-align:left;max-width:520px;margin:16px auto 0;padding-left:20px}
+.exercise-steps li{color:var(--text);margin-bottom:8px;font-size:14.5px;line-height:1.6}
+.exercise-steps li::marker{color:var(--sage);font-family:var(--mono)}
+
+.result-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+
+.other-shapes{margin-top:28px;padding:22px;background:var(--deep);border:1px solid var(--line);border-radius:8px}
+.other-shapes h3{color:var(--muted);margin-bottom:14px}
+.other-shapes-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.mini-shape{padding:12px;background:var(--surface);border-radius:6px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.mini-shape .g{font-size:18px;color:var(--sage);opacity:0.7}
+.mini-shape .s{font-family:var(--mono);font-size:11px;color:var(--dim);margin-left:auto}
+
+.connection-frame{background:linear-gradient(135deg,var(--sage-dim),transparent);border:1px solid var(--sage);padding:28px;border-radius:10px;margin-top:32px;text-align:center}
+.connection-frame h3{color:var(--sage)}
+.connection-frame p{font-family:var(--serif);font-size:18px;color:var(--text);font-style:italic;line-height:1.55;max-width:560px;margin:0 auto}
+
+.journal-empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.journal-empty p{font-family:var(--serif);font-size:20px;font-style:italic;margin-bottom:20px}
+.entry{background:var(--deep);border:1px solid var(--line);padding:22px 24px;border-radius:8px;margin-bottom:12px;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.entry .shape-glyph{font-size:32px;color:var(--sage)}
+.entry .entry-body h4{font-family:var(--serif);font-size:18px;color:var(--text);margin-bottom:4px}
+.entry .entry-body .meta{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase}
+.entry .entry-actions{display:flex;gap:6px}
+.icon-btn{padding:6px 10px;color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:4px;transition:all .15s;background:transparent;cursor:pointer}
+.icon-btn:hover{color:var(--coral);border-color:var(--coral)}
+.journal-controls{display:flex;gap:12px;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap}
+
+.timeline{margin-top:36px;padding:22px;background:var(--deep);border:1px solid var(--line);border-radius:8px}
+.timeline h3{color:var(--sage);margin-bottom:16px}
+.tl-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:end}
+.tl-col{display:flex;flex-direction:column;align-items:center;gap:6px}
+.tl-bar{width:100%;background:var(--sage-dim);border-radius:3px 3px 0 0;min-height:4px;position:relative;transition:height .3s}
+.tl-bar:hover{background:var(--sage)}
+.tl-label{font-size:24px;color:var(--sage);opacity:0.7}
+.tl-count{font-family:var(--mono);font-size:10px;color:var(--muted)}
+
+.prose{max-width:720px;margin:0 auto}
+.prose h2{margin-top:36px;margin-bottom:12px}
+.prose h2:first-child{margin-top:0}
+.prose h3{color:var(--sage);text-transform:none;letter-spacing:0;font-family:var(--serif);font-size:19px;margin-top:26px;margin-bottom:8px}
+.prose p{color:var(--text);margin-bottom:14px;line-height:1.7}
+.prose ul{margin:12px 0 18px 20px;color:var(--text)}
+.prose li{margin-bottom:6px}
+.prose blockquote{border-left:2px solid var(--sage);padding-left:18px;margin:18px 0;color:var(--muted);font-family:var(--serif);font-size:18px;font-style:italic;line-height:1.55}
+
+.faq-item{background:var(--deep);border:1px solid var(--line);border-radius:8px;padding:20px 24px;margin-bottom:12px}
+.faq-item summary{cursor:pointer;font-family:var(--serif);font-size:19px;color:var(--text);list-style:none;position:relative;padding-right:30px}
+.faq-item summary::after{content:'+';position:absolute;right:0;top:-3px;color:var(--sage);font-size:24px;font-family:var(--mono);transition:transform .2s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{margin-top:14px;color:var(--muted);line-height:1.65}
+
+.glossary-item{padding:16px 0;border-bottom:1px solid var(--line)}
+.glossary-item:last-child{border:none}
+.glossary-item dt{font-family:var(--mono);font-size:12px;color:var(--sage);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.glossary-item dd{color:var(--text);margin-left:0;line-height:1.55}
+
+footer{border-top:1px solid var(--line);padding:32px 24px;text-align:center;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;line-height:1.8}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--sage)}
+footer .foot-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+
+.disclaimer{max-width:640px;margin:32px auto 0;padding:16px 20px;background:var(--surface);border-left:2px solid var(--amber);color:var(--muted);font-size:13px;line-height:1.6;border-radius:4px}
+.disclaimer strong{color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase}
 </style>
 </head>
 <body>
+
 <div class="app">
+
 <header class="topbar">
-<div class="brand"><span class="glyph">◊</span> FallMirror <span class="co">AI-Native Solutions</span></div>
-<nav class="tabs">
-<button class="tab on" data-view="talk">Talk</button>
-<button class="tab" data-view="journal">Journal</button>
-<button class="tab" data-view="dashboard">Dashboard</button>
-<button class="tab" data-view="settings">Settings</button>
-</nav>
+  <div class="brand">
+    <span class="glyph">◊</span>
+    <span>FallMirror</span>
+    <span class="co">AI-Native Solutions</span>
+  </div>
+  <nav class="tabs">
+    <button class="tab on" data-view="home">Home</button>
+    <button class="tab" data-view="sonar">Sonar</button>
+    <button class="tab" data-view="journal">Journal</button>
+    <button class="tab" data-view="about">About</button>
+    <button class="tab" data-view="faq">FAQ</button>
+  </nav>
 </header>
+
 <main>
-<section class="view on" id="view-talk">
-<div id="setup-panel" class="setup-card">
-<h1>Welcome. <em>The mirror doesn't judge.</em></h1>
-<p>A private reflection tool space. Runs on your device. Nothing leaves this browser. No account, no server, no harvest. Just you, the mirror, and your own map building over time.</p>
-<p style="color:var(--muted)">First time? A short guided assessment finds your starting profile. About five minutes. After that, drop in for as long or as short as you like.</p>
-<div style="margin-top:18px">
-<button class="big-btn" id="btn-calibrate">▸ Start calibration</button>
-<button class="big-btn ghost" id="btn-quick-session">Or just talk</button>
-</div>
-<div class="notice" style="margin-top:22px">
-<strong>Not for crisis.</strong> If you're in acute distress or thinking of self-harm, this isn't the right place. Use the <button style="background:transparent;color:var(--coral);text-decoration:underline;padding:0;border:none;font-size:13px;cursor:pointer" onclick="showCrisis()">crisis resources</button> — real people, human-answered.
-</div>
-</div>
-<div id="session-panel" style="display:none">
-<div class="session-meta">
-<div>Session <span id="session-num">1</span> · <span id="session-mode">Free</span> · <span class="stage" id="session-stage">Stage 0</span></div>
-<button class="end-btn" id="btn-end-session">End session</button>
-</div>
-<div class="session" id="session-stream"></div>
-</div>
-<div class="input-bar" id="input-bar" style="display:none">
-<textarea id="input-box" rows="1" placeholder="What's true right now?"></textarea>
-<button id="btn-send">Send</button>
-</div>
+
+<section class="view on" id="view-home">
+  <div class="hero">
+    <div class="kicker">◊ the sovereign stress sonar</div>
+    <h1>Seven shapes. <em>One reflection.</em><br>Runs in your browser.</h1>
+    <p class="lede">Stress doesn't feel like one thing. It takes shape. FallMirror asks seven short questions, tells you which shape fits you right now, and prescribes one breath or vocal exercise for that shape. Two minutes. No account. Nothing leaves your device.</p>
+    <div class="ctas">
+      <button class="btn primary" onclick="switchView('sonar')">Take the sonar →</button>
+      <button class="btn" onclick="switchView('about')">How it works</button>
+    </div>
+    <div class="hero-shapes" title="the seven shapes">
+      <span class="hero-shape" title="Tetrahedron · Sharp Edge">▲</span>
+      <span class="hero-shape" title="Spiral · The Chase">◎</span>
+      <span class="hero-shape" title="Sphere · The Flood">●</span>
+      <span class="hero-shape" title="Line · Flatline">—</span>
+      <span class="hero-shape" title="Cone · Squeeze">◄</span>
+      <span class="hero-shape" title="Mirror · Comparison">◇</span>
+      <span class="hero-shape" title="Tower · Mask">▯</span>
+    </div>
+  </div>
+
+  <div class="promise">
+    <div class="promise-item">
+      <div class="icon">01</div>
+      <h3>Sovereign by design</h3>
+      <p>Runs entirely in-browser. No account, no login, no server. Your journal lives in local storage on your device.</p>
+    </div>
+    <div class="promise-item">
+      <div class="icon">02</div>
+      <h3>Grounded in research</h3>
+      <p>Every shape maps to a published stress pattern — Friedman-Rosenman, Porges, Koob-Volkow, Mani-Shafir, and others. Citations in the app.</p>
+    </div>
+    <div class="promise-item">
+      <div class="icon">03</div>
+      <h3>Actionable, not analytical</h3>
+      <p>Each result comes with one specific breath or vocal exercise. Two minutes to do. No app to subscribe to. No professional to book.</p>
+    </div>
+    <div class="promise-item">
+      <div class="icon">04</div>
+      <h3>MIT · fork it</h3>
+      <p>Every line of code is public and MIT-licensed. Save the HTML to disk. Runs offline forever. Yours.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Not medical advice</strong><br>
+    FallMirror is a reflection tool, not a diagnosis. If you're in crisis, contact a qualified professional or emergency services. UK: <a href="https://www.samaritans.org/">Samaritans 116 123</a>. US: <a href="https://988lifeline.org/">988 Suicide &amp; Crisis Lifeline</a>.
+  </div>
 </section>
+
+<section class="view" id="view-sonar">
+  <div class="sonar-intro">
+    <h2>How much does each of these <em>feel like you right now?</em></h2>
+    <p style="color:var(--muted);font-size:15px;max-width:600px;margin:14px auto 0;line-height:1.6">Move each slider to how much the statement fits you today. No wrong answers. This isn't a test. It's a mirror.</p>
+  </div>
+
+  <div id="probes"></div>
+
+  <div class="sonar-actions">
+    <button class="btn primary" onclick="scoreSonar()">Reflect →</button>
+    <button class="btn" onclick="resetSonar()">Reset sliders</button>
+  </div>
+</section>
+
+<section class="view" id="view-result">
+  <div id="result-content"></div>
+</section>
+
 <section class="view" id="view-journal">
-<h2><em>Journal</em></h2>
-<p style="color:var(--muted);margin-bottom:20px">Every session leaves a takeaway. This is the story they add up to.</p>
-<div id="journal-list"></div>
+  <h2>Your reflection journal</h2>
+  <p style="color:var(--muted);margin-bottom:24px">Every sonar result you've kept. Stored locally on this device. Nothing on any server.</p>
+
+  <div class="journal-controls">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" onclick="exportJournal()">↓ Export JSON</button>
+      <button class="btn" onclick="importJournal()">↑ Import JSON</button>
+    </div>
+    <button class="btn" style="border-color:var(--coral);color:var(--coral)" onclick="wipeJournal()">Wipe all</button>
+  </div>
+
+  <div id="journal-content"></div>
+  <div id="timeline-content"></div>
 </section>
-<section class="view" id="view-dashboard">
-<h2><em>Your profile</em></h2>
-<p style="color:var(--muted);margin-bottom:20px">Noticing your patterns IS the point. Movement matters more than getting it perfect.</p>
-<div class="dash-grid">
-<div class="card">
-<h3>Your profile</h3>
-<div class="radial" id="bloom-radial"></div>
-<div class="hint" id="bloom-hint"></div>
-</div>
-<div class="card">
-<h3>How you.re running</h3>
-<div class="gauge">
-<div class="gauge-fill" id="gauge-fill"></div>
-<div class="gauge-center"></div>
-<div class="gauge-value" id="gauge-value">—</div>
-</div>
-<div class="gauge-labels"><span>Overwhelmed</span><span style="color:var(--sage)">balance</span><span>Withdrawn</span></div>
-<div class="hint">Balance isn't a place — it's staying between the two edges.</div>
-</div>
-</div>
-<div class="dash-grid">
-<div class="card">
-<h3>Self-awareness</h3>
-<div class="witness-ladder" id="witness-ladder">
-<div class="witness-stage" data-s="0"><span class="num">0</span><span class="name">Caught in thought</span></div>
-<div class="witness-stage" data-s="1"><span class="num">1</span><span class="name">Starting to notice</span></div>
-<div class="witness-stage" data-s="2"><span class="num">2</span><span class="name">Stable observer</span></div>
-<div class="witness-stage" data-s="3"><span class="num">3</span><span class="name">Observer of the observer</span></div>
-<div class="witness-stage" data-s="4"><span class="num">4</span><span class="name">Beyond words</span></div>
-</div>
-</div>
-<div class="card">
-<h3>Sessions over time</h3>
-<div class="torus-wrap" id="torus-wrap"></div>
-<div class="hint">Each dot is one session. Patterns become visible over time.</div>
-</div>
-</div>
+
+<section class="view" id="view-about">
+  <div class="prose">
+    <h2>What FallMirror is</h2>
+    <p>FallMirror is a private, browser-native stress sonar. You answer seven short slider questions. It tells you which of seven distinct stress shapes fits you strongest right now, gives you the published research behind that pattern, and prescribes one specific breath or vocal exercise to try.</p>
+    <p>That's it. There's no chat, no algorithm learning about you, no account, no telemetry, no cloud storage. The HTML file you're using is the whole app.</p>
+
+    <h2>Why seven shapes</h2>
+    <p>Chronic stress takes on distinct geometric characters depending on which body system is dysregulated. Sharp-edged aggression looks different from flatline shutdown, which looks different from spiral-chasing addiction, which looks different from tower-like mask-maintenance.</p>
+    <p>Each shape corresponds to a specific pattern documented in peer-reviewed stress research:</p>
+    <ul>
+      <li><strong>Tetrahedron (Sharp Edge)</strong> — chronic sympathetic activation · Friedman &amp; Rosenman (1959), Williams et al. (2000)</li>
+      <li><strong>Spiral (Chase)</strong> — reward-seeking without completion · Koob &amp; Volkow (2016)</li>
+      <li><strong>Sphere (Flood)</strong> — gut-brain override, unbounded intake · Dallman et al. (2003)</li>
+      <li><strong>Line (Flatline)</strong> — parasympathetic collapse · Porges (2011, Polyvagal Theory)</li>
+      <li><strong>Cone (Squeeze)</strong> — scarcity mindset narrowing executive function · Mani et al. (2013)</li>
+      <li><strong>Mirror (Comparison)</strong> — social-status pain circuit · Takahashi et al. (2009)</li>
+      <li><strong>Tower (Mask)</strong> — invulnerability posture · Reinhard et al. (2012)</li>
+    </ul>
+
+    <h2>Why an exercise instead of advice</h2>
+    <p>Advice moves through the thinking mind. The shapes live in the body. So the response is a body practice, not a thought experiment. Each shape has a specific breath or vocal exercise that moves the associated body system in the opposite direction of the drift. Two minutes. No equipment. No professional required.</p>
+
+    <h2>What the shapes have in common</h2>
+    <blockquote>Every shape softens when someone else is in the room with you.</blockquote>
+    <p>The exercises help you meet yourself. But every one of the seven shapes is the shape of a system that's been running alone too long. The most powerful correction — for all seven — is connection with another person. FallMirror doesn't replace that. It just gives you a two-minute practice you can do while you wait for it, or as you build it.</p>
+
+    <h2>How it's built</h2>
+    <p>One HTML file. Vanilla JS. IndexedDB for the journal. Service worker for offline. No frameworks, no CDN dependencies, no external requests.</p>
+    <p>Source: <a href="https://github.com/sjgant80-hub/fallmirror">github.com/sjgant80-hub/fallmirror</a> · MIT-licensed. Fork it. Host it. Save the HTML to your disk. It runs forever without the internet.</p>
+
+    <h2>What it isn't</h2>
+    <ul>
+      <li>Not a diagnosis</li>
+      <li>Not therapy</li>
+      <li>Not a substitute for professional care</li>
+      <li>Not a crisis service — if you're in crisis, call <a href="https://www.samaritans.org/">Samaritans (UK) 116 123</a> or <a href="https://988lifeline.org/">988 (US)</a></li>
+    </ul>
+  </div>
 </section>
-<section class="view" id="view-settings">
-<h2><em>Settings</em></h2>
-<div class="card">
-<div class="setting-row">
-<div>
-<div class="label">Better AI upgrade <span class="status-pill" id="llm-status">rule-based</span></div>
-<div class="desc">Optional in-browser AI for richer prompts. First load ~4GB · then works forever. Nothing leaves your device.</div>
-</div>
-<button id="btn-llm-toggle">Enable</button>
-</div>
-<div class="setting-row">
-<div><div class="label">Recalibrate</div><div class="desc">Start a fresh calibration. Your history is preserved.</div></div>
-<button id="btn-recalibrate">Recalibrate</button>
-</div>
-<div class="setting-row">
-<div><div class="label">Export your data</div><div class="desc">All your sessions + profile as JSON. Yours.</div></div>
-<button id="btn-export">Export</button>
-</div>
-<div class="setting-row">
-<div><div class="label">Import</div><div class="desc">Restore from a previous export.</div></div>
-<button id="btn-import">Import</button>
-<input type="file" id="file-import" accept="application/json" style="display:none">
-</div>
-<div class="setting-row">
-<div><div class="label">Show crisis resources</div><div class="desc">Always available in the bottom-left corner too.</div></div>
-<button onclick="showCrisis()">Show</button>
-</div>
-<div class="setting-row">
-<div><div class="label">Clear everything</div><div class="desc">Wipes profile and all sessions. Irreversible.</div></div>
-<button class="danger" id="btn-wipe">Clear all</button>
-</div>
-</div>
-<div class="notice" style="margin-top:22px">
-<strong>How to check it privacy.</strong> Open your browser's Network tab and talk to the mirror. Zero network activity for the core function. That's how it's built.
-</div>
+
+<section class="view" id="view-faq">
+  <h2>Frequently asked</h2>
+  <div style="margin-top:24px" id="faq-list"></div>
+
+  <h2 style="margin-top:48px">Glossary</h2>
+  <dl style="margin-top:20px">
+    <div class="glossary-item"><dt>Shape</dt><dd>A geometric character a stress pattern takes when it settles in the body. Not a label. Not an identity. A drift you can rotate back.</dd></div>
+    <div class="glossary-item"><dt>Sonar</dt><dd>The seven-slider diagnostic. Seven statements, seven slides, one dominant shape identified.</dd></div>
+    <div class="glossary-item"><dt>Exercise</dt><dd>One breath or vocal practice matched to a shape. Two minutes. Body-first, not mind-first.</dd></div>
+    <div class="glossary-item"><dt>Journal</dt><dd>The local IndexedDB record of every sonar you've kept. Never leaves your device. Exportable to JSON.</dd></div>
+    <div class="glossary-item"><dt>Connection frame</dt><dd>The one thing all seven shapes share: they're what happens when a system runs alone too long. Every shape softens with another person present.</dd></div>
+    <div class="glossary-item"><dt>Sovereign</dt><dd>Runs on your device. Nothing leaves. No account. No SaaS lock-in. You own the tool the same way you own a book.</dd></div>
+  </dl>
 </section>
+
 </main>
+
+<footer>
+  <div>◊ FallMirror · MIT · <a href="https://github.com/sjgant80-hub/fallmirror">GitHub</a> · <a href="https://ai-nativesolutions.com">AI-Native Solutions</a></div>
+  <div class="foot-links">
+    <a href="llms.txt">llms.txt</a>
+    <a href="#" onclick="switchView('about');return false">About</a>
+    <a href="#" onclick="switchView('faq');return false">FAQ</a>
+    <a href="https://sjgant80-hub.github.io/fallmarket/">FallMarket</a>
+  </div>
+  <div style="margin-top:14px;color:var(--dim);font-size:10.5px">Not medical advice. Reflection tool only. UK crisis: 116 123 · US: 988</div>
+</footer>
+
 </div>
-<button class="crisis-btn" onclick="showCrisis()">◊ Crisis help</button>
-<div class="crisis-modal" id="crisis-modal">
-<div class="box">
-<h2>You matter · reach a real person now</h2>
-<p>The mirror is a reflection tool. It's not equipped for crisis. These are — right now, human, free, confidential.</p>
-<div class="num"><strong>Samaritans · UK · 24/7</strong><a href="tel:116123">116 123</a></div>
-<div class="num"><strong>988 · US · 24/7</strong><a href="tel:988">988</a></div>
-<div class="num"><strong>Lifeline · Australia</strong><a href="tel:131114">13 11 14</a></div>
-<div class="num"><strong>NHS · non-emergency</strong><a href="tel:111">111</a></div>
-<div class="num"><strong>Emergency</strong><a href="tel:999">999 / 911 / 112</a></div>
-<p style="margin-top:14px;color:var(--muted);font-size:13px">Prefer text? Shout UK: text SHOUT to 85258 · Crisis Text Line US: text HOME to 741741.</p>
-<button class="close-btn" onclick="hideCrisis()">Close</button>
-</div>
-</div>
-<script type="module">
-const CRISIS_PATTERNS=[/\bkill(ing)?\s+(myself|me)\b/i,/\bend(ing)?\s+(it|my\s+life)\b/i,/\bsuicid(e|al)\b/i,/\bwant\s+to\s+die\b/i,/\bnot\s+worth\s+living\b/i,/\bbetter\s+off\s+dead\b/i,/\btake\s+my\s+(own\s+)?life\b/i,/\bself[\s\-]?harm/i,/\bcut(ting)?\s+myself\b/i,/\boverdos(e|ing)\b/i,/\bhurt\s+myself\b/i];
-const ABUSE_PATTERNS=[/\b(he|she|they)\s+(hits?|beats?|hurts?|rapes?)\s+me\b/i,/\b(scared|afraid)\s+of\s+(him|her|them)\b/i,/\bcan't\s+get\s+(out|away)\b/i];
-const PSYCHOSIS_HINTS=[/\b(voices?|beings?|entities?|aliens?|angels?|demons?)\s+(are\s+)?(telling|talking|controlling|watching)\s+me\b/i,/\bimplant(s|ed)?\s+in\s+my\b/i,/\bthey('re| are)\s+(reading|controlling)\s+my\s+(mind|thoughts)\b/i];
-function safetyCheck(text){for(const p of CRISIS_PATTERNS)if(p.test(text))return{level:'crisis'};for(const p of ABUSE_PATTERNS)if(p.test(text))return{level:'referral',kind:'abuse'};for(const p of PSYCHOSIS_HINTS)if(p.test(text))return{level:'referral',kind:'psychosis'};return{level:'ok'}}
-window.showCrisis=()=>document.getElementById('crisis-modal').classList.add('on');
-window.hideCrisis=()=>document.getElementById('crisis-modal').classList.remove('on');
-document.getElementById('crisis-modal').addEventListener('click',(e)=>{if(e.target.id==='crisis-modal')hideCrisis()});
 
-const AXES=[{key:'polarity',name:'Polarity'},{key:'structure',name:'Structure'},{key:'depth',name:'Depth'},{key:'time',name:'Time'},{key:'expansion',name:'Expansion'},{key:'relationship',name:'Relationship'},{key:'resolution',name:'Resolution'}];
-const PROBES={polarity:["What are you pulled between right now?","What two things feel like opposites for you today?","If you had to pick a side you don't want to pick, what would it be about?","Where do you feel caught between yes and no?"],structure:["What's holding you up today?","If you removed one thing from your life this week, what would collapse?","What's load-bearing that you haven't checked in on?","Who or what carries the weight when you can't?"],depth:["What's underneath the thing you just said?","If we went one layer deeper, what's there?","What are you circling that you haven't landed on?","What's true that you haven't said out loud today?"],time:["When did this pattern start?","What happened just before the feeling arrived?","How long have you been carrying this one?","What's the earliest memory this reminds you of?"],expansion:["What would change if this wasn't a problem?","What's on the other side of the fear?","If this were already handled, what would you be doing?","What's the version of you six months from now saying to you today?"],relationship:["Who else is in this with you?","Whose voice do you hear when you think this thought?","Who taught you to feel this way about it?","If this exact thing were happening to a friend, what would you tell them?"],resolution:["What do you already know about this?","If you trusted yourself completely, what would you do?","What's the quietest, truest answer that's already there?","If nobody was watching, what would you choose?"]};
-const CALIBRATION_ORDER=['polarity','structure','depth','time','expansion','relationship','resolution'];
-function pickProbe(axisKey,avoid=[]){const pool=PROBES[axisKey]||PROBES.polarity;const fresh=pool.filter(p=>!avoid.includes(p));const arr=fresh.length?fresh:pool;return arr[Math.floor(Math.random()*arr.length)]}
+<script>
+const SHAPES = [
+  {
+    id: 'tetra', glyph: '▲', name: 'Sharp Edge', latin: 'Tetrahedron',
+    tag: 'the shape of a system braced for attack',
+    q: 'Small things feel like attacks. I\'m ready to snap at anything.',
+    helper: 'Chronic activation. Everything reads as a threat. The body has been in fight-mode long enough that it\'s become the baseline.',
+    what: 'The Sharp Edge shows up when the fight-or-flight system has been running long enough that it can\'t stand down. Adrenaline stays elevated. Blood pressure recalibrates upward. The heart tightens instead of opening. Every interaction becomes a potential fight.',
+    research: {
+      cite: 'Friedman & Rosenman (1959) — Type A personality (time urgency, hostility, competitiveness) associated with roughly 2× risk of coronary heart disease. Williams et al. (2000) confirmed hostility as an independent cardiovascular predictor.',
+      short: 'Two decades of cardiology research show chronic sympathetic activation carves the body over time. This isn\'t moral. It\'s cellular.'
+    },
+    exercise: {
+      name: 'The long exhale hiss',
+      steps: [
+        'Sit or stand comfortably. Feet on the floor.',
+        'Breathe in through the nose for a count of 4.',
+        'Exhale through the teeth as a long "shhhhh" sound.',
+        'Make the exhale twice as long as the inhale — count 8 or more.',
+        'Feel the diaphragm push at the end. That\'s the vagal brake.',
+        'Repeat 5 times. The sharp edge is what steam looks like before it leaves.'
+      ]
+    }
+  },
+  {
+    id: 'spiral', glyph: '◎', name: 'The Chase', latin: 'Spiral',
+    tag: 'the shape of orbit without arrival',
+    q: 'I keep reaching for something and never landing. It\'s always almost, never here.',
+    helper: 'A loop. Something you want that stays just out of reach. Each attempt gets closer, but the arrival never comes.',
+    what: 'The Chase is the wanting circuit running without the having circuit. Dopamine drives approach. Oxytocin provides arrival. Without the second one firing, the system orbits — approach, near-contact, retreat, approach — indefinitely. The target can be a substance, a person, a scroll, a metric.',
+    research: {
+      cite: 'Koob & Volkow (2016, Neuropsychopharmacology) — addiction as dysregulation of the reward, stress, and executive systems. The pattern is identical across targets: same neurology whether the object is a drug, a person, or a screen.',
+      short: 'The spiral isn\'t weakness. It\'s the reward system running one half of its normal loop.'
+    },
+    exercise: {
+      name: 'Chest-voice grounding',
+      steps: [
+        'Stand with both feet firmly on the floor.',
+        'Feel where your voice sits — most of the day it lives in the throat or head.',
+        'Drop it. Say the word "here" from your lowest chest register.',
+        'Not louder — deeper. Feel it in your sternum, not your throat.',
+        'Repeat 3 times, letting each one drop lower.',
+        'Arrival is a sound before it\'s a thought. The spiral collapses to a point when the voice finds its floor.'
+      ]
+    }
+  },
+  {
+    id: 'sphere', glyph: '●', name: 'The Flood', latin: 'Sphere',
+    tag: 'the shape of taking in without a limit',
+    q: 'I keep consuming — food, scroll, drink, content — past what I actually want.',
+    helper: 'The intake system has overridden the deciding system. The mouth (or hands, or eyes) is receiving faster than the mind can call halt.',
+    what: 'The Flood shows up when the gut-brain axis captures executive control. Ghrelin signals hunger. Insulin signals capacity. When stress raises cortisol, both go haywire — the body reaches for calorie-dense comfort input, and the "I\'ve had enough" signal doesn\'t reach the frontal cortex in time. The sphere inflates.',
+    research: {
+      cite: 'Dallman et al. (2003, PNAS) — chronic stress drives comfort-food intake via glucocorticoid and insulin interaction. The pathway is hormonal, not volitional. Willpower is happening in the wrong system.',
+      short: 'The flood isn\'t about discipline. It\'s a hormonal capture. You\'re not weak. You\'re architecturally outnumbered.'
+    },
+    exercise: {
+      name: 'The sealed hum',
+      steps: [
+        'Bring your lips together and seal them lightly.',
+        'Take a slow breath in through the nose.',
+        'Hum a low steady "mmmmm" through the closed mouth for the whole exhale.',
+        'Feel the vibration in your lips, cheekbones, and skull.',
+        'Repeat 5 times.',
+        'The physical act of closing the mouth interrupts the intake loop before the executive system needs to intervene.'
+      ]
+    }
+  },
+  {
+    id: 'line', glyph: '—', name: 'Flatline', latin: 'Line',
+    tag: 'the shape of a system that gave up oscillating',
+    q: 'I\'m not upset. I\'m just... gone. Nothing moves me. Nothing pulls.',
+    helper: 'This isn\'t calm — calm has aliveness in it. This is absence. The signal went quiet not because the storm passed but because the system stopped generating waves.',
+    what: 'Flatline is parasympathetic shutdown, not parasympathetic rest. In polyvagal terms, it\'s the dorsal branch (immobilization) firing, not the ventral branch (safe engagement). Cortisol stays elevated but flat — the normal morning-high, evening-low rhythm disappears into a monotone drone. Motivation circuits deactivate. Heart rate variability drops toward zero.',
+    research: {
+      cite: 'Porges (2011) — Polyvagal Theory distinguishes ventral vagal (safe engagement, HRV present, connection possible) from dorsal vagal (shutdown, HRV suppressed, immobilization). Flatline is dorsal.',
+      short: 'The flatline is a nervous-system state, not a personality trait. And it\'s the one stress class where the release goes upward, not downward.'
+    },
+    exercise: {
+      name: 'The sharp inhale',
+      steps: [
+        'Take a sudden, sharp inhale through the mouth — a gasp. Like you just remembered something.',
+        'Hold for 1 count.',
+        'Release with a short, sharp "heh!" sound. Louder than feels natural.',
+        'Do 3–5 in a row. This is the only exercise here that goes UP instead of down.',
+        'Then let the breath settle. Feel any tingle, any lift, any wave.',
+        'The flatline needs a spike to remember it\'s a waveform. Use this only when the flatline shape scored high.'
+      ]
+    }
+  },
+  {
+    id: 'cone', glyph: '◄', name: 'The Squeeze', latin: 'Cone',
+    tag: 'the shape of narrowing under scarcity',
+    q: 'I don\'t have enough — of money, time, energy, attention — and it\'s all I can think about.',
+    helper: 'A shortage signal has captured your thinking. Executive function is being spent on monitoring the lack instead of planning, creating, or connecting.',
+    what: 'The Squeeze is the amygdala capturing the prefrontal cortex with a continuous "not enough" signal. The available cognitive bandwidth narrows around the scarce resource. You get better at monitoring the shortfall and worse at everything else — planning, generosity, perspective. The cone tapers.',
+    research: {
+      cite: 'Mani, Mullainathan, Shafir & Zhao (2013, Science) — scarcity mindset reduces measured IQ by approximately 13 points and executive function by comparable magnitude. The cognitive tax of scarcity is like losing a full night of sleep, every day.',
+      short: 'You\'re not less capable. You\'re running a monitoring task in the background that\'s taxing the same hardware.'
+    },
+    exercise: {
+      name: 'Wide-open vowels',
+      steps: [
+        'Open your mouth as wide as it will comfortably go.',
+        'Breathe in slowly, feeling the aperture.',
+        'Exhale on a long, sustained "ahhhhhh" — the roundest, widest vowel you can make.',
+        'Follow it with "ohhhhh" — same width, deeper pitch.',
+        'Then "eyyyyy" and "ohhhh" again.',
+        'Do 4 rounds. Widening the mouth is the geometric opposite of the narrowing. Open, release, open, release.'
+      ]
+    }
+  },
+  {
+    id: 'mirror', glyph: '◇', name: 'Comparison', latin: 'Mirror',
+    tag: 'the shape of having no anchor except other people',
+    q: 'I keep measuring myself against other people. I can\'t tell what I want anymore — only what they have.',
+    helper: 'The reference point has moved outside you. Every value is comparative. There\'s no still center, only reflections bouncing off other reflections.',
+    what: 'The Mirror is chronic activation of the anterior cingulate cortex — the same region that processes physical pain. Social comparison literally hurts. The modern feed pours comparison into that circuit continuously. You end up defining yourself by distance from other people\'s positions instead of by your own coordinates.',
+    research: {
+      cite: 'Takahashi et al. (2009, Science) — envious responses to superior peers activate the anterior cingulate cortex; schadenfreude at their misfortunes activates the ventral striatum (reward). The comparison circuit is hardwired.',
+      short: 'The mirror isn\'t a moral failure. It\'s the ACC doing what it evolved to do, plugged into an information environment it wasn\'t built for.'
+    },
+    exercise: {
+      name: 'Eyes-closed silence',
+      steps: [
+        'Close your eyes fully. Cover them with your palms if you can.',
+        'Sit for 60 seconds in silence. No music, no words, no scroll.',
+        'When you notice the urge to open them and check something — anything — notice, then keep them closed.',
+        'From behind the closed eyes, say the word "me" out loud, once, softly.',
+        'Feel where you hear it from. Not what you look like. Where you sound from.',
+        'The mirror breaks when you close your eyes and hear yourself from inside instead of seeing yourself from outside.'
+      ]
+    }
+  },
+  {
+    id: 'tower', glyph: '▯', name: 'The Mask', latin: 'Tower',
+    tag: 'the shape of maximum posture, minimum letting-in',
+    q: 'I can\'t let anyone see what\'s underneath. Everything has to look fine, and it\'s exhausting.',
+    helper: 'The persona has become the primary structure. Every interaction is performed. Vulnerability is architecturally sealed. It costs enormous energy to maintain.',
+    what: 'The Tower is default-mode-network hyperactivation driving continuous self-narrative curation. Every response is planned. Every gap is hidden. Testosterone and cortisol co-fire — dominance signaling under sustained threat. The persona goes up; the foundation is not proportionally strengthened. Social isolation grows because vulnerability, which is what lets connection through, has been sealed off.',
+    research: {
+      cite: 'Reinhard et al. (2012, PLoS ONE) — narcissistic grandiosity correlates with elevated cortisol reactivity. Appearing invulnerable is the most physiologically expensive state to sustain.',
+      short: 'The tower is the most expensive shape. Not moral cost — metabolic cost. It\'s literally the state you burn the most fuel to hold.'
+    },
+    exercise: {
+      name: 'The whispered ask',
+      steps: [
+        'Find somewhere private — even a bathroom will do.',
+        'Sit or stand still.',
+        'Whisper the word "help" — as quietly as you can while still forming the sound.',
+        'It has to be a whisper. Any louder and the tower is still speaking.',
+        'Say it again, quieter still. Then a third time, quieter still.',
+        'Then hum a low steady note from as low in your voice as you can reach.',
+        'The whisper is critical because the tower cannot shout vulnerability. This exercise is how the tower gracefully lowers instead of catastrophically falling.'
+      ]
+    }
+  }
+];
 
-const AXIS_KEYWORDS={polarity:['between','either','or','both','split','torn','caught','vs','versus','on one hand','part of me'],structure:['hold','support','carry','collapse','depend','rely','frame','structure','need','build','base','foundation'],depth:['under','underneath','deeper','beneath','hidden','buried','beyond words',"can't say",'avoid','ignore','deep down'],time:['always','since','before','after','started','began','years','months','used to','remember','history','pattern'],expansion:['what if','could','maybe','wonder','beyond','other side','next','change','different','free','let go','release'],relationship:['mother','father','partner','friend','they said','she said','he said','told me','because of','with','together','alone'],resolution:['know','trust','sure','clear','right','wrong','should','need to','going to','will','decided','ready']};
-function scoreResponse(text){const t=' '+text.toLowerCase()+' ';const scores={};for(const[axis,kws]of Object.entries(AXIS_KEYWORDS)){scores[axis]=0;for(const k of kws)if(t.includes(k))scores[axis]++}const words=text.trim().split(/\s+/).length;const entropy=words<5?0.1:words>80?0.9:Math.min(0.85,0.15+words/100);return{scores,entropy,wordCount:words}}
-function dominantAxis(scores){let best='polarity',bs=-1;for(const[a,s]of Object.entries(scores))if(s>bs){best=a;bs=s}return best}
-function nextProbeAxis(st){const asked=st.probes.map(p=>p.axis);const notAsked=AXES.filter(a=>!asked.includes(a.key));const groundOrder=['polarity','structure','depth'];const openOrder=['expansion','relationship','resolution'];if(asked.length>=3&&!asked.includes('resolution'))return'resolution';if(st.lastDominant&&!asked.includes(st.lastDominant))return st.lastDominant;const dh=st.currentDH||0;if(dh>0.15){const g=groundOrder.find(k=>notAsked.some(a=>a.key===k));if(g)return g}if(dh<-0.15){const o=openOrder.find(k=>notAsked.some(a=>a.key===k));if(o)return o}return(notAsked[0]||AXES[0]).key}
+const FAQ_ITEMS = [
+  { q: 'What is FallMirror?', a: 'A private stress sonar. You answer seven short slider questions. It identifies which of seven stress shapes fits you strongest right now and gives you one specific breath or vocal exercise to try.' },
+  { q: 'Does my data leave my device?', a: 'No. FallMirror runs entirely in the browser. There\'s no server, no account, no telemetry. Your journal lives in IndexedDB on this device. You can export it or wipe it any time.' },
+  { q: 'Is this medical advice?', a: 'No. FallMirror is a reflection tool grounded in published stress research. It is not a diagnosis, not therapy, and not a substitute for professional care. If you\'re in crisis, contact a qualified professional or emergency services.' },
+  { q: 'Why shapes instead of feelings?', a: 'Feelings are labels the mind assigns. Shapes are patterns the body is already in. It\'s easier to notice you\'re standing like a tower than to name the emotion driving it. Shapes are also easier to change than identities — you can rotate a shape.' },
+  { q: 'Why only one exercise per shape?', a: 'Because one exercise you\'ll actually do beats seven you\'ll bookmark and forget. Each shape has a specific vocal or breath practice that moves the associated body system in the opposite direction of the drift.' },
+  { q: 'What if I score high on multiple shapes?', a: 'That\'s normal — most people carry a blend. FallMirror surfaces the strongest one and lists the others below with their scores. Start with the dominant one. Come back tomorrow.' },
+  { q: 'Can I use this offline?', a: 'Yes. Save the HTML file to your disk (or install as a PWA). It runs with no internet. Your journal still saves locally.' },
+  { q: 'Why MIT?', a: 'Because a wellness tool that could disappear when a company folds isn\'t really a tool. MIT means anyone can fork it, host it, or run it from disk forever. It outlasts us.' },
+  { q: 'Where does the seven-shape framework come from?', a: 'A long observation across published stress research: chronic stress takes on distinct geometric characters depending on which system is dysregulated. Each shape maps to peer-reviewed studies cited inside the app.' },
+  { q: 'Who made this?', a: 'AI-Native Solutions, a sovereign-software publisher. Every listing MIT-licensed, Ed25519-signed, benchmarkable. See our other tools at FallMarket.' }
+];
 
-const DEFAULT_BLOOM=[5,5,5,5,5,5,5];
-function updateBloomEMA(cur,sc,alpha=0.15){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];return order.map((k,i)=>{const raw=Math.min(15,Math.max(1,sc[k]*3));return Math.round((cur[i]*(1-alpha)+raw*alpha)*10)/10})}
-function profileShape(v){const sum=v.reduce((a,b)=>a+b,0);const mean=sum/v.length;const variance=v.reduce((a,b)=>a+(b-mean)**2,0)/v.length;const sd=Math.sqrt(variance);const peaks=v.filter(x=>x>mean+sd).length;if(peaks>=2&&v[2]>mean&&v[3]>mean)return'mountain';if(peaks===1&&Math.max(...v)>mean*1.6)return'spiky';if(sd<1)return'flat';if(v[0]+v[1]+v[2]>v[4]+v[5]+v[6])return'left-heavy';if(v[4]+v[5]+v[6]>v[0]+v[1]+v[2])return'right-heavy';return'balanced'}
-function profileHint(s){return({mountain:'Strong in the middle. You build brilliantly · settling into finished things is the stretch.',spiky:'One axis dominates. Try grounding into what you tend to avoid.',flat:'Balanced across everything. Notice which area feels alive today.','left-heavy':'Structural side dominant. Try relational and settling work.','right-heavy':'Relational side dominant. Try structural and body work.',balanced:'Your profile is finding itself. Keep going.'})[s]||'Movement is the point.'}
+const STATE = { scores: {}, currentResult: null };
+const DB_NAME = 'fallmirror', DB_VERSION = 1;
 
-const WITNESS_MARKERS={0:["i can't stop","i'm just","it's taking over","i'm stuck in","caught in","swept away"],1:['i noticed','i realised','i caught myself','stepped back','some part of me','i saw that'],2:['i can watch','i observe','i see the pattern','i step back','i witness','i sit with'],3:['watching myself watch','who is watching','the observer','behind the observing','watcher of'],4:['nothingness','emptiness','presence','beyond words','it just is','space between']};
-function detectWitnessStage(text,cur=0){const t=text.toLowerCase();let ms=0;for(let s=4;s>=0;s--)for(const m of WITNESS_MARKERS[s])if(t.includes(m))ms=Math.max(ms,s);return Math.round((cur*0.7+ms*0.3)*10)/10}
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains('entries')) {
+        const store = db.createObjectStore('entries', { keyPath: 'id', autoIncrement: true });
+        store.createIndex('by_date', 'date');
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
 
-function sessionToTorus(sc,dh){const order=['polarity','structure','depth','time','expansion','relationship','resolution'];let di=0,ds=-1;for(let i=0;i<7;i++)if((sc[order[i]]||0)>ds){ds=sc[order[i]];di=i}const theta=(di/7)*2*Math.PI;const psi=Math.PI+Math.atan(dh*4);return{theta,psi}}
+async function saveEntry(entry) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('entries', 'readwrite');
+    const req = tx.objectStore('entries').add(entry);
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
 
-function generateChord(st){const fired=st.probes.map(p=>AXES.find(a=>a.key===p.axis));if(!fired.length)return{text:'Thanks for showing up today.',resolved:true};const primary=fired[0],middle=fired[Math.floor(fired.length/2)],last=fired[fired.length-1];const openers={polarity:'you explored a tension',structure:'you looked at what holds you up',depth:'you went underneath',time:'you traced the timeline',expansion:"you reached for what's beyond",relationship:'you saw who else is in this',resolution:'you found your own knowing'};const middles={polarity:"with a polarity you're carrying",structure:'through the structure of it',depth:'with something hidden underneath',time:'across time',expansion:'with room for more',relationship:'with other voices present',resolution:'toward what you already know'};const closers={polarity:'and the tension is still asking to be held.',structure:'and the support is worth noticing.',depth:'and the depth is still opening.',time:'and the timeline is beginning to soften.',expansion:'and the doorway is starting to be visible.',relationship:'and the relational field is present with you.',resolution:'and you found you already knew what to do.'};const resolved=last.key==='resolution'&&st.lastEntropy>0.5&&st.lastEntropy<0.75;return{text:`Today ${openers[primary.key]}, ${middles[middle.key]}, ${closers[last.key]}`,resolved}}
+async function listEntries() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('entries', 'readonly');
+    const req = tx.objectStore('entries').getAll();
+    req.onsuccess = () => resolve(req.result.sort((a, b) => b.date - a.date));
+    req.onerror = () => reject(req.error);
+  });
+}
 
-const DB_NAME='fallmirror',DB_VERSION=1;
-function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,DB_VERSION);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('sessions'))d.createObjectStore('sessions',{keyPath:'id',autoIncrement:true});if(!d.objectStoreNames.contains('state'))d.createObjectStore('state')};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-async function saveState(k,v){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('state','readwrite');t.objectStore('state').put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
-async function loadState(k){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('state','readonly');const r=t.objectStore('state').get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-async function addSession(s){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('sessions','readwrite');t.objectStore('sessions').add(s);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
-async function loadSessions(){const d=await openDB();return new Promise((res,rej)=>{const t=d.transaction('sessions','readonly');const r=t.objectStore('sessions').getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
-async function clearAll(){const d=await openDB();return new Promise((res)=>{const t=d.transaction(['sessions','state'],'readwrite');t.objectStore('sessions').clear();t.objectStore('state').clear();t.oncomplete=()=>res()})}
+async function deleteEntry(id) {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('entries', 'readwrite');
+    const req = tx.objectStore('entries').delete(id);
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
 
-let state={bloom:DEFAULT_BLOOM.slice(),witnessStage:0,currentSession:null,sessions:[],llmEnabled:false,llmEngine:null,sessionCount:0};
+async function wipeAllEntries() {
+  const db = await openDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('entries', 'readwrite');
+    const req = tx.objectStore('entries').clear();
+    req.onsuccess = () => resolve();
+    req.onerror = () => reject(req.error);
+  });
+}
 
-async function bootstrap(){const saved=await loadState('bloom');if(saved)state.bloom=saved;const stg=await loadState('witness_stage');if(typeof stg==='number')state.witnessStage=stg;state.sessions=await loadSessions();state.sessionCount=state.sessions.length;renderDashboard();renderJournal()}
+function switchView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  const view = document.getElementById('view-' + name);
+  const tab = document.querySelector('.tab[data-view=' + name + ']');
+  if (view) view.classList.add('on');
+  if (tab) tab.classList.add('on');
+  if (name === 'sonar') renderProbes();
+  if (name === 'journal') renderJournal();
+  if (name === 'faq') renderFaq();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => switchView(t.dataset.view)));
 
-function newSession(mode){state.currentSession={mode,started_at:new Date().toISOString(),probes:[],responses:[],sessionScores:{},lastDominant:null,currentDH:0,lastEntropy:0.5,calibrationIndex:0};document.getElementById('session-stream').innerHTML='';document.getElementById('session-num').textContent=state.sessionCount+1;document.getElementById('session-mode').textContent=mode==='calibration'?'Calibration':'Free';document.getElementById('session-stage').textContent='Stage '+Math.round(state.witnessStage)}
-function startCalibration(){newSession('calibration');document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';askCalibrationProbe()}
-function startFreeSession(){newSession('free');document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';postProbe(pickProbe('polarity'),'polarity')}
-function askCalibrationProbe(){const i=state.currentSession.calibrationIndex;if(i>=CALIBRATION_ORDER.length){endSession();return}const axis=CALIBRATION_ORDER[i];postProbe(pickProbe(axis,state.currentSession.probes.map(p=>p.text)),axis)}
-function postProbe(text,axis){state.currentSession.probes.push({text,axis,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn mirror';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
-function postUser(text){state.currentSession.responses.push({text,ts:new Date().toISOString()});const el=document.createElement('div');el.className='turn user';el.textContent=text;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
-function postChord(chord){const el=document.createElement('div');el.className='turn chord';el.innerHTML=`<div class="label">Session takeaway</div><em>${escapeHtml(chord.text)}</em>${chord.resolved?'<div style="margin-top:10px;color:var(--sage);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Resolved · keep it</div>':'<div style="margin-top:10px;color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase">Open · that\'s ok</div>'}`;document.getElementById('session-stream').appendChild(el);el.scrollIntoView({behavior:'smooth',block:'end'})}
+function renderProbes() {
+  const wrap = document.getElementById('probes');
+  wrap.innerHTML = SHAPES.map((s, i) => `
+    <div class="probe" id="probe-${s.id}">
+      <div class="probe-head">
+        <div>
+          <div class="probe-num">Question ${i + 1} of 7 · ${s.latin}</div>
+          <div class="probe-shape">${s.glyph}</div>
+        </div>
+      </div>
+      <q>${s.q}</q>
+      <p class="helper">${s.helper}</p>
+      <div class="slider-wrap">
+        <div class="slider-row">
+          <input type="range" min="0" max="10" value="${STATE.scores[s.id] ?? 0}" data-shape="${s.id}" oninput="updateSlider(this)">
+          <div class="slider-val" id="val-${s.id}">${STATE.scores[s.id] ?? 0}</div>
+        </div>
+        <div class="slider-labels">
+          <span>not me</span>
+          <span>somewhat</span>
+          <span>very much me</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
 
-async function handleUserInput(text){const safety=safetyCheck(text);if(safety.level==='crisis'){showCrisis();return}postUser(text);const scored=scoreResponse(text);const order=['polarity','structure','depth','time','expansion','relationship','resolution'];for(const k of order)state.currentSession.sessionScores[k]=(state.currentSession.sessionScores[k]||0)+(scored.scores[k]||0);state.currentSession.lastDominant=dominantAxis(scored.scores);state.currentSession.currentDH=scored.entropy-0.618;state.currentSession.lastEntropy=scored.entropy;state.witnessStage=detectWitnessStage(text,state.witnessStage);document.getElementById('session-stage').textContent='Stage '+Math.round(state.witnessStage);if(safety.level==='referral'){const notice=document.createElement('div');notice.className='notice';notice.style.margin='12px 0';notice.innerHTML=safety.kind==='psychosis'?`<strong>Pause.</strong> What you're describing sounds intense — that's beyond what this tool is for. Is there someone you trust — GP, a friend — you could talk to about this today?`:`<strong>Pause.</strong> That sounds hard and it may need more than a reflection tool. There are people who can help — the crisis resources button has numbers.`;document.getElementById('session-stream').appendChild(notice);notice.scrollIntoView({behavior:'smooth',block:'end'});return}await new Promise(r=>setTimeout(r,800));if(state.currentSession.mode==='calibration'){state.currentSession.calibrationIndex++;if(state.currentSession.calibrationIndex>=CALIBRATION_ORDER.length){await new Promise(r=>setTimeout(r,400));endSession()}else askCalibrationProbe();return}if(state.currentSession.probes.length>=5){endSession();return}const nextAxis=nextProbeAxis(state.currentSession);postProbe(pickProbe(nextAxis,state.currentSession.probes.map(p=>p.text)),nextAxis)}
+function updateSlider(el) {
+  const shape = el.dataset.shape;
+  const val = parseInt(el.value, 10);
+  STATE.scores[shape] = val;
+  document.getElementById('val-' + shape).textContent = val;
+  document.getElementById('probe-' + shape).classList.toggle('active', val >= 6);
+}
 
-async function endSession(){if(!state.currentSession)return;const chord=generateChord(state.currentSession);postChord(chord);state.bloom=updateBloomEMA(state.bloom,state.currentSession.sessionScores);await saveState('bloom',state.bloom);await saveState('witness_stage',state.witnessStage);await saveState('setup_complete',true);const torus=sessionToTorus(state.currentSession.sessionScores,state.currentSession.currentDH);const rec={started_at:state.currentSession.started_at,ended_at:new Date().toISOString(),mode:state.currentSession.mode,probes:state.currentSession.probes,responses:state.currentSession.responses,scores:state.currentSession.sessionScores,dh:state.currentSession.currentDH,entropy:state.currentSession.lastEntropy,witness_stage:state.witnessStage,torus,chord:chord.text,resolved:chord.resolved,bloom_snapshot:state.bloom.slice()};await addSession(rec);state.sessions.push(rec);state.sessionCount++;state.currentSession=null;renderDashboard();renderJournal();setTimeout(()=>{const bar=document.createElement('div');bar.style.textAlign='center';bar.style.margin='20px 0';bar.innerHTML=`<button class="big-btn" onclick="location.reload()">Start a new session</button> <button class="big-btn ghost" onclick="document.querySelector('.tab[data-view=dashboard]').click()">See your profile</button>`;document.getElementById('session-stream').appendChild(bar)},1500);document.getElementById('input-bar').style.display='none'}
+function resetSonar() {
+  STATE.scores = {};
+  renderProbes();
+}
 
-function renderDashboard(){renderBloomRadial();renderGauge();renderWitnessLadder();renderTorus();document.getElementById('bloom-hint').textContent=profileHint(profileShape(state.bloom))}
-function renderBloomRadial(){const el=document.getElementById('bloom-radial');const cx=140,cy=140,radius=100,axesCount=7,bloom=state.bloom,maxVal=15;const points=bloom.map((v,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const r=(v/maxVal)*radius;return{x:cx+Math.cos(angle)*r,y:cy+Math.sin(angle)*r,angle,v}});const grid=[1,0.5,0.25].map(f=>{const pts=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `${cx+Math.cos(angle)*radius*f},${cy+Math.sin(angle)*radius*f}`});return `<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const spokes=Array.from({length:axesCount},(_,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(angle)*radius}" y2="${cy+Math.sin(angle)*radius}" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`}).join('');const shape=`<polygon points="${points.map(p=>`${p.x},${p.y}`).join(' ')}" fill="rgba(122,156,126,0.25)" stroke="#7a9c7e" stroke-width="2"/>`;const labels=AXES.map((a,i)=>{const angle=-Math.PI/2+(i/axesCount)*2*Math.PI;const lx=cx+Math.cos(angle)*(radius+22);const ly=cy+Math.sin(angle)*(radius+22);return `<text x="${lx}" y="${ly}" text-anchor="middle" alignment-baseline="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#928d80" letter-spacing="1.2">${a.name}</text>`}).join('');const dots=points.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#7a9c7e"/>`).join('');el.innerHTML=`<svg viewBox="0 0 280 280">${grid}${spokes}${shape}${dots}${labels}</svg>`}
-function renderGauge(){const dh=state.sessions.length?(state.sessions[state.sessions.length-1].dh||0):0;const pct=Math.max(5,Math.min(95,50+dh*100));document.getElementById('gauge-fill').style.left=pct+'%';document.getElementById('gauge-value').textContent=dh===0?'—':(dh>0?'+':'')+dh.toFixed(2)}
-function renderWitnessLadder(){const stage=Math.round(state.witnessStage);document.querySelectorAll('.witness-stage').forEach(el=>{const s=parseInt(el.dataset.s);el.classList.remove('on','past');if(s===stage)el.classList.add('on');else if(s<stage)el.classList.add('past')})}
-function renderTorus(){const el=document.getElementById('torus-wrap');const cx=140,cy=120,ringR=90,tubeR=30;const sessions=state.sessions.filter(s=>s.torus);const ring1=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR}" ry="${ringR*0.4}" fill="none" stroke="rgba(232,228,219,0.14)" stroke-width="1"/>`;const ring2=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR+tubeR}" ry="${(ringR+tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const ring3=`<ellipse cx="${cx}" cy="${cy}" rx="${ringR-tubeR}" ry="${(ringR-tubeR)*0.4}" fill="none" stroke="rgba(232,228,219,0.08)" stroke-width="1"/>`;const dots=sessions.map((s,i)=>{const{theta,psi}=s.torus;const bigR=ringR+Math.cos(psi)*tubeR;const x=cx+Math.cos(theta)*bigR;const y=cy+Math.sin(theta)*bigR*0.4;const opacity=0.3+0.7*(i/Math.max(sessions.length-1,1));const color=s.resolved?'#7a9c7e':'#d4a052';return `<circle cx="${x}" cy="${y}" r="4" fill="${color}" opacity="${opacity}"/>`}).join('');el.innerHTML=`<svg viewBox="0 0 280 240">${ring2}${ring1}${ring3}${dots}</svg>`}
+function scoreSonar() {
+  const scored = SHAPES.map(s => ({ ...s, score: STATE.scores[s.id] ?? 0 })).sort((a, b) => b.score - a.score);
+  if (scored[0].score === 0) {
+    alert('Move at least one slider to reflect.');
+    return;
+  }
+  const dominant = scored[0];
+  const entry = { date: Date.now(), dominant_id: dominant.id, scores: { ...STATE.scores } };
+  STATE.currentResult = { entry, scored };
+  renderResult();
+  switchView('result');
+  saveEntry(entry).catch(e => console.warn('journal save failed', e));
+}
 
-function renderJournal(){const el=document.getElementById('journal-list');if(!state.sessions.length){el.innerHTML='<div class="card"><p style="color:var(--muted);font-style:italic">No sessions yet. Talk to the mirror once and the first takeaway will land here.</p></div>';return}el.innerHTML=state.sessions.slice().reverse().map(s=>{const date=new Date(s.started_at).toLocaleString('en-GB',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});const axesFired=Object.entries(s.scores||{}).sort((a,b)=>b[1]-a[1]).slice(0,3);const stage='Stage '+Math.round(s.witness_stage||0);return `<div class="journal-item"><div class="date">${escapeHtml(date)} · ${escapeHtml(s.mode)}</div><div class="chord-preview">${escapeHtml(s.chord||'')}</div><span class="stage-tag">${stage}</span>${axesFired.map(([a])=>`<span class="axis-tag">${a}</span>`).join('')}<span class="axis-tag" style="color:${s.resolved?'var(--sage)':'var(--amber)'}">${s.resolved?'resolved':'open'}</span></div>`}).join('')}
+function renderResult() {
+  if (!STATE.currentResult) return;
+  const { scored } = STATE.currentResult;
+  const d = scored[0];
+  const others = scored.slice(1).filter(s => s.score > 0);
+  const wrap = document.getElementById('result-content');
+  wrap.innerHTML = `
+    <div class="result-hero">
+      <div class="result-shape-big">${d.glyph}</div>
+      <div class="result-name">${d.name}</div>
+      <div class="result-latin">${d.latin}</div>
+      <div class="result-tag">${d.tag}</div>
+      <div class="result-score">score ${d.score} / 10</div>
+    </div>
 
-document.querySelectorAll('.tab').forEach(t=>{t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('on'));t.classList.add('on');document.getElementById('view-'+t.dataset.view).classList.add('on');if(t.dataset.view==='dashboard')renderDashboard();if(t.dataset.view==='journal')renderJournal()}});
-document.getElementById('btn-calibrate').onclick=startCalibration;
-document.getElementById('btn-quick-session').onclick=()=>{document.getElementById('setup-panel').style.display='none';document.getElementById('session-panel').style.display='block';document.getElementById('input-bar').style.display='flex';startFreeSession()};
-document.getElementById('btn-end-session').onclick=endSession;
-document.getElementById('btn-send').onclick=()=>{const box=document.getElementById('input-box');const text=box.value.trim();if(!text)return;box.value='';box.style.height='auto';handleUserInput(text)};
-document.getElementById('input-box').addEventListener('keydown',(e)=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();document.getElementById('btn-send').click()}});
-document.getElementById('input-box').addEventListener('input',(e)=>{e.target.style.height='auto';e.target.style.height=Math.min(120,e.target.scrollHeight)+'px'});
+    <div class="result-section">
+      <h3>What this shape is</h3>
+      <p>${d.what}</p>
+    </div>
 
-document.getElementById('btn-llm-toggle').onclick=async()=>{if(state.llmEnabled)return alert('Already enabled. Refresh to disable.');const btn=document.getElementById('btn-llm-toggle');btn.disabled=true;btn.textContent='Loading...';document.getElementById('llm-status').textContent='loading';try{const{CreateMLCEngine}=await import('https://esm.run/@mlc-ai/web-llm');const engine=await CreateMLCEngine('Llama-3.1-8B-Instruct-q4f16_1-MLC',{initProgressCallback:(r)=>{const pct=Math.round((r.progress||0)*100);document.getElementById('llm-status').textContent=pct+'%';btn.textContent=pct+'% · downloading'}});state.llmEngine=engine;state.llmEnabled=true;document.getElementById('llm-status').textContent='ready';document.getElementById('llm-status').classList.add('on');btn.textContent='Enabled'}catch(e){document.getElementById('llm-status').textContent='failed';btn.textContent='Retry';btn.disabled=false;alert('Could not load WebLLM · '+e.message+' · rule-based mode still works.')}};
-document.getElementById('btn-recalibrate').onclick=()=>{if(!confirm('Start a fresh calibration? Your history is kept.'))return;state.bloom=DEFAULT_BLOOM.slice();saveState('bloom',state.bloom).then(()=>startCalibration())};
-document.getElementById('btn-export').onclick=async()=>{const data={bloom:state.bloom,witness_stage:state.witnessStage,sessions:state.sessions,exported_at:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='fallmirror-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url)};
-document.getElementById('btn-import').onclick=()=>document.getElementById('file-import').click();
-document.getElementById('file-import').addEventListener('change',async(e)=>{const file=e.target.files[0];if(!file)return;try{const text=await file.text();const data=JSON.parse(text);if(!confirm('Replace current data with imported data?'))return;await clearAll();if(data.bloom)await saveState('bloom',data.bloom);if(typeof data.witness_stage==='number')await saveState('witness_stage',data.witness_stage);if(data.sessions)for(const s of data.sessions)await addSession(s);location.reload()}catch(err){alert('Import failed · '+err.message)}});
-document.getElementById('btn-wipe').onclick=async()=>{if(!confirm('Wipe everything · this cannot be undone.'))return;if(!confirm('Are you absolutely sure?'))return;await clearAll();location.reload()};
+    <div class="result-section">
+      <h3>What the research says</h3>
+      <p>${d.research.short}</p>
+      <div class="cite">${d.research.cite}</div>
+    </div>
 
-function escapeHtml(s){return String(s||'').replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'})[c])}
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
-bootstrap();
+    <div class="result-section">
+      <h3>Your exercise</h3>
+      <div class="exercise-box">
+        <div class="exercise-name">${d.exercise.name}</div>
+        <ol class="exercise-steps">${d.exercise.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+      </div>
+    </div>
+
+    <div class="connection-frame">
+      <h3>The frame that holds all seven</h3>
+      <p>Every one of these shapes is what happens when a system runs alone too long. The exercise helps you meet yourself. But the deepest correction — for all seven shapes — is connection with another person. Do the two-minute practice. Then reach out to someone.</p>
+    </div>
+
+    ${others.length ? `
+    <div class="other-shapes">
+      <h3>Your other shapes today</h3>
+      <div class="other-shapes-list">
+        ${others.map(s => `<div class="mini-shape"><span class="g">${s.glyph}</span><span>${s.name}</span><span class="s">${s.score}/10</span></div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    <div class="result-actions">
+      <button class="btn primary" onclick="switchView('journal')">Go to journal →</button>
+      <button class="btn" onclick="resetSonar();switchView('sonar')">Take again</button>
+      <button class="btn" onclick="switchView('home')">Back home</button>
+    </div>
+  `;
+}
+
+async function renderJournal() {
+  const wrap = document.getElementById('journal-content');
+  const tl = document.getElementById('timeline-content');
+  try {
+    const entries = await listEntries();
+    if (!entries.length) {
+      wrap.innerHTML = `
+        <div class="journal-empty">
+          <p>No reflections yet. The mirror is empty until you look into it.</p>
+          <button class="btn primary" onclick="switchView('sonar')">Take your first sonar →</button>
+        </div>`;
+      tl.innerHTML = '';
+      return;
+    }
+    wrap.innerHTML = entries.map(e => {
+      const shape = SHAPES.find(s => s.id === e.dominant_id) || {};
+      return `<div class="entry">
+        <div class="shape-glyph">${shape.glyph || '◊'}</div>
+        <div class="entry-body">
+          <h4>${shape.name || 'Unknown'}</h4>
+          <div class="meta">${new Date(e.date).toLocaleString()} · dominant score ${e.scores[e.dominant_id] || 0}/10</div>
+        </div>
+        <div class="entry-actions">
+          <button class="icon-btn" onclick="removeEntry(${e.id})">delete</button>
+        </div>
+      </div>`;
+    }).join('');
+    const counts = {};
+    SHAPES.forEach(s => counts[s.id] = 0);
+    entries.forEach(e => counts[e.dominant_id] = (counts[e.dominant_id] || 0) + 1);
+    const max = Math.max(...Object.values(counts), 1);
+    tl.innerHTML = `
+      <div class="timeline">
+        <h3>Shape frequency · your last ${entries.length} reflections</h3>
+        <div class="tl-grid">
+          ${SHAPES.map(s => {
+            const c = counts[s.id];
+            const h = Math.round((c / max) * 120);
+            return `<div class="tl-col">
+              <div class="tl-bar" style="height:${h}px" title="${s.name}: ${c}"></div>
+              <div class="tl-label">${s.glyph}</div>
+              <div class="tl-count">${c}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>`;
+  } catch (e) {
+    wrap.innerHTML = '<p style="color:var(--coral)">Journal unavailable: ' + e.message + '</p>';
+  }
+}
+
+async function removeEntry(id) {
+  if (!confirm('Delete this reflection? This is permanent.')) return;
+  await deleteEntry(id);
+  renderJournal();
+}
+
+async function wipeJournal() {
+  if (!confirm('Wipe ALL journal entries? This is permanent and cannot be undone.')) return;
+  await wipeAllEntries();
+  renderJournal();
+}
+
+async function exportJournal() {
+  const entries = await listEntries();
+  const blob = new Blob([JSON.stringify({ tool: 'fallmirror', exported_at: new Date().toISOString(), entries }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `fallmirror-journal-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importJournal() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json,application/json';
+  input.onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      if (!data.entries || !Array.isArray(data.entries)) throw new Error('Not a FallMirror export');
+      for (const entry of data.entries) {
+        const clean = { date: entry.date, dominant_id: entry.dominant_id, scores: entry.scores };
+        await saveEntry(clean);
+      }
+      alert(`Imported ${data.entries.length} entries.`);
+      renderJournal();
+    } catch (err) {
+      alert('Import failed: ' + err.message);
+    }
+  };
+  input.click();
+}
+
+function renderFaq() {
+  const wrap = document.getElementById('faq-list');
+  wrap.innerHTML = FAQ_ITEMS.map(f => `
+    <details class="faq-item">
+      <summary>${f.q}</summary>
+      <p>${f.a}</p>
+    </details>
+  `).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProbes();
+  renderFaq();
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW register skipped:', e.message)));
+}
+
+window.switchView = switchView;
+window.scoreSonar = scoreSonar;
+window.resetSonar = resetSonar;
+window.updateSlider = updateSlider;
+window.removeEntry = removeEntry;
+window.wipeJournal = wipeJournal;
+window.exportJournal = exportJournal;
+window.importJournal = importJournal;
 </script>
+
 </body>
 </html>
