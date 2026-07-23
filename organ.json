@@ -1,0 +1,19 @@
+{
+  "$schema": "https://sjgant80-hub.github.io/niceassos-organs/organ.schema.json",
+  "name": "fallmirror",
+  "ring": 3,
+  "glyph": "♡",
+  "purpose": "heart · self-inquiry",
+  "publishes": [
+    "beacon",
+    "bloom_pulse"
+  ],
+  "listens": [
+    "cassie:tick"
+  ],
+  "konomi_pub_source": "identity.pub",
+  "spec_version": "niceassos-spec/0.2",
+  "mesh_channel": "niceassos-mesh",
+  "legacy_channel": "fall-signal",
+  "beacon_interval_ms": 60000
+}
